@@ -1,0 +1,14 @@
+.menu-overlay {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-overlay.active {
+  transform: translateY(0);
+}
+
+@media (min-width: 1021px) {
+  .burger-menu {
+    display: none;
+  }
+}
