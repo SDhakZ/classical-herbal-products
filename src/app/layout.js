@@ -6,6 +6,7 @@ import { Topbar } from "./layouts/topbar/topbar";
 import { Markazi_Text } from "next/font/google";
 import localFont from "next/font/local";
 import Menubar from "./layouts/navbar/menubar";
+import Footer from "./layouts/footer/footer";
 
 export const metadata = {
   title: "Create Next App",
@@ -37,6 +38,7 @@ export default function RootLayout({ children }) {
         <SmoothScrolling>
           <div>{children}</div>
         </SmoothScrolling>
+        <Footer />
       </body>
     </html>
   );

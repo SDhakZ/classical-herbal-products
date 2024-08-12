@@ -54,13 +54,13 @@ export default function Menubar() {
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <div className="flex justify-between gap-4 px-12 py-8">
+                      <div className="flex flex-wrap justify-between gap-4 px-12 py-8">
                         {menu.dropdown.map((section, sectionIndex) => (
                           <div key={sectionIndex}>
                             <p className="text-2xl font-medium underline underline-offset-8 decoration-primary-beige-300 font-markaziText">
                               {section.title}
                             </p>
-                            <ul className="flex flex-col gap-3 mt-5 text-base font-medium text-primary-green-300">
+                            <ul className="flex flex-col gap-3 min-w-[200px] mt-5 text-base font-medium text-primary-green-300">
                               {section.links.map((item, index) => (
                                 <li key={index}>
                                   <a href="#">{item.title}</a>
@@ -137,7 +137,7 @@ export default function Menubar() {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="flex justify-between gap-4 px-12 py-8">
+                    <div className="flex flex-wrap justify-between gap-4 px-12 py-8">
                       {menuData[2].dropdown.map((item, index) => (
                         <div className="w-fit" key={index}>
                           <p className="text-2xl font-medium underline w-fit underline-offset-8 decoration-primary-beige-300 font-markaziText">
