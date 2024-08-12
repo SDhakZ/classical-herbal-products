@@ -10,7 +10,7 @@ export default function footer() {
           <div className="flex flex-col flex-wrap justify-center gap-12 sm:flex-row sm:justify-between sm:gap-20 ">
             <img
               src="./assets/CHPLogo.png"
-              className="self-start w-full max-w-[250px]"
+              className="self-center sm:self-start w-full max-w-[200px] sm:w-full sm:max-w-[250px]"
               alt="CHP Logo"
             />
 
@@ -19,10 +19,38 @@ export default function footer() {
                 Featured Products
               </p>
               <ul className="mt-3 space-y-3 text-sm text-white-shade-100">
-                <li>Immune supportive tea</li>
-                <li>Lavender Immunity booster </li>
-                <li>Energy booster tea</li>
-                <li>Ayurvedic booster</li>
+                <li>
+                  <a
+                    className="transition-colors duration-150 hover:text-primary-beige-100"
+                    href="#"
+                  >
+                    Immune supportive tea
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="transition-colors duration-150 hover:text-primary-beige-100"
+                    href="#"
+                  >
+                    Lavender Immunity booster
+                  </a>{" "}
+                </li>
+                <li>
+                  <a
+                    className="transition-colors duration-150 hover:text-primary-beige-100"
+                    href="#"
+                  >
+                    Energy booster tea
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="transition-colors duration-150 hover:text-primary-beige-100"
+                    href="#"
+                  >
+                    Ayurvedic booster
+                  </a>
+                </li>
               </ul>
             </div>
             <div>
@@ -30,10 +58,38 @@ export default function footer() {
                 Company
               </p>
               <ul className="mt-3 space-y-3 text-sm text-white-shade-100">
-                <li>Services</li>
-                <li>About Us</li>
-                <li>Products</li>
-                <li>Blogs</li>
+                <li>
+                  <a
+                    className="transition-colors duration-150 hover:text-primary-beige-100"
+                    href="#"
+                  >
+                    Services
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="transition-colors duration-150 hover:text-primary-beige-100"
+                    href="#"
+                  >
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="transition-colors duration-150 hover:text-primary-beige-100"
+                    href="#"
+                  >
+                    Products
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="transition-colors duration-150 hover:text-primary-beige-100"
+                    href="#"
+                  >
+                    Blogs
+                  </a>
+                </li>
               </ul>
             </div>
             <div>
@@ -43,7 +99,12 @@ export default function footer() {
               <ul className="mt-3 space-y-3 text-sm text-white-shade-100">
                 {menuData[2].dropdown[0].links.map((item, index) => (
                   <li key={index}>
-                    <a href={item.url}>{item.title}</a>
+                    <a
+                      className="transition-colors duration-150 hover:text-primary-beige-100"
+                      href={item.url}
+                    >
+                      {item.title}
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -65,7 +126,10 @@ export default function footer() {
                     Mail Us
                   </p>
                   <div className="mt-1">
-                    <a href="mailto:immuneherb@gmail.com">
+                    <a
+                      className="transition-colors duration-150 hover:text-primary-beige-100"
+                      href="mailto:immuneherb@gmail.com"
+                    >
                       immuneherb@gmail.com
                     </a>
                   </div>
@@ -76,7 +140,7 @@ export default function footer() {
                   </p>
                   <div className="flex flex-col gap-2 mt-1">
                     <a
-                      className="whitespace-nowrap"
+                      className="transition-colors duration-150 hover:text-primary-beige-100 whitespace-nowrap"
                       href="mailto:immuneherb@gmail.com"
                     >
                       +977 9808380169
