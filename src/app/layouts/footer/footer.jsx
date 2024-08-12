@@ -1,18 +1,30 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { socialInfo } from "@/app/data/companyInfo";
+import { socialInfo, menuData } from "@/app/data/companyInfo";
 
 export default function footer() {
   return (
     <footer className="bg-[#193028]">
       <div className="pt-16 pb-10 container-margin">
         <div className="flex flex-col ">
-          <div className="flex flex-wrap justify-between gap-12 sm:gap-20 sm:flex-nowrap">
+          <div className="flex flex-col flex-wrap justify-center gap-12 sm:flex-row sm:justify-between sm:gap-20 ">
             <img
               src="./assets/CHPLogo.png"
               className="self-start w-full max-w-[250px]"
               alt="CHP Logo"
             />
+
+            <div>
+              <p className="text-2xl font-markaziText text-primary-beige-200">
+                Featured Products
+              </p>
+              <ul className="mt-3 space-y-3 text-sm text-white-shade-100">
+                <li>Immune supportive tea</li>
+                <li>Lavender Immunity booster </li>
+                <li>Energy booster tea</li>
+                <li>Ayurvedic booster</li>
+              </ul>
+            </div>
             <div>
               <p className="text-2xl text-primary-beige-200 font-markaziText ">
                 Company
@@ -26,30 +38,20 @@ export default function footer() {
             </div>
             <div>
               <p className="text-2xl font-markaziText text-primary-beige-200">
-                Featured Products
-              </p>
-              <ul className="mt-3 space-y-3 text-sm text-white-shade-100">
-                <li>Immune supportive tea</li>
-                <li>Lavender Immunity booster </li>
-                <li>Energy booster tea</li>
-                <li>Ayurvedic booster</li>
-              </ul>
-            </div>
-            <div>
-              <p className="text-2xl font-markaziText text-primary-beige-200">
                 About Us
               </p>
               <ul className="mt-3 space-y-3 text-sm text-white-shade-100">
-                <li>Our Journey</li>
-                <li>Sustainability</li>
-                <li>Transparency in Sourcing</li>
-                <li>Purity, Potency & Integrity</li>
+                {menuData[2].dropdown[0].links.map((item, index) => (
+                  <li key={index}>
+                    <a href={item.url}>{item.title}</a>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
-          <div className="flex flex-col gap-8 mt-20">
-            <div className="flex flex-col gap-6 sm:flex-row sm:justify-between">
-              <ul className="space-y-1 text-sm text-white-shade-100">
+          <div className="flex flex-col gap-12 mt-12 sm:mt-20 sm:gap-8">
+            <div className="flex flex-col gap-10 sm:gap-6 sm:flex-row sm:justify-between">
+              <ul className="space-y-2 text-sm text-white-shade-100">
                 <li className="text-base text-primary-beige-200">
                   Classical Herbal Product
                 </li>
@@ -57,37 +59,51 @@ export default function footer() {
                 <li>© Classical Herbal Products, 2024. All Rights Reserved.</li>
               </ul>
 
-              <div className="flex space-x-10 text-sm text-white-shade-100">
+              <div className="flex flex-wrap text-sm gap-x-6 gap-y-4 text-white-shade-100">
                 <div>
-                  <p className="text-lg font-markaziText text-primary-beige-200">
+                  <p className="text-xl font-markaziText text-primary-beige-200">
                     Mail Us
                   </p>
-                  <a href="mailto:immuneherb@gmail.com">immuneherb@gmail.com</a>
+                  <div className="mt-1">
+                    <a href="mailto:immuneherb@gmail.com">
+                      immuneherb@gmail.com
+                    </a>
+                  </div>
                 </div>
                 <div>
-                  <p className="text-lg font-markaziText text-primary-beige-200">
+                  <p className="text-xl font-markaziText text-primary-beige-200">
                     Call Us
                   </p>
-                  <div className="flex flex-col">
-                    <a href="mailto:immuneherb@gmail.com">+977 9808380169</a>
-                    <a href="mailto:immuneherb@gmail.com">+977 9849648436</a>
+                  <div className="flex flex-col gap-2 mt-1">
+                    <a
+                      className="whitespace-nowrap"
+                      href="mailto:immuneherb@gmail.com"
+                    >
+                      +977 9808380169
+                    </a>
+                    <a
+                      className="whitespace-nowrap"
+                      href="mailto:immuneherb@gmail.com"
+                    >
+                      +977 9849648436
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="flex flex-col items-center gap-6 sm:flex-row sm:flex-wrap sm:justify-between">
-              <div className="flex space-x-10 text-sm text-white-shade-100">
+            <div className="flex flex-col-reverse items-center gap-8 sm:gap-6 sm:flex-row sm:flex-wrap sm:justify-between">
+              <div className="flex flex-wrap self-start text-sm sm:self-auto gap-y-3 gap-x-4 text-white-shade-100">
                 <a href="#">Terms</a>
                 <a href="#">Disclaimer</a>
                 <a href="#">Accessibility</a>
                 <a href="#">Return Policy</a>
               </div>{" "}
-              <ul className="flex space-x-4 text-sm text-white-shade-200">
+              <ul className="flex flex-wrap self-start gap-4 text-sm sm:self-auto text-white-shade-200">
                 {socialInfo.map((social, index) => (
                   <li>
                     <a
                       key={index}
-                      className={`flex items-center  border-2 justify-center rounded-full w-11 h-11 md:w-9 md:h-9 text-white-shade-100 hover:text-primary-orange-200`}
+                      className={`flex items-center  border-2 justify-center rounded-full w-10 h-10 md:w-9 md:h-9 text-white-shade-100 hover:text-primary-orange-200`}
                       href={social.link}
                       target="_blank"
                       rel="noreferrer"

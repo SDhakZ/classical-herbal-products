@@ -8,7 +8,7 @@ import {
   faChevronDown,
   faChevronUp,
 } from "@fortawesome/free-solid-svg-icons";
-import { menuData } from "@/app/data/navbar";
+import { menuData } from "@/app/data/companyInfo";
 import { motion, AnimatePresence } from "framer-motion";
 import "./menubar.css";
 
