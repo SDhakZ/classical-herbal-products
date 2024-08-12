@@ -5,6 +5,11 @@ import {
   faWhatsapp,
   faViber,
 } from "@fortawesome/free-brands-svg-icons";
+import {
+  faLocationDot,
+  faEnvelope,
+  faPhone,
+} from "@fortawesome/free-solid-svg-icons";
 
 export const menuData = [
   {
@@ -171,5 +176,37 @@ export const socialInfo = [
     icon: faViber,
     title: "Viber",
     link: "https://invite.viber.com/?g2=AQB3FJ4q%2F%2F0y%2B6%2F%2F%2F%2F%2Fw%2F%2F%2F%2F%2Fw%",
+  },
+];
+
+export const companyDetails = [
+  {
+    title: "Contacts",
+    items: [
+      {
+        title: "immuneherb@gmail.com",
+        link: "mailto:immuneherb@gmail.com",
+        icon: faEnvelope,
+      },
+      {
+        title: "Bhaktapur, Nepal - Lalitpur Nepal - Katmandu Nepal",
+        link: "https://maps.app.goo.gl/sj9EsoNrJkjWph3x9",
+        icon: faLocationDot,
+      },
+      {
+        nested: [
+          {
+            title: "(+977) 9808380169",
+            link: "phone:+9779808380169",
+            icon: faPhone,
+          },
+          {
+            title: "9849648436",
+            link: "phone:+9779849648436",
+            icon: faPhone,
+          },
+        ],
+      },
+    ],
   },
 ];

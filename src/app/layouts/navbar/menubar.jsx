@@ -15,7 +15,6 @@ import "./menubar.css";
 export default function Menubar() {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const handleMouseEnter = (index) => setActiveDropdown(index);
   const handleMouseLeave = () => setActiveDropdown(null);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -24,7 +23,7 @@ export default function Menubar() {
 
   return (
     <div className="sticky top-0 z-50 flex bg-white-shade-100">
-      <div className="relative w-full h-24 container-margin-compact">
+      <div className="relative w-full h-24 navbar-margin">
         <nav className="flex items-center justify-between w-full h-full">
           {/* Desktop Menu */}
           <ul className="items-center justify-between hidden w-full h-full text-sm font-medium md:flex text-black-shade-300">
@@ -187,7 +186,10 @@ export default function Menubar() {
               </AnimatePresence>
             </li>
             <li className="h-full ">
-              <a className="w-[150px] flex justify-center h-full items-center">
+              <a
+                href="/contact"
+                className="w-[150px] cursor-pointer flex justify-center h-full items-center"
+              >
                 CONTACT
               </a>
             </li>
@@ -318,7 +320,7 @@ export default function Menubar() {
                 </li>
               ))}
               <li className="w-full">
-                <a href="#" className="text-xl font-medium">
+                <a href="#" className="text-xl font-medium cursor-pointer">
                   CONTACT
                 </a>
               </li>
