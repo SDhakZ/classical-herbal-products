@@ -83,6 +83,7 @@ export const menuData = [
   {
     title: "LEARN",
     links: [],
+    blogs: [],
     dropdown: [
       {
         title: "Resources",
@@ -106,6 +107,7 @@ export const menuData = [
   {
     title: "ABOUT",
     links: [],
+    blogs: [],
     dropdown: [
       {
         title: "About Us",

@@ -9,6 +9,7 @@ import {
   faChevronUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { menuData } from "@/app/data/navbar";
+import { motion, AnimatePresence } from "framer-motion";
 import "./menubar.css";
 
 export default function Menubar() {
@@ -44,32 +45,68 @@ export default function Menubar() {
                 >
                   {menu.title}
                 </a>
-                {activeDropdown === index && (
-                  <div className="absolute left-0 w-full transition-opacity duration-300 bg-white top-full min-h-72">
-                    <div className="flex justify-between px-12 py-8">
-                      {menu.dropdown.map((section, sectionIndex) => (
-                        <div key={sectionIndex}>
-                          <p className="text-2xl font-medium underline underline-offset-8 decoration-primary-beige-300 font-markaziText">
-                            {section.title}
-                          </p>
-                          <ul className="flex flex-col gap-3 mt-5 text-base font-medium text-primary-green-300">
-                            {section.links.map((item, index) => (
-                              <li key={index}>
-                                <a href="#">{item.title}</a>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                      <Link
-                        className="flex px-4 py-3 text-[16px] font-medium uppercase rounded-md h-fit bg-primary-green-300 text-white-shade-100"
-                        href="#"
-                      >
-                        See All Products
-                      </Link>
-                    </div>
-                  </div>
-                )}
+                <AnimatePresence>
+                  {activeDropdown === index && (
+                    <motion.div
+                      className="absolute left-0 w-full bg-white top-full min-h-72"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="flex justify-between gap-4 px-12 py-8">
+                        {menu.dropdown.map((section, sectionIndex) => (
+                          <div key={sectionIndex}>
+                            <p className="text-2xl font-medium underline underline-offset-8 decoration-primary-beige-300 font-markaziText">
+                              {section.title}
+                            </p>
+                            <ul className="flex flex-col gap-3 mt-5 text-base font-medium text-primary-green-300">
+                              {section.links.map((item, index) => (
+                                <li key={index}>
+                                  <a href="#">{item.title}</a>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                        {menu.blogs ? (
+                          <div className="flex gap-6">
+                            <a
+                              href="#"
+                              className="max-w-[256px] overflow-hidden"
+                            >
+                              <img
+                                className="max-w-[256px] w-full"
+                                src="./assets/Blogs/test.png"
+                              />
+                              <p className="mt-2 text-xl truncate text-black-shade-200 text-ellipsis font-markaziText">
+                                Why Shilajit is good for you?
+                              </p>
+                            </a>
+                            <a
+                              href="#"
+                              className="max-w-[256px] overflow-hidden"
+                            >
+                              <img
+                                className="w-[256px]"
+                                src="./assets/Blogs/test.png"
+                              />
+                              <p className="mt-2 text-xl truncate text-black-shade-200 text-ellipsis font-markaziText">
+                                Why Shilajit is good for you?
+                              </p>
+                            </a>
+                          </div>
+                        ) : null}
+                        <Link
+                          className="flex px-4 py-3 whitespace-nowrap text-[14px] font-medium uppercase rounded-md h-fit bg-primary-green-300 text-white-shade-100"
+                          href="#"
+                        >
+                          See Products
+                        </Link>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </li>
             ))}
             <li>
@@ -91,32 +128,63 @@ export default function Menubar() {
               >
                 ABOUT
               </a>
-              {activeDropdown === 2 && (
-                <div className="absolute left-0 w-full transition-opacity duration-300 bg-white top-full min-h-72">
-                  <div className="flex justify-between gap-10 px-12 py-8">
-                    <Link
-                      className="flex px-4 py-3 text-[16px] font-medium uppercase rounded-md h-fit bg-primary-green-300 text-white-shade-100"
-                      href="#"
-                    >
-                      See Products
-                    </Link>
-                    {menuData[2].dropdown.map((item, index) => (
-                      <div key={index}>
-                        <p className="text-2xl font-medium underline underline-offset-8 decoration-primary-beige-300 font-markaziText">
-                          {item.title}
-                        </p>
-                        <ul className="flex flex-col gap-3 mt-5 text-base font-medium text-primary-green-300">
-                          {item.links.map((subItem, subIndex) => (
-                            <li key={subIndex}>
-                              <a href="#">{subItem.title}</a>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+              <AnimatePresence>
+                {activeDropdown === 2 && (
+                  <motion.div
+                    className="absolute left-0 w-full bg-white top-full min-h-72"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="flex justify-between gap-4 px-12 py-8">
+                      {menuData[2].dropdown.map((item, index) => (
+                        <div className="w-fit" key={index}>
+                          <p className="text-2xl font-medium underline w-fit underline-offset-8 decoration-primary-beige-300 font-markaziText">
+                            {item.title}
+                          </p>
+                          <ul className="flex max-w-[300px] flex-col gap-3 mt-5 text-base font-medium text-primary-green-300">
+                            {item.links.map((subItem, subIndex) => (
+                              <li key={subIndex}>
+                                <a href="#">{subItem.title}</a>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                      {menuData[2].blogs ? (
+                        <div className="flex gap-6">
+                          <a href="#" className="max-w-[256px] overflow-hidden">
+                            <img
+                              className="max-w-[256px] w-full"
+                              src="./assets/Blogs/test.png"
+                            />
+                            <p className="mt-2 text-xl truncate text-black-shade-200 text-ellipsis font-markaziText">
+                              Why Shilajit is good for you?
+                            </p>
+                          </a>
+                          <a href="#" className="max-w-[256px] overflow-hidden">
+                            <img
+                              className="w-[256px]"
+                              src="./assets/Blogs/test.png"
+                            />
+                            <p className="mt-2 text-xl truncate text-black-shade-200 text-ellipsis font-markaziText">
+                              Why Shilajit is good for you?
+                            </p>
+                          </a>
+                        </div>
+                      ) : null}
+
+                      <Link
+                        className="flex px-4 py-3 whitespace-nowrap text-[14px] font-medium uppercase rounded-md h-fit bg-primary-green-300 text-white-shade-100"
+                        href="#"
+                      >
+                        See Products
+                      </Link>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </li>
             <li className="h-full ">
               <a className="w-[150px] flex justify-center h-full items-center">
@@ -144,15 +212,28 @@ export default function Menubar() {
 
         {/* Full-Screen Overlay Menu */}
         {isMenuOpen && (
-          <div className="fixed inset-0 flex flex-col pb-10 overflow-y-auto bg-white z-60 text-black-shade-300">
-            <button
-              className="absolute p-2 top-4 right-4"
-              onClick={toggleMenu}
-              aria-label="Close Menu"
-            >
-              <FontAwesomeIcon className="text-2xl" icon={faTimes} />
-            </button>
-            <ul className="flex flex-col items-center gap-8 mx-10 mt-20 text-lg font-medium">
+          <motion.div
+            className="fixed inset-0 flex flex-col pb-10 overflow-y-auto bg-white z-60 text-black-shade-300"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="flex items-center justify-between px-4 py-4">
+              <img
+                className="h-12 md:hidden"
+                src="./assets/CHPLogo.png"
+                alt="Logo"
+              />
+              <button
+                className="p-2 "
+                onClick={toggleMenu}
+                aria-label="Close Menu"
+              >
+                <FontAwesomeIcon className="text-2xl" icon={faTimes} />
+              </button>
+            </div>
+            <ul className="flex flex-col items-center gap-8 mx-5 mt-6 text-lg font-medium sm:mt-10 sm:mx-10">
               {menuData.map((menu, index) => (
                 <li key={index} className="w-full">
                   <a
@@ -172,32 +253,68 @@ export default function Menubar() {
                       />
                     )}
                   </a>
-                  {activeDropdown === index && (
-                    <div className="w-full transition-transform duration-300 ease-in-out transform bg-white">
-                      <div className="flex flex-col justify-between gap-6 py-6">
-                        {menu.dropdown.map((section, sectionIndex) => (
-                          <div key={sectionIndex}>
-                            <p className="text-2xl font-normal underline underline-offset-8 decoration-primary-beige-300 text-black-shade-300 font-markaziText">
-                              {section.title}
-                            </p>
-                            <ul className="flex flex-col gap-5 mt-4 text-lg font-medium text-primary-green-300">
-                              {section.links.map((item, index) => (
-                                <li key={index}>
-                                  <a href="#">{item.title}</a>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                        <Link
-                          className="flex w-fit px-4 py-3 text-[16px] font-medium uppercase rounded-md bg-primary-green-300 text-white-shade-100"
-                          href="#"
-                        >
-                          See All Products
-                        </Link>
-                      </div>
-                    </div>
-                  )}
+                  <AnimatePresence>
+                    {activeDropdown === index && (
+                      <motion.div
+                        className="w-full bg-white"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <div className="flex flex-col justify-between gap-6 py-6">
+                          {menu.dropdown.map((section, sectionIndex) => (
+                            <div key={sectionIndex}>
+                              <p className="text-2xl font-normal underline underline-offset-8 decoration-primary-beige-300 text-black-shade-300 font-markaziText">
+                                {section.title}
+                              </p>
+                              <ul className="flex flex-col gap-5 mt-4 text-lg font-medium text-primary-green-300">
+                                {section.links.map((item, index) => (
+                                  <li key={index}>
+                                    <a href="#">{item.title}</a>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                          {menuData[2].blogs ? (
+                            <div className="flex flex-col gap-6 sm:flex-wrap sm:flex-row">
+                              <a
+                                href="#"
+                                className="max-w-[256px] overflow-hidden"
+                              >
+                                <img
+                                  className="max-w-[256px] w-full"
+                                  src="./assets/Blogs/test.png"
+                                />
+                                <p className="mt-2 text-2xl truncate text-black-shade-200 text-ellipsis font-markaziText">
+                                  Why Shilajit is good for you?
+                                </p>
+                              </a>
+                              <a
+                                href="#"
+                                className="max-w-[256px] overflow-hidden"
+                              >
+                                <img
+                                  className="w-[256px]"
+                                  src="./assets/Blogs/test.png"
+                                />
+                                <p className="mt-2 text-xl truncate text-black-shade-200 text-ellipsis font-markaziText">
+                                  Why Shilajit is good for you?
+                                </p>
+                              </a>
+                            </div>
+                          ) : null}
+                          <Link
+                            className="flex w-fit whitespace-nowrap px-4 py-3 text-[16px] font-medium uppercase rounded-md bg-primary-green-300 text-white-shade-100"
+                            href="#"
+                          >
+                            See Products
+                          </Link>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </li>
               ))}
               <li className="w-full">
@@ -206,7 +323,7 @@ export default function Menubar() {
                 </a>
               </li>
             </ul>
-          </div>
+          </motion.div>
         )}
       </div>
     </div>
