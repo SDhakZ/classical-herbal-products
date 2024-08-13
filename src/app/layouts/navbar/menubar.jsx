@@ -17,7 +17,6 @@ export default function Menubar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hoverTimeout, setHoverTimeout] = useState(null);
   const dropdownRef = useRef(null);
-
   const handleMouseEnter = (index) => {
     if (hoverTimeout) {
       clearTimeout(hoverTimeout);
@@ -25,7 +24,6 @@ export default function Menubar() {
     }
     setActiveDropdown(index);
   };
-
   const handleMouseLeave = () => {
     setHoverTimeout(
       setTimeout(() => {
@@ -33,9 +31,7 @@ export default function Menubar() {
       }, 200)
     );
   };
-
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
   const toggleDropdown = (index) =>
     setActiveDropdown(activeDropdown === index ? null : index);
 
@@ -65,12 +61,11 @@ export default function Menubar() {
                 <AnimatePresence>
                   {activeDropdown === index && (
                     <motion.div
-                      className="absolute left-0 w-full bg-white top-full min-h-72"
+                      className="absolute left-0 w-full overflow-hidden bg-white rounded-b-md top-full min-h-72"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.3 }}
-                      ref={dropdownRef}
                     >
                       <div className="flex flex-wrap justify-between gap-4 px-12 py-8">
                         {menu.dropdown.map((section, sectionIndex) => (
@@ -154,6 +149,7 @@ export default function Menubar() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.3 }}
+                    ref={dropdownRef}
                   >
                     <div className="flex flex-wrap justify-between gap-4 px-12 py-8">
                       {menuData[2].dropdown.map((item, index) => (
@@ -243,38 +239,58 @@ export default function Menubar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
           >
-            <ul className="flex flex-col gap-3 px-6 pt-8">
+            <div className="flex items-center justify-between px-4 py-4">
+              <img
+                className="h-12 md:hidden"
+                src="./assets/CHPLogo.png"
+                alt="Logo"
+              />
+              <button
+                className="p-2 "
+                onClick={toggleMenu}
+                aria-label="Close Menu"
+              >
+                <FontAwesomeIcon className="text-2xl" icon={faTimes} />
+              </button>
+            </div>
+            <ul className="flex flex-col items-center gap-8 mx-5 mt-6 text-lg font-medium sm:mt-10 sm:mx-10">
               {menuData.map((menu, index) => (
-                <li key={index}>
-                  <button
-                    className="w-full text-left"
+                <li key={index} className="w-full">
+                  <a
+                    className="flex items-center justify-between text-xl font-medium"
                     onClick={() => toggleDropdown(index)}
                   >
-                    <span>{menu.title}</span>
-                    <FontAwesomeIcon
-                      className="ml-2"
-                      icon={
-                        activeDropdown === index ? faChevronUp : faChevronDown
-                      }
-                    />
-                  </button>
+                    {menu.title}
+                    {activeDropdown === index ? (
+                      <FontAwesomeIcon
+                        icon={faChevronUp}
+                        className="ml-4 text-sm"
+                      />
+                    ) : (
+                      <FontAwesomeIcon
+                        icon={faChevronDown}
+                        className="ml-4 text-sm"
+                      />
+                    )}
+                  </a>
                   <AnimatePresence>
                     {activeDropdown === index && (
                       <motion.div
-                        className="absolute left-0 w-full bg-white top-full min-h-72"
+                        className="w-full bg-white"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <div className="flex flex-col px-4 py-2">
+                        <div className="flex flex-col justify-between gap-6 py-6">
                           {menu.dropdown.map((section, sectionIndex) => (
-                            <div key={sectionIndex} className="mb-4">
-                              <p className="text-xl font-medium font-markaziText">
+                            <div key={sectionIndex}>
+                              <p className="text-2xl font-normal underline underline-offset-8 decoration-primary-beige-300 text-black-shade-300 font-markaziText">
                                 {section.title}
                               </p>
-                              <ul className="flex flex-col mt-2 text-base font-medium text-primary-green-300">
+                              <ul className="flex flex-col gap-5 mt-4 text-lg font-medium text-primary-green-300">
                                 {section.links.map((item, index) => (
                                   <li key={index}>
                                     <a href="#">{item.title}</a>
@@ -283,14 +299,26 @@ export default function Menubar() {
                               </ul>
                             </div>
                           ))}
-                          {menu.blogs ? (
-                            <div className="flex flex-col gap-4">
+                          {menuData[2].blogs ? (
+                            <div className="flex flex-col gap-6 sm:flex-wrap sm:flex-row">
                               <a
                                 href="#"
                                 className="max-w-[256px] overflow-hidden"
                               >
                                 <img
-                                  className="w-full"
+                                  className="max-w-[256px] w-full"
+                                  src="./assets/Blogs/test.png"
+                                />
+                                <p className="mt-2 text-2xl truncate text-black-shade-200 text-ellipsis font-markaziText">
+                                  Why Shilajit is good for you?
+                                </p>
+                              </a>
+                              <a
+                                href="#"
+                                className="max-w-[256px] overflow-hidden"
+                              >
+                                <img
+                                  className="w-[256px]"
                                   src="./assets/Blogs/test.png"
                                 />
                                 <p className="mt-2 text-xl truncate text-black-shade-200 text-ellipsis font-markaziText">
@@ -300,7 +328,7 @@ export default function Menubar() {
                             </div>
                           ) : null}
                           <Link
-                            className="flex px-4 py-3 whitespace-nowrap text-[14px] font-medium uppercase rounded-md h-fit bg-primary-green-300 text-white-shade-100"
+                            className="flex w-fit whitespace-nowrap px-4 py-3 text-[16px] font-medium uppercase rounded-md bg-primary-green-300 text-white-shade-100"
                             href="#"
                           >
                             See Products
@@ -311,6 +339,11 @@ export default function Menubar() {
                   </AnimatePresence>
                 </li>
               ))}
+              <li className="w-full">
+                <a href="#" className="text-xl font-medium cursor-pointer">
+                  CONTACT
+                </a>
+              </li>
             </ul>
           </motion.div>
         )}
