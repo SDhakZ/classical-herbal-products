@@ -27,7 +27,7 @@ module.exports = {
         },
         "white-shade": {
           100: "#ffffff",
-          200: "#D1D1D1",
+          200: "#EEEEEE",
           300: "#C0C5C9",
         },
         "primary-green": {
