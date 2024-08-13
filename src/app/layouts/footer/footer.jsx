@@ -164,7 +164,7 @@ export default function footer() {
               </div>{" "}
               <ul className="flex flex-wrap self-start gap-4 text-sm sm:self-auto text-white-shade-200">
                 {socialInfo.map((social, index) => (
-                  <li>
+                  <li key={index}>
                     <a
                       key={index}
                       className={`flex items-center  border-2 justify-center rounded-full w-10 h-10 md:w-9 md:h-9 text-white-shade-100 hover:text-primary-orange-200`}

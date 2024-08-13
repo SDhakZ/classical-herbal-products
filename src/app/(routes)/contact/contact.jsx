@@ -109,10 +109,10 @@ export default function Contact(props) {
                 Get in Touch
               </h1>
               <p className="mt-2 font-medium leading-relaxed text-black-shade-200">
-                Want to get in touch? We’d love to hear from you. We’re here to
-                help and answer any questions you might have. We often
-                personally meet with clients; Drop us a line, or give us a heads
-                up if you're interested in visiting us.
+                Want to get in touch? We&apos;d love to hear from you.
+                We&apos;re here to help and answer any questions you might have.
+                We often personally meet with clients; Drop us a line, or give
+                us a heads up if you&apos;re interested in visiting us.
               </p>
             </div>
             <div>
@@ -174,7 +174,7 @@ export default function Contact(props) {
                 }`}
               >
                 {socialInfo.map((social, index) => (
-                  <li>
+                  <li key={index}>
                     <a
                       key={index}
                       className={`flex items-center border-2 justify-center transition duration-200 hover:border-primary-beige-300 hover:text-primary-beige-300 rounded-full w-10 h-10 md:w-10 md:h-10 ${
