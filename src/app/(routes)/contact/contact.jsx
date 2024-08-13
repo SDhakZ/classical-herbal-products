@@ -7,7 +7,7 @@ import HCaptcha from "@hcaptcha/react-hcaptcha";
 import "tippy.js/dist/tippy.css";
 
 export default function Contact(props) {
-  const { dark, hcaptcha_site_key } = props.dark;
+  const { dark, hcaptcha_site_key } = props;
   const initialFormData = {
     name: "",
     phone: "",
@@ -98,11 +98,11 @@ export default function Contact(props) {
   return (
     <div className={`min-h-screen ${dark ? "bg-primary-green-400" : ""}`}>
       <div className="container-margin-compact padding-y-lg">
-        <div className="flex flex-col justify-between gap-16 sm:flex-row">
+        <div className="flex flex-col justify-between gap-20 sm:flex-row sm:justify-between">
           <div className="flex flex-col gap-12 w-full max-w-[500px]">
             <div>
               <h1
-                className={`text-5xl  ${
+                className={`text-[2.4rem] ${
                   dark ? "text-white-shade-100" : "text-primary-green-500"
                 } font-markaziText`}
               >
@@ -117,7 +117,7 @@ export default function Contact(props) {
             </div>
             <div>
               <h2
-                className={`text-4xl font-markaziText ${
+                className={`text-3xl font-regular sm:text-4xl font-markaziText ${
                   dark ? "text-white-shade-100" : "text-primary-green-500"
                 }`}
               >
@@ -128,8 +128,8 @@ export default function Contact(props) {
                   item.nested ? (
                     <li
                       className={`${
-                        dark ? "text-white-shade-100" : "text-black-shade-200"
-                      } flex space-x-4 items-center font-medium`}
+                        dark ? "text-white-shade-100 " : "text-black-shade-200"
+                      }  transition-colors duration-200 flex space-x-4 items-center font-medium`}
                       key={index}
                     >
                       <FontAwesomeIcon
@@ -137,16 +137,26 @@ export default function Contact(props) {
                         className="text-lg flex items-center w-4 text-[#73574D]"
                       />
                       <div>
-                        <a href={item.nested[0].link}>{item.nested[0].title}</a>
+                        <a
+                          className="transition-colors duration-200 hover:text-primary-beige-300"
+                          href={item.nested[0].link}
+                        >
+                          {item.nested[0].title}
+                        </a>
                         {", "}
-                        <a href={item.nested[1].link}>{item.nested[1].title}</a>
+                        <a
+                          className="transition-colors duration-200 hover:text-primary-beige-300"
+                          href={item.nested[1].link}
+                        >
+                          {item.nested[1].title}
+                        </a>
                       </div>
                     </li>
                   ) : (
                     <li
                       className={`${
                         dark ? "text-white-shade-100" : "text-black-shade-200"
-                      } flex  space-x-4 items-center font-medium`}
+                      } flex hover:text-primary-beige-300 transition-colors duration-200 space-x-4 items-center font-medium`}
                       key={index}
                     >
                       <FontAwesomeIcon
@@ -167,7 +177,7 @@ export default function Contact(props) {
                   <li>
                     <a
                       key={index}
-                      className={`flex items-center border-2 justify-center rounded-full w-10 h-10 md:w-10 md:h-10 ${
+                      className={`flex items-center border-2 justify-center transition duration-200 hover:border-primary-beige-300 hover:text-primary-beige-300 rounded-full w-10 h-10 md:w-10 md:h-10 ${
                         dark
                           ? "text-white-shade-100 border-white-shade-100"
                           : "text-black-shade-200 border-black-shade-200"
@@ -191,8 +201,8 @@ export default function Contact(props) {
               Send Message
             </h2>
             <form>
-              <div className="flex flex-col w-full gap-5">
-                <div className="flex flex-col w-full gap-5 sm:flex-row">
+              <div className="flex flex-col w-full gap-4">
+                <div className="flex flex-col w-full gap-4 sm:flex-row">
                   <input
                     id="sender_name"
                     type="text"
@@ -275,14 +285,14 @@ export default function Contact(props) {
                   </Tippy>
                   <button
                     type="submit"
-                    className={`flex bg-primary-beige-300 border-transparent border-2 bg-transparent hover:border-primary-orange-200 hover:bg-primary-orange-300 text-white-shade-100 bg-primary-orange-200 whitespace-nowrap transition-all h-fit duration-200  w-full items-center max-w-[100%] lg:max-w-[300px] justify-center p-3 text-lg font-medium tracking-wider rounded-md ${
+                    className={`flex hover:bg-[#ac9060] bg-primary-beige-300 border-transparent border-2 text-white-shade-100 bg-primary-orange-200 whitespace-nowrap transition-all h-fit duration-200 w-full items-center max-w-[100%] lg:max-w-[300px] justify-center p-2 text-lg font-medium tracking-wider rounded-md ${
                       loading
                         ? "bg-gray-400"
                         : sentStatus === "success"
                         ? "bg-green-500"
                         : sentStatus === "error"
                         ? "bg-red-500"
-                        : "bg-primary-accent"
+                        : "bg-primary-beige-300"
                     }`}
                   >
                     {loading ? (

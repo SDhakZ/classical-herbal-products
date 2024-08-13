@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -15,9 +15,27 @@ import "./menubar.css";
 export default function Menubar() {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const handleMouseEnter = (index) => setActiveDropdown(index);
-  const handleMouseLeave = () => setActiveDropdown(null);
+  const [hoverTimeout, setHoverTimeout] = useState(null);
+  const dropdownRef = useRef(null);
+
+  const handleMouseEnter = (index) => {
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
+      setHoverTimeout(null);
+    }
+    setActiveDropdown(index);
+  };
+
+  const handleMouseLeave = () => {
+    setHoverTimeout(
+      setTimeout(() => {
+        setActiveDropdown(null);
+      }, 200)
+    );
+  };
+
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
   const toggleDropdown = (index) =>
     setActiveDropdown(activeDropdown === index ? null : index);
 
@@ -39,7 +57,7 @@ export default function Menubar() {
                     activeDropdown === index
                       ? "underline underline-offset-8 decoration-2 decoration-primary-green-300"
                       : ""
-                  } w-[150px] justify-center h-full`}
+                  } w-[170px] justify-center h-full`}
                   href="#"
                 >
                   {menu.title}
@@ -52,6 +70,7 @@ export default function Menubar() {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.3 }}
+                      ref={dropdownRef}
                     >
                       <div className="flex flex-wrap justify-between gap-4 px-12 py-8">
                         {menu.dropdown.map((section, sectionIndex) => (
@@ -122,7 +141,7 @@ export default function Menubar() {
                   activeDropdown === 2
                     ? "underline underline-offset-8 decoration-2 decoration-primary-green-300"
                     : ""
-                } w-[150px] justify-center h-full`}
+                } w-[170px] justify-center h-full`}
                 href="#"
               >
                 ABOUT
@@ -145,7 +164,12 @@ export default function Menubar() {
                           <ul className="flex max-w-[300px] flex-col gap-3 mt-5 text-base font-medium text-primary-green-300">
                             {item.links.map((subItem, subIndex) => (
                               <li key={subIndex}>
-                                <a href="#">{subItem.title}</a>
+                                <a
+                                  className="transition-color hover:text-primary-green-300"
+                                  href="#"
+                                >
+                                  {subItem.title}
+                                </a>
                               </li>
                             ))}
                           </ul>
@@ -188,7 +212,7 @@ export default function Menubar() {
             <li className="h-full ">
               <a
                 href="/contact"
-                className="w-[150px] cursor-pointer flex justify-center h-full items-center"
+                className="w-[170px] cursor-pointer flex justify-center h-full items-center"
               >
                 CONTACT
               </a>
@@ -219,58 +243,38 @@ export default function Menubar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
           >
-            <div className="flex items-center justify-between px-4 py-4">
-              <img
-                className="h-12 md:hidden"
-                src="./assets/CHPLogo.png"
-                alt="Logo"
-              />
-              <button
-                className="p-2 "
-                onClick={toggleMenu}
-                aria-label="Close Menu"
-              >
-                <FontAwesomeIcon className="text-2xl" icon={faTimes} />
-              </button>
-            </div>
-            <ul className="flex flex-col items-center gap-8 mx-5 mt-6 text-lg font-medium sm:mt-10 sm:mx-10">
+            <ul className="flex flex-col gap-3 px-6 pt-8">
               {menuData.map((menu, index) => (
-                <li key={index} className="w-full">
-                  <a
-                    className="flex items-center justify-between text-xl font-medium"
+                <li key={index}>
+                  <button
+                    className="w-full text-left"
                     onClick={() => toggleDropdown(index)}
                   >
-                    {menu.title}
-                    {activeDropdown === index ? (
-                      <FontAwesomeIcon
-                        icon={faChevronUp}
-                        className="ml-4 text-sm"
-                      />
-                    ) : (
-                      <FontAwesomeIcon
-                        icon={faChevronDown}
-                        className="ml-4 text-sm"
-                      />
-                    )}
-                  </a>
+                    <span>{menu.title}</span>
+                    <FontAwesomeIcon
+                      className="ml-2"
+                      icon={
+                        activeDropdown === index ? faChevronUp : faChevronDown
+                      }
+                    />
+                  </button>
                   <AnimatePresence>
                     {activeDropdown === index && (
                       <motion.div
-                        className="w-full bg-white"
+                        className="absolute left-0 w-full bg-white top-full min-h-72"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.2 }}
+                        transition={{ duration: 0.3 }}
                       >
-                        <div className="flex flex-col justify-between gap-6 py-6">
+                        <div className="flex flex-col px-4 py-2">
                           {menu.dropdown.map((section, sectionIndex) => (
-                            <div key={sectionIndex}>
-                              <p className="text-2xl font-normal underline underline-offset-8 decoration-primary-beige-300 text-black-shade-300 font-markaziText">
+                            <div key={sectionIndex} className="mb-4">
+                              <p className="text-xl font-medium font-markaziText">
                                 {section.title}
                               </p>
-                              <ul className="flex flex-col gap-5 mt-4 text-lg font-medium text-primary-green-300">
+                              <ul className="flex flex-col mt-2 text-base font-medium text-primary-green-300">
                                 {section.links.map((item, index) => (
                                   <li key={index}>
                                     <a href="#">{item.title}</a>
@@ -279,26 +283,14 @@ export default function Menubar() {
                               </ul>
                             </div>
                           ))}
-                          {menuData[2].blogs ? (
-                            <div className="flex flex-col gap-6 sm:flex-wrap sm:flex-row">
+                          {menu.blogs ? (
+                            <div className="flex flex-col gap-4">
                               <a
                                 href="#"
                                 className="max-w-[256px] overflow-hidden"
                               >
                                 <img
-                                  className="max-w-[256px] w-full"
-                                  src="./assets/Blogs/test.png"
-                                />
-                                <p className="mt-2 text-2xl truncate text-black-shade-200 text-ellipsis font-markaziText">
-                                  Why Shilajit is good for you?
-                                </p>
-                              </a>
-                              <a
-                                href="#"
-                                className="max-w-[256px] overflow-hidden"
-                              >
-                                <img
-                                  className="w-[256px]"
+                                  className="w-full"
                                   src="./assets/Blogs/test.png"
                                 />
                                 <p className="mt-2 text-xl truncate text-black-shade-200 text-ellipsis font-markaziText">
@@ -308,7 +300,7 @@ export default function Menubar() {
                             </div>
                           ) : null}
                           <Link
-                            className="flex w-fit whitespace-nowrap px-4 py-3 text-[16px] font-medium uppercase rounded-md bg-primary-green-300 text-white-shade-100"
+                            className="flex px-4 py-3 whitespace-nowrap text-[14px] font-medium uppercase rounded-md h-fit bg-primary-green-300 text-white-shade-100"
                             href="#"
                           >
                             See Products
@@ -319,11 +311,6 @@ export default function Menubar() {
                   </AnimatePresence>
                 </li>
               ))}
-              <li className="w-full">
-                <a href="#" className="text-xl font-medium cursor-pointer">
-                  CONTACT
-                </a>
-              </li>
             </ul>
           </motion.div>
         )}

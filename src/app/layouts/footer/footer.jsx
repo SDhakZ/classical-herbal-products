@@ -71,7 +71,7 @@ export default function footer() {
                     className="transition-colors duration-150 hover:text-primary-beige-100"
                     href="#"
                   >
-                    About Us
+                    About
                   </a>
                 </li>
                 <li>

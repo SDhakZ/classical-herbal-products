@@ -16,7 +16,6 @@ export const metadata = {
 const markaziText = Markazi_Text({
   subsets: ["latin"],
   variable: "--font-markaziText",
-  weight: ["400", "500", "600"],
 });
 
 const markPro = localFont({
