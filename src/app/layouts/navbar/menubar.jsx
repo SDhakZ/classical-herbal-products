@@ -90,7 +90,7 @@ export default function Menubar() {
                             >
                               <img
                                 className="max-w-[256px] w-full"
-                                src="./assets/Blogs/test.png"
+                                src="/assets/Blogs/test.png"
                               />
                               <p className="mt-2 text-xl truncate text-black-shade-200 text-ellipsis font-markaziText">
                                 Why Shilajit is good for you?
@@ -102,7 +102,7 @@ export default function Menubar() {
                             >
                               <img
                                 className="w-[256px]"
-                                src="./assets/Blogs/test.png"
+                                src="/assets/Blogs/test.png"
                               />
                               <p className="mt-2 text-xl truncate text-black-shade-200 text-ellipsis font-markaziText">
                                 Why Shilajit is good for you?
@@ -123,7 +123,7 @@ export default function Menubar() {
               </li>
             ))}
             <li>
-              <img className="h-16" src="./assets/CHPLogo.png" alt="Logo" />
+              <img className="h-16" src="/assets/CHPLogo.png" alt="Logo" />
             </li>
 
             <li
@@ -162,7 +162,7 @@ export default function Menubar() {
                               <li key={subIndex}>
                                 <a
                                   className="transition-color hover:text-primary-green-300"
-                                  href="#"
+                                  href={`about/${subItem.url}`}
                                 >
                                   {subItem.title}
                                 </a>
@@ -176,7 +176,7 @@ export default function Menubar() {
                           <a href="#" className="max-w-[256px] overflow-hidden">
                             <img
                               className="max-w-[256px] w-full"
-                              src="./assets/Blogs/test.png"
+                              src="/assets/Blogs/test.png"
                             />
                             <p className="mt-2 text-xl truncate text-black-shade-200 text-ellipsis font-markaziText">
                               Why Shilajit is good for you?
@@ -185,7 +185,7 @@ export default function Menubar() {
                           <a href="#" className="max-w-[256px] overflow-hidden">
                             <img
                               className="w-[256px]"
-                              src="./assets/Blogs/test.png"
+                              src="/assets/Blogs/test.png"
                             />
                             <p className="mt-2 text-xl truncate text-black-shade-200 text-ellipsis font-markaziText">
                               Why Shilajit is good for you?
@@ -216,7 +216,7 @@ export default function Menubar() {
           </ul>
           <img
             className="h-16 md:hidden"
-            src="./assets/CHPLogo.png"
+            src="/assets/CHPLogo.png"
             alt="Logo"
           />
           {/* Burger Menu Icon */}
@@ -244,7 +244,7 @@ export default function Menubar() {
             <div className="flex items-center justify-between px-4 py-4">
               <img
                 className="h-12 md:hidden"
-                src="./assets/CHPLogo.png"
+                src="/assets/CHPLogo.png"
                 alt="Logo"
               />
               <button
@@ -293,7 +293,7 @@ export default function Menubar() {
                               <ul className="flex flex-col gap-5 mt-4 text-lg font-medium text-primary-green-300">
                                 {section.links.map((item, index) => (
                                   <li key={index}>
-                                    <a href="#">{item.title}</a>
+                                    <a href={item.url}>{item.title}</a>
                                   </li>
                                 ))}
                               </ul>
@@ -307,7 +307,7 @@ export default function Menubar() {
                               >
                                 <img
                                   className="max-w-[256px] w-full"
-                                  src="./assets/Blogs/test.png"
+                                  src="/assets/Blogs/test.png"
                                 />
                                 <p className="mt-2 text-2xl truncate text-black-shade-200 text-ellipsis font-markaziText">
                                   Why Shilajit is good for you?
@@ -319,7 +319,7 @@ export default function Menubar() {
                               >
                                 <img
                                   className="w-[256px]"
-                                  src="./assets/Blogs/test.png"
+                                  src="/assets/Blogs/test.png"
                                 />
                                 <p className="mt-2 text-xl truncate text-black-shade-200 text-ellipsis font-markaziText">
                                   Why Shilajit is good for you?

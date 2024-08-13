@@ -127,7 +127,7 @@ export const menuData = [
         links: [
           {
             title: "Our Journey",
-            url: "#",
+            url: "our-journey",
           },
           {
             title: "Nurturing Nature, Empowering Communities",

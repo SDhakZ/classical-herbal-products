@@ -9,7 +9,7 @@ export default function footer() {
         <div className="flex flex-col ">
           <div className="flex flex-col flex-wrap justify-center gap-12 sm:flex-row sm:justify-between sm:gap-20 ">
             <img
-              src="./assets/CHPLogo.png"
+              src="/assets/CHPLogo.png"
               className="self-center sm:self-start w-full max-w-[200px] sm:w-full sm:max-w-[250px]"
               alt="CHP Logo"
             />
