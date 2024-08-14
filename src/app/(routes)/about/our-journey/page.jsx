@@ -5,7 +5,12 @@ import Contact from "../../contact/contact";
 export default function page() {
   return (
     <div>
-      <Banner />
+      <Banner
+        title="Our Journey"
+        description=" We cultivate the bond between people and plants, bringing you the
+            pure essence of Nature's vitality."
+        image="assets/About/our-journey"
+      />
       <div className="w-full container-margin-compact">
         <div className="w-full padding-y-lg">
           <img src="/assets/About/our-journey-holistic.png" />

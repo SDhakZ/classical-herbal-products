@@ -130,16 +130,16 @@ export const menuData = [
             url: "our-journey",
           },
           {
-            title: "Nurturing Nature, Empowering Communities",
-            url: "#",
+            title: "Sustainability in Nature",
+            url: "sustainability-in-nature",
           },
           {
             title: "Purity, Potency, Integrity",
-            url: "#",
+            url: "purity-potency-integrity",
           },
           {
             title: "Transparency in sourcing",
-            url: "#",
+            url: "transparency-in-sourcing",
           },
         ],
       },

@@ -162,7 +162,7 @@ export default function Menubar() {
                               <li key={subIndex}>
                                 <a
                                   className="transition-color hover:text-primary-green-300"
-                                  href={`about/${subItem.url}`}
+                                  href={`/about/${subItem.url}`}
                                 >
                                   {subItem.title}
                                 </a>

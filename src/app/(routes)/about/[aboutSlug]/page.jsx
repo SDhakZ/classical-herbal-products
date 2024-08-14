@@ -1,10 +1,15 @@
 import React from "react";
-import Banner from "@/app/components/banner/banner";
+import AboutDetail from "./aboutDetail";
+import { aboutData } from "@/app/data/aboutData";
 
-export default function page() {
-  return (
-    <div>
-      <Banner />
-    </div>
+export default function page({ params }) {
+  const aboutSlug = params.aboutSlug;
+  const aboutItem = aboutData.find((item) => item.slug === aboutSlug);
+  return aboutItem ? (
+    <>
+      <AboutDetail />
+    </>
+  ) : (
+    <h1>Not found</h1>
   );
 }
