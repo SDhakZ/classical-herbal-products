@@ -5,8 +5,10 @@ import { aboutData } from "@/app/data/aboutData";
 import { useParams } from "next/navigation";
 import Highlight from "../Components/highlight";
 import CompanyValue from "@/app/components/companyValue/companyValue";
+import SellingProposition from "../Components/sellingProposition";
+import Contact from "../../contact/contact";
 
-export default function AboutDetail() {
+export default function AboutDetail(hcaptcha_site_key) {
   const params = useParams();
   const aboutSlug = params.aboutSlug;
   const selectedAboutData = aboutData.find((about) => about.slug === aboutSlug);
@@ -24,6 +26,8 @@ export default function AboutDetail() {
         description={selectedAboutData.highlight.description}
       />
       <CompanyValue />
+      <SellingProposition selectedAboutData={selectedAboutData} />
+      <Contact hcaptcha_site_key={hcaptcha_site_key} dark={false} />
     </div>
   );
 }
