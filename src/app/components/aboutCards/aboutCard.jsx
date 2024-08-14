@@ -31,20 +31,20 @@ export default function AboutCard() {
   return (
     <div className="container-margin-compact padding-y-lg">
       <div className="flex flex-col gap-8 sm:gap-14">
-        <h2 className="text-4xl text-center sm:text-5xl md:text-5xl font-markaziText text-primary-green-500">
+        <h2 className="text-4xl text-center sm:text-5xl md:text-5xl font-markaziText text-primary-green-300">
           Why Classical Herb Products?
         </h2>
-        <div className="flex flex-col flex-wrap items-center justify-center w-full lg:flex-nowrap sm:flex-row gap-14">
+        <div className="flex flex-col flex-wrap items-center justify-center w-full lg:justify-evenly lg:flex-nowrap sm:flex-row gap-14">
           {aboutOptions.map((option, index) => (
             <div
               key={index}
-              className="px-4 flex justify-between h-full min-h-[370px] flex-col items-center  w-full max-w-[350px] py-6 rounded-md bg-primary-beige-200"
+              className="px-4 flex border-2 border-primary-green-200 justify-between h-full min-h-[370px] flex-col items-center  w-full max-w-[300px] py-6 rounded-md bg-primary-beige-200"
             >
               <div className="flex flex-col items-center justify-center">
                 <div className="flex items-center w-[80px] justify-center">
                   <img src={option.icon} alt={`${option.title} icon`} />
                 </div>
-                <h3 className="mt-4 text-xl font-medium text-center text-primary-green-400">
+                <h3 className="mt-4 text-xl font-medium text-center text-primary-green-500">
                   {option.title}
                 </h3>
                 <p className="mt-3 text-base text-center text-black-shade-200">
@@ -52,7 +52,7 @@ export default function AboutCard() {
                 </p>
               </div>
               <a
-                className="mt-5 text-sm text-center underline uppercase text-black-shade-200 sm:text-base underline-offset-4"
+                className="mt-5 hover:text-black-shade-300 transition-colors duration-500 font-medium text-[14px] text-center underline uppercase text-black-shade-100 underline-offset-4"
                 href={option.url}
               >
                 {option.ctaMessage}

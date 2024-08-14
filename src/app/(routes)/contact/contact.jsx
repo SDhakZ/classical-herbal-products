@@ -108,7 +108,11 @@ export default function Contact(props) {
               >
                 Get in Touch
               </h1>
-              <p className="mt-2 font-medium leading-relaxed text-black-shade-200">
+              <p
+                className={`mt-2 font-normal leading-relaxed  ${
+                  dark ? "text-white-shade-200 " : "text-black-shade-200 "
+                } `}
+              >
                 Want to get in touch? We&apos;d love to hear from you.
                 We&apos;re here to help and answer any questions you might have.
                 We often personally meet with clients; Drop us a line, or give
@@ -123,18 +127,20 @@ export default function Contact(props) {
               >
                 You can also find us at
               </h2>
-              <ul className="mt-2 space-y-3">
+              <ul className="mt-4 space-y-3">
                 {companyDetails[0].items.map((item, index) =>
                   item.nested ? (
                     <li
                       className={`${
                         dark ? "text-white-shade-100 " : "text-black-shade-200"
-                      }  transition-colors duration-200 flex space-x-4 items-center font-medium`}
+                      }  transition-colors duration-200 flex space-x-4 items-center font-normal`}
                       key={index}
                     >
                       <FontAwesomeIcon
                         icon={item.nested[0].icon}
-                        className="text-lg flex items-center w-4 text-[#73574D]"
+                        className={` ${
+                          dark ? "text-white-shade-100 " : "text-[#73574D] "
+                        }text-lg  flex items-center w-4 `}
                       />
                       <div>
                         <a
@@ -156,12 +162,14 @@ export default function Contact(props) {
                     <li
                       className={`${
                         dark ? "text-white-shade-100" : "text-black-shade-200"
-                      } flex hover:text-primary-beige-300 transition-colors duration-200 space-x-4 items-center font-medium`}
+                      } flex hover:text-primary-beige-300 transition-colors duration-200 space-x-4 items-center font-normal`}
                       key={index}
                     >
                       <FontAwesomeIcon
                         icon={item.icon}
-                        className="text-lg  flex items-center w-4 text-[#73574D]"
+                        className={` ${
+                          dark ? "text-white-shade-100 " : "text-[#73574D] "
+                        } text-lg  flex items-center w-4 `}
                       />
                       <a href={item.link}>{item.title}</a>
                     </li>
@@ -197,7 +205,11 @@ export default function Contact(props) {
             </div>
           </div>
           <div className="flex flex-col w-full gap-4">
-            <h2 className={`font-markaziText text-5xl text-primary-green-500`}>
+            <h2
+              className={`font-markaziText text-5xl  ${
+                dark ? "text-white-shade-100 " : "text-primary-green-500 "
+              }`}
+            >
               Send Message
             </h2>
             <form>
