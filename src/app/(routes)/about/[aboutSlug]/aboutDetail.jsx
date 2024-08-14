@@ -3,7 +3,8 @@ import React from "react";
 import Banner from "@/app/components/banner/banner";
 import { aboutData } from "@/app/data/aboutData";
 import { useParams } from "next/navigation";
-import InfoHub from "../Components/infoHub";
+import Highlight from "../Components/highlight";
+import CompanyValue from "@/app/components/companyValue/companyValue";
 
 export default function AboutDetail() {
   const params = useParams();
@@ -16,12 +17,13 @@ export default function AboutDetail() {
         description={selectedAboutData.brief}
         image={selectedAboutData.banner}
       />
-      <InfoHub
+      <Highlight
         title={selectedAboutData.highlight.title}
         image={selectedAboutData.highlight.image}
         color={selectedAboutData.highlight.color}
         description={selectedAboutData.highlight.description}
       />
+      <CompanyValue />
     </div>
   );
 }

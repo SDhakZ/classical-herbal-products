@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function InfoHub(props) {
+export default function HighLight(props) {
   const { image, title, description, color } = props;
   return (
     <div
