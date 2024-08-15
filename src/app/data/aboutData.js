@@ -49,14 +49,24 @@ export const aboutData = [
     slug: "purity-potency-integrity",
     brief:
       "We blend the power of plants with traditional wisdom and scientific formulation, ensuring rigorous testing at every stage of our process.",
+    banner: "assets/About/purity/purity-banner",
     highlight: {
       title: "Rigorous Testing for Purity and Potency",
       description:
         "Our commitment to quality means every product undergoes thorough testing at each stage of production. We combine traditional wisdom with advanced scientific methods to ensure the purity, potency, and safety of our herbal formulations. Each batch is meticulously analyzed to meet the highest standards, delivering the best nature has to offer.",
       color: "#6F5A37",
-      image: "/assets/About/purity/purity-infohub.png",
+      image: "/assets/About/purity/purity-highlight.png",
     },
-    testing: true,
+    testing: {
+      image: "/assets/About/purity/purity-testing.png",
+      types: [
+        "Microbial Testing",
+        "Heavy Metal Testing",
+        "Purity Testing",
+        "Pesticide Testing",
+        "Strength Testing",
+      ],
+    },
     infoHub: {
       title: "Balanced Herbal Excellence",
       sellingProposition: [

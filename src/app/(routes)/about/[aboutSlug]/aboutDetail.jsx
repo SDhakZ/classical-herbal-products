@@ -7,6 +7,7 @@ import Highlight from "../Components/highlight";
 import CompanyValue from "@/app/components/companyValue/companyValue";
 import SellingProposition from "../Components/sellingProposition";
 import Contact from "../../contact/contact";
+import TestingsSection from "@/app/components/testingsSection/testingsSection";
 
 export default function AboutDetail(hcaptcha_site_key) {
   const params = useParams();
@@ -25,6 +26,9 @@ export default function AboutDetail(hcaptcha_site_key) {
         color={selectedAboutData.highlight.color}
         description={selectedAboutData.highlight.description}
       />
+      {selectedAboutData.testing ? (
+        <TestingsSection testingData={selectedAboutData.testing} />
+      ) : null}
       <CompanyValue />
       <SellingProposition selectedAboutData={selectedAboutData} />
       <Contact hcaptcha_site_key={hcaptcha_site_key} dark={true} />
