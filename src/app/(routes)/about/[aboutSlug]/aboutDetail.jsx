@@ -8,6 +8,7 @@ import CompanyValue from "@/app/components/companyValue/companyValue";
 import SellingProposition from "../Components/sellingProposition";
 import Contact from "../../contact/contact";
 import TestingsSection from "@/app/components/testingsSection/testingsSection";
+import IngredientsSlider from "@/app/components/ingredientsSlider/ingredientsSlider";
 
 export default function AboutDetail(hcaptcha_site_key) {
   const params = useParams();
@@ -28,6 +29,13 @@ export default function AboutDetail(hcaptcha_site_key) {
       />
       {selectedAboutData.testing ? (
         <TestingsSection testingData={selectedAboutData.testing} />
+      ) : null}
+      {selectedAboutData.scienceBehind ? (
+        <IngredientsSlider
+          title={selectedAboutData.scienceBehind.title}
+          description={selectedAboutData.scienceBehind.description}
+          ingredients={selectedAboutData.scienceBehind.ingredients}
+        />
       ) : null}
       <CompanyValue />
       <SellingProposition selectedAboutData={selectedAboutData} />

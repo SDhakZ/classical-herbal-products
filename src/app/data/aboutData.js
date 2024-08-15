@@ -101,6 +101,7 @@ export const aboutData = [
     id: 3,
     title: "Transparency in Sourcing",
     slug: "transparency-in-sourcing",
+    banner: "assets/About/transparency/transparency-banner",
     brief:
       "We delve deep into responsible sourcing, traveling far and wide to partner with farmers who understand the land, soil, and plants like no one else.",
     highlight: {
@@ -108,9 +109,45 @@ export const aboutData = [
       description:
         "At Classical Herbal Products, we draw inspiration from nature, and our laboratory is where these lessons come to life. We are committed to ensuring our products are safe for both consumers and the environment, adhering to strict GMP standards for manufacturing, testing, and packaging.",
       color: "#554A6E",
-      image: "/assets/About/transparency/transparency-infohub.png",
+      image: "/assets/About/transparency/transparency-highlight.png",
     },
-    scienceBehind: true,
+    scienceBehind: {
+      title: "The Science Behind",
+      description:
+        "Our product is crafted from 100% natural ingredients, backed by rigorous scientific research for your well-being.",
+      ingredients: [
+        {
+          title: "Haskap Berry",
+          description:
+            "Handpicked by our professional in house farmers the haskap berry are good for heart health and has dietary fiber contents. ",
+          image: "/assets/About/transparency/haskap.png",
+        },
+        {
+          title: "Wellmune",
+          description:
+            "Wellmune is a proprietary ingredient derived from baker's yeast and is marketed as a natural immune health ingredient",
+          image: "/assets/About/transparency/wellmune.png",
+        },
+        {
+          title: "Vitamin C",
+          description:
+            "Vitamin C is a powerful antioxidant that boosts immunity and reduces the risk of chronic diseases. I",
+          image: "/assets/About/transparency/vitamin-c.png",
+        },
+        {
+          title: "Haskap Berry",
+          description:
+            "Handpicked by our professional in house farmers the haskap berry are good for heart health and has dietary fiber contents. ",
+          image: "/assets/About/transparency/haskap.png",
+        },
+        {
+          title: "Wellmune",
+          description:
+            "Wellmune is a proprietary ingredient derived from baker's yeast and is marketed as a natural immune health ingredient",
+          image: "/assets/About/transparency/wellmune.png",
+        },
+      ],
+    },
     infoHub: {
       title: "Local Sourcing excellence",
       sellingProposition: [
