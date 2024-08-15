@@ -27,7 +27,7 @@ export default function AboutDetail(hcaptcha_site_key) {
       />
       <CompanyValue />
       <SellingProposition selectedAboutData={selectedAboutData} />
-      <Contact hcaptcha_site_key={hcaptcha_site_key} dark={false} />
+      <Contact hcaptcha_site_key={hcaptcha_site_key} dark={true} />
     </div>
   );
 }

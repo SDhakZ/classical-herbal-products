@@ -204,7 +204,7 @@ export default function Contact(props) {
               </ul>
             </div>
           </div>
-          <div className="flex flex-col w-full gap-4">
+          <div className="flex flex-col w-full gap-5">
             <h2
               className={`font-markaziText text-5xl  ${
                 dark ? "text-white-shade-100 " : "text-primary-green-500 "
@@ -223,7 +223,7 @@ export default function Contact(props) {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="px-5 py-3 w-full border-2 rounded-md border-[#9F8F89] outline-2 outline-primary-orange-300"
+                    className="px-5 py-[10px] w-full border-2 rounded-md border-[#9F8F89] outline-2 outline-primary-orange-300"
                   />{" "}
                   <input
                     id="sender_phone"
@@ -233,7 +233,7 @@ export default function Contact(props) {
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    className="px-5 py-3 w-full border-2 rounded-md border-[#9F8F89] outline-2 outline-primary-orange-300"
+                    className="px-5 py-[10px] w-full border-2 rounded-md border-[#9F8F89] outline-2 outline-primary-orange-300"
                   />
                 </div>
 
@@ -245,7 +245,7 @@ export default function Contact(props) {
                   required
                   value={formData.subject}
                   onChange={handleChange}
-                  className="px-5 py-3 border-2 rounded-md border-[#9F8F89] outline-2 outline-primary-orange-300"
+                  className="px-5 py-[10px] border-2 rounded-md border-[#9F8F89] outline-2 outline-primary-orange-300"
                 />
                 <input
                   id="sender_email"
@@ -256,7 +256,7 @@ export default function Contact(props) {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="px-5 py-3 border-2 rounded-md border-[#9F8F89] outline-2 outline-primary-orange-300"
+                  className="px-5 py-[10px] border-2 rounded-md border-[#9F8F89] outline-2 outline-primary-orange-300"
                 />
 
                 <input
@@ -267,7 +267,7 @@ export default function Contact(props) {
                   name="location"
                   required
                   onChange={handleChange}
-                  className="px-5 py-3 border-2 rounded-md border-[#9F8F89] outline-2 outline-primary-orange-300"
+                  className="px-5 py-[10px] border-2 rounded-md border-[#9F8F89] outline-2 outline-primary-orange-300"
                 />
 
                 <textarea
@@ -276,7 +276,7 @@ export default function Contact(props) {
                   name="message"
                   required
                   onChange={handleChange}
-                  className="px-5 py-3 transition-all duration-200 border-2 rounded-md border-[#9F8F89] outline-2 outline-primary-orange-300 min-h-40 "
+                  className="px-5 py-[10px] transition-all duration-200 border-2 rounded-md border-[#9F8F89] outline-2 outline-primary-orange-300 min-h-40 "
                   placeholder="Send your message here..."
                 />
 

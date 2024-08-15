@@ -59,12 +59,12 @@ export default function SellingProposition(props) {
   return (
     <section className={`relative transition-colors duration-[1300ms] `}>
       <div className="container-margin-compact padding-y-lg section-layout">
-        <div className="mt-4 md:mt-24">
-          <h2 className="text-4xl leading-8 sm:leading-10 sm:text-5xl font-markaziText text-primary-green-200">
+        <div className="mt-4 md:mt-20">
+          <h2 className="text-4xl leading-8 sm:leading-10 sm:text-[45px] font-markaziText text-primary-green-200">
             {infoHub?.title}
           </h2>
 
-          <div className="flex flex-col gap-16 mt-10 mb-10 sm:gap-44 md:gap-48 lg:gap-56 sm:mb-36 md:mb-72">
+          <div className="flex flex-col gap-16 mt-10 mb-10 sm:mt-14 sm:gap-44 md:gap-48 lg:gap-56 sm:mb-36 md:mb-64">
             {infoHub.sellingProposition.map((process, index) => (
               <section
                 className="flex flex-col gap-6 section-class"
@@ -78,7 +78,7 @@ export default function SellingProposition(props) {
                   }
                 >
                   <h3
-                    className={` text-xl text-black-shade-300 font-semibold sm:text-xl md:text-2xl`}
+                    className={` text-xl text-black-shade-300 font-medium leading-6 sm:font-medium sm:text-xl md:text-2xl`}
                   >
                     {process.title}
                   </h3>
