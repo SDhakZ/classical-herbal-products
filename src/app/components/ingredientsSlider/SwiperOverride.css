@@ -21,7 +21,7 @@
 
 .swiper-button-next::after,
 .swiper-button-prev::after {
-  background-color: rgba(2, 51, 0, 0.158);
+  background-color: rgba(2, 51, 0, 0.116);
   padding: 8px;
   border-radius: 2px;
 }

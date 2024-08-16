@@ -3,6 +3,7 @@ import Banner from "@/app/components/banner/banner";
 import AboutCard from "@/app/components/aboutCards/aboutCard";
 import Contact from "../../contact/contact";
 export default function page() {
+  const hcaptcha_site_key = process.env.HCAPTCHA_SITE_KEY;
   return (
     <div>
       <Banner
@@ -59,7 +60,7 @@ export default function page() {
         <AboutCard />
       </div>
       <div className="margin-t">
-        <Contact dark={true} />
+        <Contact hcaptcha_site_key={hcaptcha_site_key} dark={true} />
       </div>
     </div>
   );

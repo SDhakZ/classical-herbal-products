@@ -1,8 +1,7 @@
-"use client";
 import React from "react";
 import Banner from "@/app/components/banner/banner";
 import { aboutData } from "@/app/data/aboutData";
-import { useParams } from "next/navigation";
+
 import Highlight from "../Components/highlight";
 import CompanyValue from "@/app/components/companyValue/companyValue";
 import SellingProposition from "../Components/sellingProposition";
@@ -10,8 +9,8 @@ import Contact from "../../contact/contact";
 import TestingsSection from "@/app/components/testingsSection/testingsSection";
 import IngredientsSlider from "@/app/components/ingredientsSlider/ingredientsSlider";
 
-export default function AboutDetail(hcaptcha_site_key) {
-  const params = useParams();
+export default function AboutDetail({ params }) {
+  const hcaptcha_site_key = process.env.HCAPTCHA_SITE_KEY;
   const aboutSlug = params.aboutSlug;
   const selectedAboutData = aboutData.find((about) => about.slug === aboutSlug);
   return (
@@ -39,7 +38,7 @@ export default function AboutDetail(hcaptcha_site_key) {
       ) : null}
       <CompanyValue />
       <SellingProposition selectedAboutData={selectedAboutData} />
-      <Contact hcaptcha_site_key={hcaptcha_site_key} dark={true} />
+      <Contact hcaptcha_site_key={hcaptcha_site_key} dark={false} />
     </div>
   );
 }
