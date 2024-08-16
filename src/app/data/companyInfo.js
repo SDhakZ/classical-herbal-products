@@ -103,7 +103,7 @@ export const menuData = [
         links: [
           {
             title: "Blogs",
-            url: "#",
+            url: "/blogs",
           },
           {
             title: "Terms & Conditions",

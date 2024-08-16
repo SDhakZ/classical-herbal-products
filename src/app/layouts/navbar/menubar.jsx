@@ -49,12 +49,12 @@ export default function Menubar() {
                 onMouseLeave={handleMouseLeave}
               >
                 <a
-                  className={`flex items-center ${
+                  className={`flex cursor-pointer items-center ${
                     activeDropdown === index
                       ? "underline underline-offset-8 decoration-2 decoration-primary-green-300"
                       : ""
                   } w-[170px] justify-center h-full`}
-                  href="#"
+                  href={menu.url}
                 >
                   {menu.title}
                 </a>
@@ -76,7 +76,7 @@ export default function Menubar() {
                             <ul className="flex flex-col gap-3 min-w-[200px] mt-5 text-base font-medium text-primary-green-300">
                               {section.links.map((item, index) => (
                                 <li key={index}>
-                                  <a href="#">{item.title}</a>
+                                  <a href={item.url}>{item.title}</a>
                                 </li>
                               ))}
                             </ul>
@@ -85,7 +85,7 @@ export default function Menubar() {
                         {menu.blogs ? (
                           <div className="flex gap-6">
                             <a
-                              href="#"
+                              href={menu.url}
                               className="max-w-[256px] overflow-hidden"
                             >
                               <img
@@ -98,7 +98,7 @@ export default function Menubar() {
                               </p>
                             </a>
                             <a
-                              href="#"
+                              href={menu.url}
                               className="max-w-[256px] overflow-hidden"
                             >
                               <img
@@ -346,7 +346,10 @@ export default function Menubar() {
                 </li>
               ))}
               <li className="w-full">
-                <a href="#" className="text-xl font-medium cursor-pointer">
+                <a
+                  href="/contact"
+                  className="text-xl font-medium cursor-pointer"
+                >
                   CONTACT
                 </a>
               </li>
