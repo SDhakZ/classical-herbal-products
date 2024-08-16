@@ -28,7 +28,7 @@ export default function HighLight(props) {
       <div className="flex justify-center w-full">
         <div className="flex flex-col max-w-[500px] min-[769px]:max-w-none w-full md:flex-row">
           <div className="w-full md:w-1/2 min-[769px]:h-auto ">
-            <img className="w-full " src={image}></img>
+            <img className="w-full" alt={title} src={image}></img>
           </div>
 
           <div

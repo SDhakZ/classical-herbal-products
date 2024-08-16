@@ -14,7 +14,10 @@ export default function page() {
       />
       <div className="w-full container-margin-compact">
         <div className="w-full padding-y-lg">
-          <img src="/assets/About/our-journey-holistic.png" />
+          <img
+            alt="Holistic healing"
+            src="/assets/About/our-journey-holistic.png"
+          />
           <div className="flex flex-col items-center justify-center w-full mt-6 sm:mt-10">
             <h2 className="text-center text-black-shade-300 font-markaziText text-3xl sm:text-4xl sm:max-w-[450px] md:max-w-[700px] md:leading-10 sm:leading-10 md:text-[45px] lg:max-w-[1000px] leading-7  max-w-[1000px]">
               Harmonizing Nature and Humanity for Holistic Healing
@@ -36,7 +39,11 @@ export default function page() {
           <div className="flex items-center justify-center w-full ">
             <div className="max-w-[1300px] flex-col sm:flex-row flex items-center justify-center gap-6 sm:gap-10">
               <div className="w-full max-w-[150px] sm:w-[230px]">
-                <img src="/assets/About/USDA.png" className="w-full " />
+                <img
+                  alt="USDA logo"
+                  src="/assets/About/USDA.png"
+                  className="w-full "
+                />
               </div>
               <div>
                 <h2 className="text-white-shade-100 text-center sm:text-left font-markaziText text-4xl md:text-[48px] leading-10 max-w-[500px]">

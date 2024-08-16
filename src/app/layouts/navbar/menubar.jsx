@@ -89,6 +89,7 @@ export default function Menubar() {
                               className="max-w-[256px] overflow-hidden"
                             >
                               <img
+                                alt="Blog Image"
                                 className="max-w-[256px] w-full"
                                 src="/assets/Blogs/test.png"
                               />
@@ -101,6 +102,7 @@ export default function Menubar() {
                               className="max-w-[256px] overflow-hidden"
                             >
                               <img
+                                alt="Blog Image"
                                 className="w-[256px]"
                                 src="/assets/Blogs/test.png"
                               />
@@ -175,6 +177,7 @@ export default function Menubar() {
                         <div className="flex gap-6">
                           <a href="#" className="max-w-[256px] overflow-hidden">
                             <img
+                              alt="Blog Image"
                               className="max-w-[256px] w-full"
                               src="/assets/Blogs/test.png"
                             />
@@ -184,6 +187,7 @@ export default function Menubar() {
                           </a>
                           <a href="#" className="max-w-[256px] overflow-hidden">
                             <img
+                              alt="Blog Image"
                               className="w-[256px]"
                               src="/assets/Blogs/test.png"
                             />
@@ -308,6 +312,7 @@ export default function Menubar() {
                                 <img
                                   className="max-w-[256px] w-full"
                                   src="/assets/Blogs/test.png"
+                                  alt="Blog Image"
                                 />
                                 <p className="mt-2 text-2xl truncate text-black-shade-200 text-ellipsis font-markaziText">
                                   Why Shilajit is good for you?
@@ -320,6 +325,7 @@ export default function Menubar() {
                                 <img
                                   className="w-[256px]"
                                   src="/assets/Blogs/test.png"
+                                  alt="Blog Image"
                                 />
                                 <p className="mt-2 text-xl truncate text-black-shade-200 text-ellipsis font-markaziText">
                                   Why Shilajit is good for you?
