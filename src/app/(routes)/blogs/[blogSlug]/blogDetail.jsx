@@ -16,17 +16,17 @@ export default function BlogDetail() {
       </button>
       <div className="flex flex-col items-center justify-center margin-t ">
         <div>
-          <h1 className="text-5xl text-center font-markaziText text-black-shade-300 ">
+          <h1 className="text-4xl leading-9 text-center sm:text-5xl font-markaziText text-black-shade-300 ">
             {selectedBlogData.title}
           </h1>
-          <p className="mt-4 text-sm font-semibold text-center text-black-shade-300">
+          <p className="mt-3 text-sm font-semibold text-center sm:mt-4 text-black-shade-300">
             Published on {selectedBlogData.publishedDate}
           </p>
-          <p className="mt-3 text-lg font-medium text-center text-primary-green-200">
+          <p className="mt-2 text-lg font-medium text-center sm:mt-3 text-primary-green-200">
             By: {selectedBlogData.author}
           </p>
         </div>
-        <p className="mt-5 w-full text-center max-w-[675px] text-black-shade-200 font-medium">
+        <p className="mt-3 sm:mt-5 w-full text-center max-w-[675px] text-black-shade-200 ">
           {selectedBlogData.brief}
         </p>
         <Image
@@ -35,13 +35,13 @@ export default function BlogDetail() {
           height={594}
           layout="responsive"
           alt={selectedBlogData.title}
-          className="mt-7 max-w-[720px]"
+          className="mt-6 sm:mt-10 max-w-[720px]"
         />
-        <div className="flex flex-col items-center w-full gap-12 mt-14">
+        <div className="flex flex-col items-center w-full gap-10 mt-10 sm:gap-12 sm:mt-14">
           {selectedBlogData.body.map((blog, index) => (
             <div key={index} className="max-w-[675px]">
               <div>
-                <h2 className="text-3xl font-medium text-black-shade-300">
+                <h2 className="text-2xl font-medium sm:text-3xl text-black-shade-300">
                   {blog.title}
                 </h2>
                 <p className="mt-2 leading-relaxed text-black-shade-300">
@@ -49,10 +49,10 @@ export default function BlogDetail() {
                 </p>
               </div>
               {blog.subBody && (
-                <div className="flex flex-col gap-10 mt-10">
+                <div className="flex flex-col gap-8 mt-8 sm:mt-10 sm:gap-10">
                   {blog.subBody.map((sub, index) => (
                     <div key={index}>
-                      <h3 className="text-4xl font-markaziText text-black-shade-300">
+                      <h3 className="text-3xl sm:text-4xl font-markaziText text-black-shade-300">
                         {sub.title}
                       </h3>
                       {sub.image ? (
