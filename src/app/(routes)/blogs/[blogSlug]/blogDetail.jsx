@@ -12,22 +12,22 @@ export default function BlogDetail() {
 
   return (
     <div className="container-margin-compact margin-t">
-      <a href="/blogs" className="text-lg font-medium text-black-shade-300">
+      <a href="/blogs" className="text-base font-medium text-primary-beige-300">
         &lt; Go Back
       </a>
-      <div className="flex flex-col items-center justify-center mt-10">
+      <div className="flex flex-col items-center justify-center mt-4">
         <div>
-          <h1 className="text-4xl leading-9 text-center sm:text-5xl font-markaziText text-black-shade-300 ">
+          <h1 className="text-4xl leading-9  max-w-[850px] text-center sm:text-6xl sm:leading-[0.9] font-markaziText text-black-shade-300 ">
             {selectedBlogData.title}
           </h1>
-          <p className="mt-3 text-sm font-semibold text-center sm:mt-4 text-black-shade-300">
+          <p className="mt-3 text-sm font-semibold text-center sm:mt-3 text-black-shade-300">
             Published on {selectedBlogData.publishedDate}
           </p>
-          <p className="mt-2 text-lg font-medium text-center sm:mt-3 text-primary-green-200">
+          <p className="mt-2 text-xl font-medium text-center sm:mt-3 text-primary-green-200">
             By: {selectedBlogData.author}
           </p>
         </div>
-        <p className="mt-3 sm:mt-4 w-full text-center max-w-[675px] text-black-shade-200 ">
+        <p className="mt-3 sm:mt-5 w-full font-medium text-center max-w-[675px] text-black-shade-200 ">
           {selectedBlogData.brief}
         </p>
         <Image
@@ -39,7 +39,7 @@ export default function BlogDetail() {
           className="mt-6 sm:mt-8 max-w-[800px]"
         />
         <div className="flex flex-col items-center w-full gap-10 mt-10 sm:gap-12 sm:mt-14">
-          {selectedBlogData.body.map((blog, index) => (
+          {selectedBlogData.body?.map((blog, index) => (
             <div key={index} className="max-w-[675px]">
               <div>
                 <h2 className="text-2xl font-medium sm:text-3xl text-black-shade-300">

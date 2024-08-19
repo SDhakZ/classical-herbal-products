@@ -6,7 +6,7 @@ export const blogData = [
     author: "Classsical Herbal Team",
     publishedDate: "July 24th, 2024",
     brief:
-      "Shilajit is a sticky substance that comes out of the cracks in high mountain ranges of Asia. It's made of animal, mineral, and plant remains.",
+      "Shilajit, also known as mumiyo or mumie, is an organic mineral compound found in the Himalayan mountains and mountainous regions in Russia, Afghanistan, and elsewhere. This naturally occurring, blackish-brown resin contains over 40 minerals and substances, most notably fulvic acid.",
     image: "shilajit-benefits.png",
     body: [
       {

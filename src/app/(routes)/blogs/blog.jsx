@@ -29,7 +29,7 @@ export default function Blog() {
         description="We delve deep into responsible sourcing, traveling far and wide to partner with farmers who understand the land, soil, and plants like no one else."
       />
       <div className="padding-y-lg container-margin-compact">
-        <h1 className="text-5xl text-center font-markaziText text-primary-green-300">
+        <h1 className="text-5xl text-center font-markaziText text-primary-green-400">
           Our Blogs
         </h1>
         <div className="grid gap-x-7 gap-y-10 margin-t sm:grid-cols-2">
