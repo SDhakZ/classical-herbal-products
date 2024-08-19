@@ -64,7 +64,7 @@ export const blogData = [
   {
     id: 2,
     title: "Why Shilajit is good for you?",
-    slug: "shilajit-benefits",
+    slug: "shilajit-benefits2",
     brief:
       "Shilajit is a sticky substance that comes out of the cracks in high mountain ranges of Asia. It's made of animal, mineral, and plant remains.",
     image: "shilajit-benefits.png",
@@ -72,7 +72,7 @@ export const blogData = [
   {
     id: 3,
     title: "Why Shilajit is good for you?",
-    slug: "shilajit-benefits",
+    slug: "shilajit-benefits3",
     brief:
       "Shilajit is a sticky substance that comes out of the cracks in high mountain ranges of Asia. It's made of animal, mineral, and plant remains.",
     image: "shilajit-benefits.png",
@@ -80,7 +80,7 @@ export const blogData = [
   {
     id: 3,
     title: "Why Shilajit is good for you?",
-    slug: "shilajit-benefits",
+    slug: "shilajit-benefits4",
     brief:
       "Shilajit is a sticky substance that comes out of the cracks in high mountain ranges of Asia. It's made of animal, mineral, and plant remains.",
     image: "shilajit-benefits.png",
@@ -88,7 +88,7 @@ export const blogData = [
   {
     id: 3,
     title: "Why Shilajit is good for you?",
-    slug: "shilajit-benefits",
+    slug: "shilajit-benefits5",
     brief:
       "Shilajit is a sticky substance that comes out of the cracks in high mountain ranges of Asia. It's made of animal, mineral, and plant remains.",
     image: "shilajit-benefits.png",
@@ -96,7 +96,7 @@ export const blogData = [
   {
     id: 3,
     title: "Why Shilajit is good for you?",
-    slug: "shilajit-benefits",
+    slug: "shilajit-benefits6",
     brief:
       "Shilajit is a sticky substance that comes out of the cracks in high mountain ranges of Asia. It's made of animal, mineral, and plant remains.",
     image: "shilajit-benefits.png",
@@ -104,7 +104,7 @@ export const blogData = [
   {
     id: 3,
     title: "Why Shilajit is good for you?",
-    slug: "shilajit-benefits",
+    slug: "shilajit-benefits7",
     brief:
       "Shilajit is a sticky substance that comes out of the cracks in high mountain ranges of Asia. It's made of animal, mineral, and plant remains.",
     image: "shilajit-benefits.png",

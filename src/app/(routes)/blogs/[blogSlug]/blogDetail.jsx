@@ -3,6 +3,7 @@ import React from "react";
 import { blogData } from "@/app/data/blogData";
 import { useParams } from "next/navigation";
 import Image from "next/image";
+import ContinueBlog from "../Components/continueBlog";
 
 export default function BlogDetail() {
   const params = useParams();
@@ -11,10 +12,10 @@ export default function BlogDetail() {
 
   return (
     <div className="container-margin-compact margin-t">
-      <button className="text-lg font-semibold text-black-shade-300">
+      <a href="/blogs" className="text-lg font-medium text-black-shade-300">
         &lt; Go Back
-      </button>
-      <div className="flex flex-col items-center justify-center margin-t ">
+      </a>
+      <div className="flex flex-col items-center justify-center mt-10">
         <div>
           <h1 className="text-4xl leading-9 text-center sm:text-5xl font-markaziText text-black-shade-300 ">
             {selectedBlogData.title}
@@ -26,23 +27,23 @@ export default function BlogDetail() {
             By: {selectedBlogData.author}
           </p>
         </div>
-        <p className="mt-3 sm:mt-5 w-full text-center max-w-[675px] text-black-shade-200 ">
+        <p className="mt-3 sm:mt-4 w-full text-center max-w-[675px] text-black-shade-200 ">
           {selectedBlogData.brief}
         </p>
         <Image
           src={`/assets/Blogs/${selectedBlogData.slug}/${selectedBlogData.image}`}
-          width={1080}
+          width={800}
           height={594}
           layout="responsive"
           alt={selectedBlogData.title}
-          className="mt-6 sm:mt-10 max-w-[720px]"
+          className="mt-6 sm:mt-8 max-w-[800px]"
         />
         <div className="flex flex-col items-center w-full gap-10 mt-10 sm:gap-12 sm:mt-14">
           {selectedBlogData.body.map((blog, index) => (
             <div key={index} className="max-w-[675px]">
               <div>
                 <h2 className="text-2xl font-medium sm:text-3xl text-black-shade-300">
-                  {blog.title}
+                  {blog.title ? blog.title : null}
                 </h2>
                 <p className="mt-2 leading-relaxed text-black-shade-300">
                   {blog.description}
@@ -53,7 +54,7 @@ export default function BlogDetail() {
                   {blog.subBody.map((sub, index) => (
                     <div key={index}>
                       <h3 className="text-3xl sm:text-4xl font-markaziText text-black-shade-300">
-                        {sub.title}
+                        {sub.title ? sub.title : null}
                       </h3>
                       {sub.image ? (
                         <Image
@@ -65,12 +66,12 @@ export default function BlogDetail() {
                         />
                       ) : null}
                       <p className="mt-2 leading-relaxed text-black-shade-300">
-                        {sub.description}
+                        {sub.description ? sub.description : null}
                       </p>
                       {sub.bullet ? (
                         <div className="mt-4">
                           <p className="font-medium leading-relaxed text-black-shade-300">
-                            {sub.bullet.brief}
+                            {sub.bullet.brief ? sub.bullet.brief : null}
                           </p>
                           <ul className="mt-2 space-y-2 list-disc">
                             {sub.bullet.points.map((point, index) => (
@@ -86,7 +87,10 @@ export default function BlogDetail() {
             </div>
           ))}
         </div>
-        <hr class="h-[1px] border-[2px] w-full my-14 bg-[#C3C3C3]"></hr>
+        <hr class="h-[1px] border-[2px] w-full my-8 sm:my-16 bg-[#C3C3C3]"></hr>
+        <ContinueBlog
+          selectedBlogData={selectedBlogData ? selectedBlogData : null}
+        />
       </div>
     </div>
   );
