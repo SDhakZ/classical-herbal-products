@@ -1,10 +1,10 @@
 import React from "react";
-import Blog from "./blog";
+import BlogDetail from "./blogDetail";
 
 export default function page() {
   return (
     <>
-      <Blog />
+      <BlogDetail />
     </>
   );
 }

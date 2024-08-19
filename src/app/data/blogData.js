@@ -3,6 +3,8 @@ export const blogData = [
     id: 1,
     title: "Why Shilajit is good for you?",
     slug: "shilajit-benefits",
+    author: "Classsical Herbal Team",
+    publishedDate: "July 24th, 2024",
     brief:
       "Shilajit is a sticky substance that comes out of the cracks in high mountain ranges of Asia. It's made of animal, mineral, and plant remains.",
     image: "shilajit-benefits.png",
@@ -27,16 +29,19 @@ export const blogData = [
           },
           {
             title: "2. May Prevent Bone Loss",
+            image: "bone-loss.png",
             description:
               "Shilajit may have a positive effect on bone health. A study published in 2022 found postmenopausal women with osteopenia (low bone mineral density) who took shilajit supplements daily saw significant improvements in bone density after 11 months. The researchers theorized that this effect may be due to shilajit's ability to speed up cell turnover.",
           },
           {
             title: "3. Could Increase Male Fertility",
+
             description:
               "Shilajit may increase male fertility by boosting key hormones. Research has shown that taking 500 milligrams (mg) of shilajit per day can significantly increased dehydroepiandrosterone (DHEAS) and total testosterone levels.",
           },
           {
             title: "4. Might Improve Exercise Performance",
+            image: "improve-exercise-performance.png",
             description:
               "A growing body of research indicates that shilajit can be helpful for exercise efforts. Some evidence suggests that athletes have less post-workout fatigue and are better able to reach peak muscular strength after taking shilajit supplements.",
           },
@@ -50,7 +55,7 @@ export const blogData = [
           {
             title: "Dosage",
             description:
-              "Shilajit may have a positive effect on bone health. A study published in 2022 found postmenopausal women with osteopenia (low bone mineral density) who took shilajit supplements daily saw significant improvements in bone density after 11 months. The researchers theorized that this effect may be due to shilajit's ability to speed up cell turnover.",
+              "Shilajit isn't regulated by the Food and Drug Administration (FDA), meaning there's no set dosage deemed safe and effective. The dose administered in some clinical studies has been between 300–500 mg once per day.2 It's best to follow the dosing instructions from the manufacturer listed on the label if you are taking a shilajit supplement. You can also talk to a healthcare provider for guidance on finding a safe and effective dose.",
           },
         ],
       },
