@@ -11,17 +11,18 @@ export const productData = [
         id: generateUniqueId("t"), // Generate unique ID for product
         title: "Lavender Immunity Booster",
         target: ["Immunity Booster"],
+        bestSeller: true,
         brief:
           "Helps to increase immunity in your body with its natural lavender extracts",
-        image: "tea.png",
+        image: "lavender-immunity-booster.png",
         pharmaceutical: true,
       },
       {
         id: generateUniqueId("t"),
-        title: "Energy booster tea",
+        title: "Energy Booster Tea",
         target: ["Energy Booster"],
         brief: "Helps to increase energy in your body with fruit power",
-        image: "tea.png",
+        image: "energy-booster-tea.png",
         pharmaceutical: true,
       },
       {
@@ -29,17 +30,17 @@ export const productData = [
         title: "Immunity Supportive Tea",
         target: "Immunity Booster",
         brief: "Helps to increase energy in your body with fruit power",
-        image: "tea.png",
+        image: "immunity-supportive-tea.png",
         pharmaceutical: true,
       },
       {
         id: generateUniqueId("t"),
-        title: "Ayurvedic Booster",
+        title: "Ayurvedic Booster Tea",
         target: ["Energy Booster", "Immunity Booster"],
         brief:
           "Helps to increase immunity in your body with its natural lavender extracts",
-        image: "tea.png",
-        pharmaceutical: true,
+        image: "ayurvedic-booster-tea.png",
+        pharmaceutical: false,
       },
     ].map((product) => ({
       ...product,
@@ -48,8 +49,8 @@ export const productData = [
   },
   {
     id: generateUniqueId("cat"),
-    category: "Syrups",
-    slug: "syrups",
+    category: "Syrup",
+    slug: "syrup",
     products: [
       {
         id: generateUniqueId("s"),
@@ -57,7 +58,7 @@ export const productData = [
         target: ["Joint and Bone Health"],
         brief:
           "Helps to increase immunity in your body with its natural lavender extracts",
-        image: "tea.png",
+        image: "liquid-iron.png",
         pharmaceutical: true,
       },
       {
@@ -65,7 +66,7 @@ export const productData = [
         title: "Elderberry Syrup",
         target: ["Digestive Health"],
         brief: "Helps to increase energy in your body with fruit power",
-        image: "tea.png",
+        image: "elderberry-syrup.png",
         pharmaceutical: true,
       },
     ].map((product) => ({

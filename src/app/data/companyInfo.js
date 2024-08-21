@@ -14,6 +14,7 @@ import {
 export const menuData = [
   {
     title: "PRODUCTS",
+    url: "/products",
     links: [],
     dropdown: [
       {
