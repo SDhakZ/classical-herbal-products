@@ -152,23 +152,21 @@ export default function ProductPage(props) {
           </aside>
 
           <section className="col-span-3">
-            <div className="flex justify-between w-full mb-4 h-fit col-span-full">
-              <p>Showing {filteredProducts.length} products</p>
-              <p>Sort By Relevance</p>
-            </div>
-
             {selectedCategory || selectedTarget.length > 0 || pharmaceutical ? (
               <div className="mb-4">
                 <p className="text-lg font-medium">Applied Filters:</p>
-                <div className="flex gap-2 mt-2">
+                <div className="flex flex-wrap gap-2 mt-2">
                   {selectedCategory && (
-                    <div className="px-2 gap-2 flex items-center py-1 rounded cursor-pointer border border-[#c2c2c2] hover:line-through decoration-2 decoration-black-shade-300 bg-[#F3F0EB] text-primary-green-600">
-                      <span
-                        className="leading-none"
-                        onClick={() => setSelectedCategory(null)}
-                      >
-                        Category: {selectedCategory}
-                      </span>
+                    <div
+                      onClick={() => setSelectedCategory(null)}
+                      className="px-2 gap-2 group flex items-center py-1 rounded cursor-pointer border border-[#c2c2c2]  decoration-black-shade-300 bg-[#F3F0EB] text-primary-green-600"
+                    >
+                      <div className="mt-[0.5px] decoration-2 text-sm font-medium">
+                        Category:{" "}
+                        <span className="font-normal capitalize decoration-2 group-hover:line-through">
+                          {selectedCategory}
+                        </span>
+                      </div>
                       <FontAwesomeIcon
                         className="text-xs leading-none text-black-shade-100"
                         icon={faClose}
@@ -176,24 +174,42 @@ export default function ProductPage(props) {
                     </div>
                   )}
                   {selectedTarget.map((target) => (
-                    <span
+                    <div
                       key={target}
-                      className="px-2 py-1 rounded cursor-pointer border border-[#c2c2c2] bg-[#F3F0EB] text-primary-green-600 hover:line-through decoration-2 decoration-black-shade-300"
+                      className="px-2 gap-2 group flex items-center py-1 rounded cursor-pointer border border-[#c2c2c2]  decoration-black-shade-300 bg-[#F3F0EB] text-primary-green-600"
                       onClick={() => removeTargetFilter(target)}
                     >
-                      Target: {target}
-                    </span>
+                      <div className="mt-[0.5px] decoration-2 text-sm font-medium">
+                        Target:{" "}
+                        <span className="font-normal capitalize decoration-2 group-hover:line-through">
+                          {target}
+                        </span>
+                      </div>
+                      <FontAwesomeIcon
+                        className="text-xs leading-none text-black-shade-100"
+                        icon={faClose}
+                      />
+                    </div>
                   ))}
                   {pharmaceutical && (
-                    <span
-                      className="px-2 py-1 rounded cursor-pointer border border-[#c2c2c2] bg-[#F3F0EB] text-primary-green-600 hover:line-through decoration-2 decoration-black-shade-300"
+                    <div
+                      className="px-2 gap-2 group flex items-center py-1 rounded cursor-pointer border border-[#c2c2c2]  decoration-black-shade-300 bg-[#F3F0EB] text-primary-green-600"
                       onClick={() => handlePharmaceuticalChange(null)}
                     >
-                      Type: {pharmaceutical}
-                    </span>
+                      <div className="mt-[0.5px] decoration-2 text-sm font-medium">
+                        Type:{" "}
+                        <span className="font-normal capitalize decoration-2 group-hover:line-through">
+                          {pharmaceutical}
+                        </span>
+                      </div>
+                      <FontAwesomeIcon
+                        className="text-xs leading-none text-black-shade-100"
+                        icon={faClose}
+                      />
+                    </div>
                   )}
                   <button
-                    className="px-3 py-1 text-white bg-red-500 rounded"
+                    className="px-3 py-1 text-sm font-medium text-red-400 "
                     onClick={clearFilters}
                   >
                     Clear Filters
@@ -201,7 +217,15 @@ export default function ProductPage(props) {
                 </div>
               </div>
             ) : null}
-
+            <div className="flex justify-between w-full mb-4 h-fit col-span-full">
+              <p className="text-primary-green-300">
+                Showing{" "}
+                <span className="font-medium">
+                  {filteredProducts.length} products
+                </span>
+              </p>
+              <p className="text-primary-green-300">Sort By Relevance</p>
+            </div>
             <div className="grid grid-cols-1 col-span-1 gap-4 gap-y-14 md:col-span-3 sm:grid-cols-2 md:grid-cols-3">
               {filteredProducts.map((product, index) => (
                 <ProductCard
