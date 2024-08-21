@@ -23,7 +23,7 @@ export default function BlogDetail() {
           <p className="mt-3 text-sm font-semibold text-center sm:mt-3 text-black-shade-300">
             Published on {selectedBlogData.publishedDate}
           </p>
-          <p className="mt-2 text-xl font-medium text-center sm:mt-3 text-primary-green-200">
+          <p className="mt-2 text-xl font-medium text-center sm:mt-3 text-primary-green-100">
             By: {selectedBlogData.author}
           </p>
         </div>

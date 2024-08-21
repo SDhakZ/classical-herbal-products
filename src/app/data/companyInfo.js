@@ -107,7 +107,7 @@ export const menuData = [
           },
           {
             title: "Terms & Conditions",
-            url: "#",
+            url: "/terms-and-conditions",
           },
           {
             title: "Delivery & Return Policies",
