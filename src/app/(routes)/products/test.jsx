@@ -13,9 +13,8 @@ import { groupProductsByTarget } from "@/app/utility/GroupProductsByTarget";
 import ProductCard from "./Components/productCard";
 import { generateSlug } from "@/app/utility/GenerateSlug";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClose } from "@fortawesome/free-solid-svg-icons";
+import { faClose, faCheck } from "@fortawesome/free-solid-svg-icons";
 import Pagination from "@/app/components/pagination/pagination";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 const groupedProducts = groupProductsByTarget();
 const targetNames = Object.keys(groupedProducts);
@@ -24,8 +23,9 @@ export default function ProductPage() {
   const [selectedSort, setSelectedSort] = useState("Relevance");
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedTarget, setSelectedTarget] = useState([]);
-  const [pharmaceutical, setPharmaceutical] = useState(null);
   const [availableTargets, setAvailableTargets] = useState(targetNames);
+  const [pharmaceutical, setPharmaceutical] = useState(null);
+
   const [paginatedItems, setPaginatedItems] = useState([]);
   const [pagination, setPagination] = useState({ start: 0, end: 9 });
 
@@ -69,7 +69,7 @@ export default function ProductPage() {
     setSelectedCategory(null);
     setSelectedTarget([]);
     setPharmaceutical(null);
-    setAvailableTargets(targetNames);
+    setAvailableTargets(targetNames); // Reset targets to all when filters are cleared
   };
 
   const removeTargetFilter = (target) => {
@@ -82,8 +82,6 @@ export default function ProductPage() {
         return products.sort((a, b) => a.title.localeCompare(b.title));
       case "Alpha Z-A":
         return products.sort((a, b) => b.title.localeCompare(a.title));
-      case "Best Sellers":
-        return products.filter((product) => product.bestSeller);
       default:
         return products;
     }
@@ -131,7 +129,6 @@ export default function ProductPage() {
     { id: 1, name: "Relevance" },
     { id: 2, name: "Alpha A-Z" },
     { id: 3, name: "Alpha Z-A" },
-    { id: 4, name: "Best Sellers" },
   ];
 
   return (
@@ -240,8 +237,8 @@ export default function ProductPage() {
                   {selectedTarget.map((target) => (
                     <div
                       key={target}
-                      className="px-2 gap-2 group flex items-center py-1 rounded cursor-pointer border border-[#c2c2c2]  decoration-black-shade-300 bg-[#F3F0EB] text-primary-green-600"
                       onClick={() => removeTargetFilter(target)}
+                      className="px-2 gap-2 group flex items-center py-1 rounded cursor-pointer border border-[#c2c2c2]  decoration-black-shade-300 bg-[#F3F0EB] text-primary-green-600"
                     >
                       <div className="mt-[0.5px] decoration-2 text-sm font-medium">
                         Target:{" "}
@@ -257,8 +254,8 @@ export default function ProductPage() {
                   ))}
                   {pharmaceutical && (
                     <div
+                      onClick={() => setPharmaceutical(null)}
                       className="px-2 gap-2 group flex items-center py-1 rounded cursor-pointer border border-[#c2c2c2]  decoration-black-shade-300 bg-[#F3F0EB] text-primary-green-600"
-                      onClick={() => handlePharmaceuticalChange(null)}
                     >
                       <div className="mt-[0.5px] decoration-2 text-sm font-medium">
                         Type:{" "}
@@ -272,84 +269,40 @@ export default function ProductPage() {
                       />
                     </div>
                   )}
-                  <button
-                    className="px-3 py-1 text-sm font-medium text-red-500 "
+                  <div
+                    className="px-2 gap-2 group flex items-center py-1 rounded cursor-pointer border border-[#c2c2c2] decoration-black-shade-300 bg-[#F3F0EB] text-black-shade-300"
                     onClick={clearFilters}
                   >
-                    Clear Filters
-                  </button>
+                    <div className="text-sm font-medium">Clear All</div>
+                    <FontAwesomeIcon
+                      className="text-xs leading-none text-black-shade-200"
+                      icon={faClose}
+                    />
+                  </div>
                 </div>
               </div>
             ) : null}
-            <div className="flex items-center justify-between w-full mb-4 h-fit col-span-full">
-              <p className="text-sm font-medium text-primary-green-200">
-                Showing {start}-{end} of{" "}
-                <span className="font-semibold text-primary-green-300">
-                  {filteredProducts.length} products
-                </span>
-              </p>
-              <p className="text-[15px] font-medium text-primary-green-200">
-                Sorted by:{" "}
-                <Listbox value={selectedSort} onChange={setSelectedSort}>
-                  {({ open }) => (
-                    <>
-                      <ListboxButton className="font-medium text-primary-green-300">
-                        {selectedSort}
-                      </ListboxButton>
-                      <AnimatePresence>
-                        {open && (
-                          <ListboxOptions
-                            static
-                            as={motion.div}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.95 }}
-                            anchor="bottom"
-                            className="px-1 py-1 mt-2 origin-top rounded-lg bg-[#fffffff5]"
-                          >
-                            {sortOptions.map((option) => (
-                              <ListboxOption
-                                key={option.id}
-                                value={option.name}
-                                className="data-[focus]:bg-primary-beige-100 group cursor-pointer font-medium text-black-shade-200 text-[15px] pl-2 pr-4 py-1 rounded-md"
-                              >
-                                <FontAwesomeIcon
-                                  icon={faCheck}
-                                  className="text-sm mr-2 text-primary-green-200 invisible  group-data-[selected]:visible"
-                                />
-                                {option.name}
-                              </ListboxOption>
-                            ))}
-                          </ListboxOptions>
-                        )}
-                      </AnimatePresence>
-                    </>
-                  )}
-                </Listbox>
-              </p>
-            </div>
-            <div className="grid grid-cols-1 col-span-1 gap-4 gap-y-14 md:col-span-3 sm:grid-cols-2 md:grid-cols-3">
+
+            <div className="grid grid-cols-1 gap-4 mb-4 md:grid-cols-3 sm:grid-cols-2">
               {paginatedItems.map((product, index) => (
-                <ProductCard
-                  link={product.slug}
-                  title={product.title}
-                  image={`/assets/Products/${product.categorySlug}/${product.slug}/${product.image}`} // Use categorySlug here
-                  brief={product.brief}
-                  bestSeller={product.bestSeller || false}
-                  key={index}
-                  index={index}
-                />
+                <ProductCard key={index} product={product} />
               ))}
+            </div>
+            <div className="flex items-center justify-center gap-4 mt-4">
+              <Pagination
+                totalItems={sortedProducts.length}
+                itemsPerPage={9}
+                currentStart={pagination.start}
+                onPaginationChange={onPaginationChange}
+              />
+              <div className="flex items-center gap-2">
+                <span className="text-sm">
+                  Showing {start} to {end} of {sortedProducts.length} items
+                </span>
+              </div>
             </div>
           </section>
         </div>
-        <section className="margin-t">
-          <Pagination
-            showPerPage={9}
-            onPaginationChange={onPaginationChange}
-            total={filteredProducts.length}
-          />
-        </section>
       </div>
     </>
   );
