@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useCallback } from "react";
+import React from "react";
 import {
   Listbox,
   ListboxButton,
@@ -8,124 +8,27 @@ import {
 } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import Banner from "@/app/components/banner/banner";
-import { productData } from "@/app/data/productData";
-import { groupProductsByTarget } from "@/app/utility/GroupProductsByTarget";
 import ProductCard from "./Components/productCard";
-import { generateSlug } from "@/app/utility/GenerateSlug";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClose } from "@fortawesome/free-solid-svg-icons";
+import { faClose, faCheck } from "@fortawesome/free-solid-svg-icons";
 import Pagination from "@/app/components/pagination/pagination";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-
-const groupedProducts = groupProductsByTarget();
-const targetNames = Object.keys(groupedProducts);
+import { useFilters } from "./hooks/useFilters";
+import { usePagination } from "./hooks/usePagination";
+import { productData } from "@/app/data/productData";
 
 export default function ProductPage() {
-  const [selectedSort, setSelectedSort] = useState("Relevance");
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [selectedTarget, setSelectedTarget] = useState([]);
-  const [pharmaceutical, setPharmaceutical] = useState(null);
-  const [availableTargets, setAvailableTargets] = useState(targetNames);
-  const [paginatedItems, setPaginatedItems] = useState([]);
-  const [pagination, setPagination] = useState({ start: 0, end: 9 });
+  const {
+    filters,
+    availableTargets,
+    filteredProducts,
+    handleFilterChange,
+    clearFilters,
+  } = useFilters();
 
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-    updateAvailableTargets(category);
-  };
-
-  const updateAvailableTargets = (category) => {
-    if (category) {
-      const categoryProducts =
-        productData.find((item) => item.slug === category)?.products || [];
-      const newTargets = categoryProducts.reduce((acc, product) => {
-        const targets = Array.isArray(product.target)
-          ? product.target
-          : [product.target];
-        targets.forEach((target) => {
-          if (!acc.includes(target)) acc.push(target);
-        });
-        return acc;
-      }, []);
-      setAvailableTargets(newTargets);
-    } else {
-      setAvailableTargets(targetNames);
-    }
-  };
-
-  const handleTargetChange = (target) => {
-    setSelectedTarget((prev) =>
-      prev.includes(target)
-        ? prev.filter((t) => t !== target)
-        : [...prev, target]
-    );
-  };
-
-  const handlePharmaceuticalChange = (type) => {
-    setPharmaceutical(type);
-  };
-
-  const clearFilters = () => {
-    setSelectedCategory(null);
-    setSelectedTarget([]);
-    setPharmaceutical(null);
-    setAvailableTargets(targetNames);
-  };
-
-  const removeTargetFilter = (target) => {
-    setSelectedTarget((prev) => prev.filter((t) => t !== target));
-  };
-
-  const sortProducts = (products) => {
-    switch (selectedSort) {
-      case "Alpha A-Z":
-        return products.sort((a, b) => a.title.localeCompare(b.title));
-      case "Alpha Z-A":
-        return products.sort((a, b) => b.title.localeCompare(a.title));
-      case "Best Sellers":
-        return products.filter((product) => product.bestSeller);
-      default:
-        return products;
-    }
-  };
-
-  const filteredProducts = productData.flatMap((category) =>
-    category.products
-      .filter(
-        (product) =>
-          (!selectedCategory || category.slug === selectedCategory) &&
-          (selectedTarget.length === 0 ||
-            (Array.isArray(product.target)
-              ? product.target.some((t) => selectedTarget.includes(t))
-              : selectedTarget.includes(product.target))) &&
-          (pharmaceutical === null ||
-            (pharmaceutical === "Pharmaceutical" && product.pharmaceutical) ||
-            (pharmaceutical === "Non-Pharmaceutical" &&
-              !product.pharmaceutical))
-      )
-      .map((product) => ({
-        ...product,
-        slug: generateSlug(product.title),
-        categorySlug: category.slug,
-      }))
+  const { paginatedItems, start, end, onPaginationChange } = usePagination(
+    filteredProducts,
+    9
   );
-
-  const sortedProducts = sortProducts(filteredProducts);
-
-  useEffect(() => {
-    const updatePaginatedItems = sortedProducts.slice(
-      pagination.start,
-      pagination.end
-    );
-    setPaginatedItems(updatePaginatedItems);
-  }, [sortedProducts, pagination]);
-
-  const onPaginationChange = useCallback((start, end) => {
-    setPagination({ start, end });
-  }, []);
-
-  const start = pagination.start + 1;
-  const end = Math.min(pagination.end, sortedProducts.length);
 
   const sortOptions = [
     { id: 1, name: "Relevance" },
@@ -143,7 +46,9 @@ export default function ProductPage() {
       />
       <div className="container-margin-compact padding-y-lg">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+          {/* Sidebar with filters */}
           <aside className="flex flex-col col-span-1 gap-6 md:col-span-1">
+            {/* Category Filter */}
             <div className="flex flex-col">
               <p className="text-2xl underline font-markaziText text-primary-green-400 underline-offset-8 decoration-[#a77e5d80]">
                 Category
@@ -153,17 +58,19 @@ export default function ProductPage() {
                   <li
                     key={index}
                     className={`font-medium text-[15px] ${
-                      selectedCategory === item.slug
+                      filters.category === item.slug
                         ? "text-primary-green-100"
                         : "text-primary-green-300"
                     } cursor-pointer`}
-                    onClick={() => handleCategoryChange(item.slug)}
+                    onClick={() => handleFilterChange("category", item.slug)}
                   >
                     {item.category}
                   </li>
                 ))}
               </ul>
             </div>
+
+            {/* Target Filter */}
             <div className="flex flex-col">
               <p className="text-2xl underline font-markaziText text-primary-green-400 underline-offset-8 decoration-[#a77e5d80]">
                 Targeted Health Products
@@ -173,17 +80,19 @@ export default function ProductPage() {
                   <li
                     key={index}
                     className={`font-medium text-[15px] ${
-                      selectedTarget.includes(target)
+                      filters.targets.includes(target)
                         ? "text-primary-green-100"
                         : "text-primary-green-300"
                     } cursor-pointer`}
-                    onClick={() => handleTargetChange(target)}
+                    onClick={() => handleFilterChange("targets", target)}
                   >
                     {target}
                   </li>
                 ))}
               </ul>
             </div>
+
+            {/* Pharmaceutical Filter */}
             <div className="flex flex-col">
               <p className="text-2xl underline font-markaziText text-primary-green-400 underline-offset-8 decoration-[#a77e5d80]">
                 Type
@@ -191,22 +100,24 @@ export default function ProductPage() {
               <ul className="mt-4 space-y-1">
                 <li
                   className={`font-medium text-[15px] ${
-                    pharmaceutical === "Pharmaceutical"
+                    filters.pharmaceutical === "Pharmaceutical"
                       ? "text-primary-green-100"
                       : "text-primary-green-300"
                   } cursor-pointer`}
-                  onClick={() => handlePharmaceuticalChange("Pharmaceutical")}
+                  onClick={() =>
+                    handleFilterChange("pharmaceutical", "Pharmaceutical")
+                  }
                 >
                   Pharmaceutical
                 </li>
                 <li
                   className={`font-medium text-[15px] ${
-                    pharmaceutical === "Non-Pharmaceutical"
+                    filters.pharmaceutical === "Non-Pharmaceutical"
                       ? "text-primary-green-100"
                       : "text-primary-green-300"
                   } cursor-pointer`}
                   onClick={() =>
-                    handlePharmaceuticalChange("Non-Pharmaceutical")
+                    handleFilterChange("pharmaceutical", "Non-Pharmaceutical")
                   }
                 >
                   Non-Pharmaceutical
@@ -216,19 +127,22 @@ export default function ProductPage() {
           </aside>
 
           <section className="col-span-3">
-            {selectedCategory || selectedTarget.length > 0 || pharmaceutical ? (
+            {/* Applied Filters Section */}
+            {filters.category ||
+            filters.targets.length > 0 ||
+            filters.pharmaceutical ? (
               <div className="mb-4">
                 <p className="text-lg font-medium">Applied Filters:</p>
                 <div className="flex flex-wrap gap-2 mt-2">
-                  {selectedCategory && (
+                  {filters.category && (
                     <div
-                      onClick={() => setSelectedCategory(null)}
-                      className="px-2 gap-2 group flex items-center py-1 rounded cursor-pointer border border-[#c2c2c2]  decoration-black-shade-300 bg-[#F3F0EB] text-primary-green-600"
+                      onClick={() => handleFilterChange("category", null)}
+                      className="px-2 gap-2 group flex items-center py-1 rounded cursor-pointer border border-[#c2c2c2] bg-[#F3F0EB] text-primary-green-600"
                     >
-                      <div className="mt-[0.5px] decoration-2 text-sm font-medium">
+                      <div className="mt-[0.5px] text-sm font-medium">
                         Category:{" "}
-                        <span className="font-medium capitalize text-black-shade-200 decoration-2 group-hover:line-through">
-                          {selectedCategory}
+                        <span className="font-medium capitalize text-black-shade-200 group-hover:line-through">
+                          {filters.category}
                         </span>
                       </div>
                       <FontAwesomeIcon
@@ -237,15 +151,15 @@ export default function ProductPage() {
                       />
                     </div>
                   )}
-                  {selectedTarget.map((target) => (
+                  {filters.targets.map((target) => (
                     <div
                       key={target}
-                      className="px-2 gap-2 group flex items-center py-1 rounded cursor-pointer border border-[#c2c2c2]  decoration-black-shade-300 bg-[#F3F0EB] text-primary-green-600"
-                      onClick={() => removeTargetFilter(target)}
+                      className="px-2 gap-2 group flex items-center py-1 rounded cursor-pointer border border-[#c2c2c2] bg-[#F3F0EB] text-primary-green-600"
+                      onClick={() => handleFilterChange("targets", target)}
                     >
-                      <div className="mt-[0.5px] decoration-2 text-sm font-medium">
+                      <div className="mt-[0.5px] text-sm font-medium">
                         Target:{" "}
-                        <span className="font-medium capitalize text-black-shade-200 decoration-2 group-hover:line-through">
+                        <span className="font-medium capitalize text-black-shade-200 group-hover:line-through">
                           {target}
                         </span>
                       </div>
@@ -255,15 +169,15 @@ export default function ProductPage() {
                       />
                     </div>
                   ))}
-                  {pharmaceutical && (
+                  {filters.pharmaceutical && (
                     <div
-                      className="px-2 gap-2 group flex items-center py-1 rounded cursor-pointer border border-[#c2c2c2]  decoration-black-shade-300 bg-[#F3F0EB] text-primary-green-600"
-                      onClick={() => handlePharmaceuticalChange(null)}
+                      className="px-2 gap-2 group flex items-center py-1 rounded cursor-pointer border border-[#c2c2c2] bg-[#F3F0EB] text-primary-green-600"
+                      onClick={() => handleFilterChange("pharmaceutical", null)}
                     >
-                      <div className="mt-[0.5px] decoration-2 text-sm font-medium">
+                      <div className="mt-[0.5px] text-sm font-medium">
                         Type:{" "}
-                        <span className="font-medium capitalize text-black-shade-200 decoration-2 group-hover:line-through">
-                          {pharmaceutical}
+                        <span className="font-medium capitalize text-black-shade-200 group-hover:line-through">
+                          {filters.pharmaceutical}
                         </span>
                       </div>
                       <FontAwesomeIcon
@@ -273,7 +187,7 @@ export default function ProductPage() {
                     </div>
                   )}
                   <button
-                    className="px-3 py-1 text-sm font-medium text-red-500 "
+                    className="px-3 py-1 text-sm font-medium text-red-500"
                     onClick={clearFilters}
                   >
                     Clear Filters
@@ -281,6 +195,8 @@ export default function ProductPage() {
                 </div>
               </div>
             ) : null}
+
+            {/* Sorting Section */}
             <div className="flex items-center justify-between w-full mb-4 h-fit col-span-full">
               <p className="text-sm font-medium text-primary-green-200">
                 Showing {start}-{end} of{" "}
@@ -290,11 +206,14 @@ export default function ProductPage() {
               </p>
               <p className="text-[15px] font-medium text-primary-green-200">
                 Sorted by:{" "}
-                <Listbox value={selectedSort} onChange={setSelectedSort}>
+                <Listbox
+                  value={filters.sort}
+                  onChange={(value) => handleFilterChange("sort", value)}
+                >
                   {({ open }) => (
                     <>
                       <ListboxButton className="font-medium text-primary-green-300">
-                        {selectedSort}
+                        {filters.sort}
                       </ListboxButton>
                       <AnimatePresence>
                         {open && (
@@ -311,11 +230,11 @@ export default function ProductPage() {
                               <ListboxOption
                                 key={option.id}
                                 value={option.name}
-                                className="data-[focus]:bg-primary-beige-100 group cursor-pointer font-medium text-black-shade-200 text-[15px] pl-2 pr-4 py-1 rounded-md"
+                                className="group cursor-pointer font-medium text-black-shade-200 text-[15px] pl-2 pr-4 py-1 rounded-md"
                               >
                                 <FontAwesomeIcon
                                   icon={faCheck}
-                                  className="text-sm mr-2 text-primary-green-200 invisible  group-data-[selected]:visible"
+                                  className="text-sm mr-2 text-primary-green-200 invisible group-data-[selected]:visible"
                                 />
                                 {option.name}
                               </ListboxOption>
@@ -328,12 +247,14 @@ export default function ProductPage() {
                 </Listbox>
               </p>
             </div>
+
+            {/* Product List */}
             <div className="grid grid-cols-1 col-span-1 gap-4 gap-y-14 md:col-span-3 sm:grid-cols-2 md:grid-cols-3">
               {paginatedItems.map((product, index) => (
                 <ProductCard
                   link={product.slug}
                   title={product.title}
-                  image={`/assets/Products/${product.categorySlug}/${product.slug}/${product.image}`} // Use categorySlug here
+                  image={`/assets/Products/${product.categorySlug}/${product.slug}/${product.image}`}
                   brief={product.brief}
                   bestSeller={product.bestSeller || false}
                   key={index}
@@ -343,6 +264,8 @@ export default function ProductPage() {
             </div>
           </section>
         </div>
+
+        {/* Pagination Section */}
         <section className="margin-t">
           <Pagination
             showPerPage={9}

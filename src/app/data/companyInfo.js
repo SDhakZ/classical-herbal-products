@@ -43,7 +43,7 @@ export const menuData = [
         links: [
           {
             title: "Tea",
-            url: "#",
+            url: "/products?category=tea",
           },
           {
             title: "Ashwagandha",
