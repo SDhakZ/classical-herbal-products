@@ -1,5 +1,6 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   Listbox,
   ListboxButton,
@@ -25,17 +26,30 @@ export default function ProductPage() {
     clearFilters,
   } = useFilters();
 
+  const [currentPage, setCounter] = useState(1);
+
   const { paginatedItems, start, end, onPaginationChange } = usePagination(
     filteredProducts,
     9
   );
-
   const sortOptions = [
     { id: 1, name: "Relevance" },
     { id: 2, name: "Alpha A-Z" },
     { id: 3, name: "Alpha Z-A" },
     { id: 4, name: "Best Sellers" },
   ];
+
+  useEffect(() => setCounter(1), [filters]);
+
+  const searchParams = useSearchParams(); // This replaces useRouter()
+
+  // On initial load, read the category from the query parameter
+  useEffect(() => {
+    const categoryFromQuery = searchParams.get("category");
+    if (categoryFromQuery) {
+      handleFilterChange("category", categoryFromQuery);
+    }
+  }, [searchParams]);
 
   return (
     <>
@@ -268,6 +282,8 @@ export default function ProductPage() {
         {/* Pagination Section */}
         <section className="margin-t">
           <Pagination
+            currentPage={currentPage}
+            setCounter={setCounter}
             showPerPage={9}
             onPaginationChange={onPaginationChange}
             total={filteredProducts.length}

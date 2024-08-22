@@ -87,6 +87,7 @@ export const useFilters = () => {
     }
   };
 
+  // Filter the products based on the filters before applying pagination
   const filteredProducts = useMemo(() => {
     const products = productData.flatMap((category) =>
       category.products
@@ -117,7 +118,7 @@ export const useFilters = () => {
   return {
     filters,
     availableTargets,
-    filteredProducts,
+    filteredProducts, // This should be the complete filtered list, not paginated
     handleFilterChange,
     updateAvailableTargets,
     clearFilters,
