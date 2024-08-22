@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import {
   Listbox,
   ListboxButton,
@@ -18,6 +18,8 @@ import { usePagination } from "./hooks/usePagination";
 import { productData } from "@/app/data/productData";
 
 export default function ProductPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams(); // This replaces useRouter()
   const {
     filters,
     availableTargets,
@@ -30,8 +32,10 @@ export default function ProductPage() {
 
   const { paginatedItems, start, end, onPaginationChange } = usePagination(
     filteredProducts,
-    9
+    9,
+    currentPage
   );
+
   const sortOptions = [
     { id: 1, name: "Relevance" },
     { id: 2, name: "Alpha A-Z" },
@@ -39,17 +43,31 @@ export default function ProductPage() {
     { id: 4, name: "Best Sellers" },
   ];
 
+  // Handle resetting pagination when filters are applied
   useEffect(() => setCounter(1), [filters]);
 
-  const searchParams = useSearchParams(); // This replaces useRouter()
-
-  // On initial load, read the category from the query parameter
+  // On initial load, read the category and target from the query parameters
   useEffect(() => {
     const categoryFromQuery = searchParams.get("category");
+    const targetsFromQuery = searchParams.getAll("target"); // Retrieve multiple target parameters
+
     if (categoryFromQuery) {
       handleFilterChange("category", categoryFromQuery);
     }
   }, [searchParams]);
+
+  // Handle updating the query params when filters change
+  useEffect(() => {
+    const params = new URLSearchParams();
+
+    if (filters.category) {
+      params.set("category", filters.category);
+    }
+
+    router.replace(`?${params.toString()}`);
+  }, [filters, router]);
+
+  // Handle toggling targets
 
   return (
     <>
@@ -169,7 +187,12 @@ export default function ProductPage() {
                     <div
                       key={target}
                       className="px-2 gap-2 group flex items-center py-1 rounded cursor-pointer border border-[#c2c2c2] bg-[#F3F0EB] text-primary-green-600"
-                      onClick={() => handleFilterChange("targets", target)}
+                      onClick={() =>
+                        handleFilterChange(
+                          "targets",
+                          filters.targets.filter((t) => t !== target)
+                        )
+                      }
                     >
                       <div className="mt-[0.5px] text-sm font-medium">
                         Target:{" "}
