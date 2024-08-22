@@ -1,5 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import {
+  Listbox,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
+} from "@headlessui/react";
+import { AnimatePresence, motion } from "framer-motion";
 import Banner from "@/app/components/banner/banner";
 import { productData } from "@/app/data/productData";
 import { groupProductsByTarget } from "@/app/utility/GroupProductsByTarget";
@@ -7,21 +14,18 @@ import ProductCard from "./Components/productCard";
 import { generateSlug } from "@/app/utility/GenerateSlug";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
-
-const featuredProducts = [
-  { id: "f1", title: "Herbal Tea", url: "herbal-tea" },
-  { id: "f2", title: "Natural Ashwagandha", url: "herbal-tea" },
-  { id: "f3", title: "Ayodhya Shilajit", url: "herbal-tea" },
-  { id: "f4", title: "Aromatic Herbal Tea", url: "herbal-tea" },
-];
+import Pagination from "@/app/components/pagination/pagination";
 
 const groupedProducts = groupProductsByTarget();
 const targetNames = Object.keys(groupedProducts);
 
-export default function ProductPage(props) {
+export default function ProductPage() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedTarget, setSelectedTarget] = useState([]);
-  const [pharmaceutical, setPharmaceutical] = useState(null); // New state for pharmaceutical filter
+  const [pharmaceutical, setPharmaceutical] = useState(null);
+
+  const [paginatedItems, setPaginatedItems] = useState([]);
+  const [pagination, setPagination] = useState({ start: 0, end: 9 });
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
@@ -69,6 +73,28 @@ export default function ProductPage(props) {
         categorySlug: category.slug,
       }))
   );
+
+  useEffect(() => {
+    const updatePaginatedItems = filteredProducts.slice(
+      pagination.start,
+      pagination.end
+    );
+    setPaginatedItems(updatePaginatedItems);
+  }, [filteredProducts, pagination]);
+
+  const onPaginationChange = useCallback((start, end) => {
+    setPagination({ start, end });
+  }, []);
+  const start = pagination.start + 1;
+  const end = Math.min(pagination.end, filteredProducts.length);
+
+  const sort = [
+    { id: 1, name: "Relevance" },
+    { id: 2, name: "Alpha A-Z" },
+    { id: 3, name: "Alpha Z-A" },
+  ];
+
+  const [selectedPerson, setSelectedPerson] = useState(sort[0]);
 
   return (
     <>
@@ -217,17 +243,51 @@ export default function ProductPage(props) {
                 </div>
               </div>
             ) : null}
-            <div className="flex justify-between w-full mb-4 h-fit col-span-full">
-              <p className="text-primary-green-300">
-                Showing{" "}
-                <span className="font-medium">
+            <div className="flex items-center justify-between w-full mb-4 h-fit col-span-full">
+              <p className="text-sm font-medium text-primary-green-200">
+                Showing {start}-{end} of{" "}
+                <span className="font-semibold text-primary-green-300">
                   {filteredProducts.length} products
                 </span>
               </p>
-              <p className="text-primary-green-300">Sort By Relevance</p>
+              <p className="text-base font-medium text-primary-green-200">
+                Sorted by:{" "}
+                <Listbox value={selectedPerson} onChange={setSelectedPerson}>
+                  {({ open }) => (
+                    <>
+                      <ListboxButton className="font-medium text-primary-green-300">
+                        {selectedPerson.name}
+                      </ListboxButton>
+                      <AnimatePresence>
+                        {open && (
+                          <ListboxOptions
+                            static
+                            as={motion.div}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.95 }}
+                            anchor="bottom"
+                            className="px-2 py-2 mt-2 origin-top rounded-md bg-[#fffffff5]"
+                          >
+                            {sort.map((person) => (
+                              <ListboxOption
+                                key={person.id}
+                                value={person}
+                                className="data-[focus]:bg-primary-beige-100 cursor-pointer px-2 py-1 rounded-sm"
+                              >
+                                {person.name}
+                              </ListboxOption>
+                            ))}
+                          </ListboxOptions>
+                        )}
+                      </AnimatePresence>
+                    </>
+                  )}
+                </Listbox>
+              </p>
             </div>
             <div className="grid grid-cols-1 col-span-1 gap-4 gap-y-14 md:col-span-3 sm:grid-cols-2 md:grid-cols-3">
-              {filteredProducts.map((product, index) => (
+              {paginatedItems.map((product, index) => (
                 <ProductCard
                   link={product.slug}
                   title={product.title}
@@ -241,6 +301,13 @@ export default function ProductPage(props) {
             </div>
           </section>
         </div>
+        <section className="margin-t">
+          <Pagination
+            showPerPage={9}
+            onPaginationChange={onPaginationChange}
+            total={filteredProducts.length}
+          />
+        </section>
       </div>
     </>
   );
