@@ -15,11 +15,13 @@ import { generateSlug } from "@/app/utility/GenerateSlug";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import Pagination from "@/app/components/pagination/pagination";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 const groupedProducts = groupProductsByTarget();
 const targetNames = Object.keys(groupedProducts);
 
 export default function ProductPage() {
+  const [selectedSort, setSelectedSort] = useState("Relevance");
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedTarget, setSelectedTarget] = useState([]);
   const [pharmaceutical, setPharmaceutical] = useState(null);
@@ -53,6 +55,17 @@ export default function ProductPage() {
     setSelectedTarget((prev) => prev.filter((t) => t !== target));
   };
 
+  const sortProducts = (products) => {
+    switch (selectedSort) {
+      case "Alpha A-Z":
+        return products.sort((a, b) => a.title.localeCompare(b.title));
+      case "Alpha Z-A":
+        return products.sort((a, b) => b.title.localeCompare(a.title));
+      default:
+        return products;
+    }
+  };
+
   const filteredProducts = productData.flatMap((category) =>
     category.products
       .filter(
@@ -74,27 +87,28 @@ export default function ProductPage() {
       }))
   );
 
+  const sortedProducts = sortProducts(filteredProducts);
+
   useEffect(() => {
-    const updatePaginatedItems = filteredProducts.slice(
+    const updatePaginatedItems = sortedProducts.slice(
       pagination.start,
       pagination.end
     );
     setPaginatedItems(updatePaginatedItems);
-  }, [filteredProducts, pagination]);
+  }, [sortedProducts, pagination]);
 
   const onPaginationChange = useCallback((start, end) => {
     setPagination({ start, end });
   }, []);
-  const start = pagination.start + 1;
-  const end = Math.min(pagination.end, filteredProducts.length);
 
-  const sort = [
+  const start = pagination.start + 1;
+  const end = Math.min(pagination.end, sortedProducts.length);
+
+  const sortOptions = [
     { id: 1, name: "Relevance" },
     { id: 2, name: "Alpha A-Z" },
     { id: 3, name: "Alpha Z-A" },
   ];
-
-  const [selectedPerson, setSelectedPerson] = useState(sort[0]);
 
   return (
     <>
@@ -107,14 +121,14 @@ export default function ProductPage() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
           <aside className="flex flex-col col-span-1 gap-6 md:col-span-1">
             <div className="flex flex-col">
-              <p className="text-2xl underline font-markaziText text-primary-green-400 underline-offset-8 decoration-primary-beige-300">
+              <p className="text-2xl underline font-markaziText text-primary-green-400 underline-offset-8 decoration-[#a77e5d80]">
                 Category
               </p>
               <ul className="mt-4 space-y-1">
                 {productData.map((item, index) => (
                   <li
                     key={index}
-                    className={`font-medium ${
+                    className={`font-medium text-[15px] ${
                       selectedCategory === item.slug
                         ? "text-primary-green-100"
                         : "text-primary-green-300"
@@ -127,14 +141,14 @@ export default function ProductPage() {
               </ul>
             </div>
             <div className="flex flex-col">
-              <p className="text-2xl underline font-markaziText text-primary-green-400 underline-offset-8 decoration-primary-beige-300">
+              <p className="text-2xl underline font-markaziText text-primary-green-400 underline-offset-8 decoration-[#a77e5d80]">
                 Targeted Health Products
               </p>
               <ul className="mt-4 space-y-1">
                 {targetNames.map((target, index) => (
                   <li
                     key={index}
-                    className={`font-medium ${
+                    className={`font-medium text-[15px] ${
                       selectedTarget.includes(target)
                         ? "text-primary-green-100"
                         : "text-primary-green-300"
@@ -147,12 +161,12 @@ export default function ProductPage() {
               </ul>
             </div>
             <div className="flex flex-col">
-              <p className="text-2xl underline font-markaziText text-primary-green-400 underline-offset-8 decoration-primary-beige-300">
+              <p className="text-2xl underline font-markaziText text-primary-green-400 underline-offset-8 decoration-[#a77e5d80]">
                 Type
               </p>
               <ul className="mt-4 space-y-1">
                 <li
-                  className={`font-medium ${
+                  className={`font-medium text-[15px] ${
                     pharmaceutical === "Pharmaceutical"
                       ? "text-primary-green-100"
                       : "text-primary-green-300"
@@ -162,7 +176,7 @@ export default function ProductPage() {
                   Pharmaceutical
                 </li>
                 <li
-                  className={`font-medium ${
+                  className={`font-medium text-[15px] ${
                     pharmaceutical === "Non-Pharmaceutical"
                       ? "text-primary-green-100"
                       : "text-primary-green-300"
@@ -189,7 +203,7 @@ export default function ProductPage() {
                     >
                       <div className="mt-[0.5px] decoration-2 text-sm font-medium">
                         Category:{" "}
-                        <span className="font-normal capitalize decoration-2 group-hover:line-through">
+                        <span className="font-medium capitalize text-black-shade-200 decoration-2 group-hover:line-through">
                           {selectedCategory}
                         </span>
                       </div>
@@ -207,7 +221,7 @@ export default function ProductPage() {
                     >
                       <div className="mt-[0.5px] decoration-2 text-sm font-medium">
                         Target:{" "}
-                        <span className="font-normal capitalize decoration-2 group-hover:line-through">
+                        <span className="font-medium capitalize text-black-shade-200 decoration-2 group-hover:line-through">
                           {target}
                         </span>
                       </div>
@@ -224,7 +238,7 @@ export default function ProductPage() {
                     >
                       <div className="mt-[0.5px] decoration-2 text-sm font-medium">
                         Type:{" "}
-                        <span className="font-normal capitalize decoration-2 group-hover:line-through">
+                        <span className="font-medium capitalize text-black-shade-200 decoration-2 group-hover:line-through">
                           {pharmaceutical}
                         </span>
                       </div>
@@ -235,7 +249,7 @@ export default function ProductPage() {
                     </div>
                   )}
                   <button
-                    className="px-3 py-1 text-sm font-medium text-red-400 "
+                    className="px-3 py-1 text-sm font-medium text-red-500 "
                     onClick={clearFilters}
                   >
                     Clear Filters
@@ -250,13 +264,13 @@ export default function ProductPage() {
                   {filteredProducts.length} products
                 </span>
               </p>
-              <p className="text-base font-medium text-primary-green-200">
+              <p className="text-[15px] font-medium text-primary-green-200">
                 Sorted by:{" "}
-                <Listbox value={selectedPerson} onChange={setSelectedPerson}>
+                <Listbox value={selectedSort} onChange={setSelectedSort}>
                   {({ open }) => (
                     <>
                       <ListboxButton className="font-medium text-primary-green-300">
-                        {selectedPerson.name}
+                        {selectedSort}
                       </ListboxButton>
                       <AnimatePresence>
                         {open && (
@@ -267,15 +281,19 @@ export default function ProductPage() {
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.95 }}
                             anchor="bottom"
-                            className="px-2 py-2 mt-2 origin-top rounded-md bg-[#fffffff5]"
+                            className="px-1 py-1 mt-2 origin-top rounded-lg bg-[#fffffff5]"
                           >
-                            {sort.map((person) => (
+                            {sortOptions.map((option) => (
                               <ListboxOption
-                                key={person.id}
-                                value={person}
-                                className="data-[focus]:bg-primary-beige-100 cursor-pointer px-2 py-1 rounded-sm"
+                                key={option.id}
+                                value={option.name}
+                                className="data-[focus]:bg-primary-beige-100 group cursor-pointer font-medium text-black-shade-200 text-[15px] pl-2 pr-4 py-1 rounded-md"
                               >
-                                {person.name}
+                                <FontAwesomeIcon
+                                  icon={faCheck}
+                                  className="text-sm mr-2 text-primary-green-200 invisible  group-data-[selected]:visible"
+                                />
+                                {option.name}
                               </ListboxOption>
                             ))}
                           </ListboxOptions>
