@@ -12,36 +12,53 @@ export const useFilters = () => {
     pharmaceutical: null,
   });
   const [availableTargets, setAvailableTargets] = useState(targetNames);
+  const [availablePharmaceuticalTypes, setAvailablePharmaceuticalTypes] =
+    useState(["Pharmaceutical", "Non-Pharmaceutical"]);
 
-  const updateAvailableTargets = (category) => {
+  const updateAvailableTargetsAndPharmaceuticals = (category) => {
     if (category) {
       const categoryProducts =
         productData.find((item) => item.slug === category)?.products || [];
+
+      // Update available targets
       const newTargets = categoryProducts.reduce((acc, product) => {
         const targets = Array.isArray(product.target)
           ? product.target
-          : [product.target]; // Ensure product.target is treated as an array
+          : [product.target];
         targets.forEach((target) => {
           if (!acc.includes(target)) acc.push(target);
         });
         return acc;
       }, []);
       setAvailableTargets(newTargets);
+
+      // Update available pharmaceutical types
+      const pharmaceuticalTypes = new Set();
+      categoryProducts.forEach((product) => {
+        if (product.pharmaceutical) {
+          pharmaceuticalTypes.add("Pharmaceutical");
+        } else {
+          pharmaceuticalTypes.add("Non-Pharmaceutical");
+        }
+      });
+      setAvailablePharmaceuticalTypes([...pharmaceuticalTypes]);
     } else {
-      // Reset to all targets when no category is selected
+      // Reset to all targets and pharmaceutical types when no category is selected
       const allTargets = productData.flatMap((data) =>
         data.products.flatMap((product) =>
           Array.isArray(product.target) ? product.target : [product.target]
         )
       );
       setAvailableTargets([...new Set(allTargets)]);
+
+      // Reset pharmaceutical types
+      setAvailablePharmaceuticalTypes(["Pharmaceutical", "Non-Pharmaceutical"]);
     }
   };
 
   const handleFilterChange = (filterType, value) => {
     setFilters((prev) => {
       if (filterType === "targets") {
-        // Use Set to ensure unique targets
         const updatedTargets = new Set(prev.targets);
         if (updatedTargets.has(value)) {
           updatedTargets.delete(value); // Remove the target if it's already selected
@@ -60,7 +77,7 @@ export const useFilters = () => {
       };
 
       if (filterType === "category") {
-        updateAvailableTargets(value); // Update targets when category changes
+        updateAvailableTargetsAndPharmaceuticals(value); // Update targets and pharmaceutical types when category changes
       }
 
       return updatedFilters;
@@ -71,10 +88,11 @@ export const useFilters = () => {
     setFilters({
       sort: "Relevance",
       category: null,
-      targets: [], // Ensure it resets to an empty array
+      targets: [],
       pharmaceutical: null,
     });
     setAvailableTargets(targetNames);
+    setAvailablePharmaceuticalTypes(["Pharmaceutical", "Non-Pharmaceutical"]);
   };
 
   const sortProducts = (products) => {
@@ -90,7 +108,6 @@ export const useFilters = () => {
     }
   };
 
-  // Filter the products based on the filters before applying pagination
   const filteredProducts = useMemo(() => {
     const products = productData.flatMap((category) =>
       category.products
@@ -120,9 +137,10 @@ export const useFilters = () => {
   return {
     filters,
     availableTargets,
-    filteredProducts, // This should be the complete filtered list, not paginated
+    availablePharmaceuticalTypes, // Return the available pharmaceutical types
+    filteredProducts,
     handleFilterChange,
-    updateAvailableTargets,
+    updateAvailableTargetsAndPharmaceuticals,
     clearFilters,
   };
 };

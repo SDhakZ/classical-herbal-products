@@ -205,12 +205,7 @@ export default function ProductPage() {
                     <div
                       key={target}
                       className="px-2 gap-2 group flex items-center py-1 rounded cursor-pointer border border-[#c2c2c2] bg-[#F3F0EB] text-primary-green-600"
-                      onClick={() =>
-                        handleFilterChange(
-                          "targets",
-                          filters.targets.filter((t) => t !== target)
-                        )
-                      }
+                      onClick={() => handleFilterChange("targets", target)} // Use the new function to remove targets correctly
                     >
                       <div className="mt-[0.5px] text-sm font-medium">
                         Target:{" "}

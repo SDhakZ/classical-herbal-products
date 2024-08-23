@@ -10,6 +10,7 @@ import {
   faEnvelope,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
+import { productData } from "./productData";
 
 export const menuData = [
   {
@@ -40,24 +41,10 @@ export const menuData = [
       },
       {
         title: "Categories",
-        links: [
-          {
-            title: "Tea",
-            url: "/products?category=tea",
-          },
-          {
-            title: "Ashwagandha",
-            url: "#",
-          },
-          {
-            title: "Shilajit",
-            url: "#",
-          },
-          {
-            title: "Seeds",
-            url: "#",
-          },
-        ],
+        links: productData.map((item) => ({
+          title: item.category,
+          url: `/products?category=${item.slug}`,
+        })),
       },
       {
         title: "Targeted Health Products",

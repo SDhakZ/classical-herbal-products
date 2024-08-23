@@ -24,7 +24,7 @@ export default function roductCard(props) {
       <p className="mt-2 text-2xl font-normal transition-colors duration-150 group-hover:text-primary-green-100 font-markaziText text-primary-green-400">
         {title}
       </p>
-      <p className="text-[15px] font-normal leading-5 text-black-shade-300">
+      <p className="text-[15px] font-normal leading-5 text-black-shade-200">
         {brief}
       </p>
     </a>
