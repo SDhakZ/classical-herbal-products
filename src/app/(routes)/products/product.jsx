@@ -19,7 +19,7 @@ import { productData } from "@/app/data/productData";
 
 export default function ProductPage() {
   const router = useRouter();
-  const searchParams = useSearchParams(); // This replaces useRouter()
+  const searchParams = useSearchParams();
   const {
     filters,
     availableTargets,
@@ -49,25 +49,39 @@ export default function ProductPage() {
   // On initial load, read the category and target from the query parameters
   useEffect(() => {
     const categoryFromQuery = searchParams.get("category");
-    const targetsFromQuery = searchParams.getAll("target"); // Retrieve multiple target parameters
+    const targetsFromQuery = [...new Set(searchParams.getAll("target"))]; // Deduplicate targets
 
-    if (categoryFromQuery) {
-      handleFilterChange("category", categoryFromQuery);
+    if (categoryFromQuery || targetsFromQuery.length > 0) {
+      // Only update filters if there is a difference between the query and the state
+      if (categoryFromQuery !== filters.category) {
+        handleFilterChange("category", categoryFromQuery);
+      }
+      targetsFromQuery.forEach((target) => {
+        if (!filters.targets.includes(target)) {
+          handleFilterChange("targets", target);
+        }
+      });
     }
   }, [searchParams]);
 
   // Handle updating the query params when filters change
   useEffect(() => {
-    const params = new URLSearchParams();
+    const currentQuery = new URLSearchParams(window.location.search);
 
-    if (filters.category) {
-      params.set("category", filters.category);
+    const newQuery = new URLSearchParams();
+    if (filters.category) newQuery.set("category", filters.category);
+    if (filters.pharmaceutical) newQuery.set("type", filters.pharmaceutical);
+
+    filters.targets.forEach((target) => newQuery.append("target", target));
+
+    // Compare current and new queries to avoid redundant updates
+    if (newQuery.toString() !== currentQuery.toString()) {
+      router.replace(`?${newQuery.toString()}`, {
+        shallow: true,
+        scroll: false,
+      });
     }
-
-    router.replace(`?${params.toString()}`);
   }, [filters, router]);
-
-  // Handle toggling targets
 
   return (
     <>

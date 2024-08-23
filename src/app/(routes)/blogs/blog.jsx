@@ -8,7 +8,7 @@ import BlogCard from "./Components/blogCard";
 export default function Blog() {
   const [paginatedItems, setPaginatedItems] = useState([]);
   const [pagination, setPagination] = useState({ start: 0, end: 6 });
-
+  const [currentPage, setCounter] = useState(1);
   useEffect(() => {
     // Apply pagination to the flat list of portfolio items
     const updatePaginatedItems = blogData.slice(
@@ -49,6 +49,8 @@ export default function Blog() {
             showPerPage={6}
             onPaginationChange={onPaginationChange}
             total={blogData.length}
+            setCounter={setCounter}
+            currentPage={currentPage}
           />
         </section>
       </div>

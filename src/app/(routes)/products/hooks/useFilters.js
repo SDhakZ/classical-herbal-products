@@ -39,29 +39,32 @@ export const useFilters = () => {
   };
 
   const handleFilterChange = (filterType, value) => {
-    if (filterType === "targets") {
-      // Handle targets specifically to ensure it remains an array
-      setFilters((prev) => {
-        // Toggle the target in the array
-        const updatedTargets = prev.targets.includes(value)
-          ? prev.targets.filter((target) => target !== value)
-          : [...prev.targets, value];
+    setFilters((prev) => {
+      if (filterType === "targets") {
+        // Use Set to ensure unique targets
+        const updatedTargets = new Set(prev.targets);
+        if (updatedTargets.has(value)) {
+          updatedTargets.delete(value); // Remove the target if it's already selected
+        } else {
+          updatedTargets.add(value); // Add the target if it's not selected
+        }
         return {
           ...prev,
-          targets: updatedTargets,
+          targets: [...updatedTargets], // Convert Set back to array
         };
-      });
-    } else {
-      setFilters((prev) => ({
+      }
+
+      const updatedFilters = {
         ...prev,
         [filterType]: value,
-      }));
+      };
 
-      // Update targets when category is changed
       if (filterType === "category") {
-        updateAvailableTargets(value);
+        updateAvailableTargets(value); // Update targets when category changes
       }
-    }
+
+      return updatedFilters;
+    });
   };
 
   const clearFilters = () => {
@@ -94,7 +97,6 @@ export const useFilters = () => {
         .filter(
           (product) =>
             (!filters.category || category.slug === filters.category) &&
-            Array.isArray(filters.targets) && // Ensure it's an array
             (filters.targets.length === 0 ||
               (Array.isArray(product.target)
                 ? product.target.some((t) => filters.targets.includes(t))
