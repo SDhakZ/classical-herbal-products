@@ -30,6 +30,7 @@ export default function ProductPage() {
   } = useFilters();
 
   const [currentPage, setCounter] = useState(1);
+  const [showFilter, setShowFilter] = useState(true);
 
   const { paginatedItems, start, end, onPaginationChange } = usePagination(
     filteredProducts,
@@ -97,6 +98,20 @@ export default function ProductPage() {
     }
   }, [filters, router]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setShowFilter(window.innerWidth >= 640);
+    };
+
+    // Initial check
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <>
       <Banner
@@ -105,74 +120,88 @@ export default function ProductPage() {
         image="assets/Products/Banners/all-products"
       />
       <div className="container-margin-compact padding-y-lg">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+        <div className="grid grid-cols-1 gap-y-4 sm:gap-4 sm:grid-cols-4">
           {/* Sidebar with filters */}
-          <aside className="flex flex-col col-span-1 gap-6 md:col-span-1">
+          <aside className="flex flex-col w-full col-span-1 gap-y-6 md:col-span-1">
             {/* Category Filter */}
-            <div className="flex flex-col">
-              <p className="text-2xl underline font-markaziText text-primary-green-400 underline-offset-8 decoration-[#a77e5d80]">
-                Category
-              </p>
-              <ul className="mt-4 space-y-1">
-                {productData.map((item, index) => (
-                  <li
-                    key={index}
-                    className={`font-medium text-[15px] ${
-                      filters.category === item.slug
-                        ? "text-primary-green-100"
-                        : "text-primary-green-300"
-                    } cursor-pointer`}
-                    onClick={() => handleFilterChange("category", item.slug)}
-                  >
-                    {item.category}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <button
+              onClick={() => setShowFilter(!showFilter)}
+              className="flex items-center justify-center w-full px-4 py-2 mb-1 font-medium text-center border rounded-md text-black-shade-200 border-primary-beige-300 sm:hidden"
+            >
+              {showFilter ? "Hide Filters" : "Show Filters"}
+            </button>
+            {showFilter ? (
+              <div className="flex flex-col gap-6 ">
+                <div className="flex flex-col">
+                  <p className="text-2xl underline font-markaziText text-primary-green-400 underline-offset-8 decoration-[#a77e5d80]">
+                    Category
+                  </p>
+                  <ul className="mt-4 space-y-1">
+                    {productData.map((item, index) => (
+                      <li
+                        key={index}
+                        className={`font-medium text-[15px] ${
+                          filters.category === item.slug
+                            ? "text-primary-green-100"
+                            : "text-primary-green-300"
+                        } cursor-pointer`}
+                        onClick={() =>
+                          handleFilterChange("category", item.slug)
+                        }
+                      >
+                        {item.category}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-            {/* Target Filter */}
-            <div className="flex flex-col">
-              <p className="text-2xl underline font-markaziText text-primary-green-400 underline-offset-8 decoration-[#a77e5d80]">
-                Targeted Health Products
-              </p>
-              <ul className="mt-4 space-y-1">
-                {availableTargets.map((target, index) => (
-                  <li
-                    key={index}
-                    className={`font-medium text-[15px] ${
-                      filters.targets.includes(target)
-                        ? "text-primary-green-100"
-                        : "text-primary-green-300"
-                    } cursor-pointer`}
-                    onClick={() => handleFilterChange("targets", target)}
-                  >
-                    {target}
-                  </li>
-                ))}
-              </ul>
-            </div>
+                {/* Target Filter */}
+                <div className="flex flex-col">
+                  <p className="text-2xl underline font-markaziText text-primary-green-400 underline-offset-8 decoration-[#a77e5d80]">
+                    Targeted Health Products
+                  </p>
+                  <ul className="mt-4 space-y-1">
+                    {availableTargets.map((target, index) => (
+                      <li
+                        key={index}
+                        className={`font-medium text-[15px] ${
+                          filters.targets.includes(target)
+                            ? "text-primary-green-100"
+                            : "text-primary-green-300"
+                        } cursor-pointer`}
+                        onClick={() => handleFilterChange("targets", target)}
+                      >
+                        {target}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-            {/* Pharmaceutical Filter */}
-            <div className="flex flex-col">
-              <p className="text-2xl underline font-markaziText text-primary-green-400 underline-offset-8 decoration-[#a77e5d80]">
-                Type
-              </p>
-              <ul className="mt-4 space-y-1">
-                {availablePharmaceuticalTypes.map((type, index) => (
-                  <li
-                    key={index}
-                    className={`font-medium text-[15px] ${
-                      filters.pharmaceutical === type
-                        ? "text-primary-green-100"
-                        : "text-primary-green-300"
-                    } cursor-pointer`}
-                    onClick={() => handleFilterChange("pharmaceutical", type)}
-                  >
-                    {type}
-                  </li>
-                ))}
-              </ul>
-            </div>
+                {/* Pharmaceutical Filter */}
+                <div className="flex flex-col">
+                  <p className="text-2xl underline font-markaziText text-primary-green-400 underline-offset-8 decoration-[#a77e5d80]">
+                    Type
+                  </p>
+                  <ul className="mt-4 space-y-1">
+                    {availablePharmaceuticalTypes.map((type, index) => (
+                      <li
+                        key={index}
+                        className={`font-medium text-[15px] ${
+                          filters.pharmaceutical === type
+                            ? "text-primary-green-100"
+                            : "text-primary-green-300"
+                        } cursor-pointer`}
+                        onClick={() =>
+                          handleFilterChange("pharmaceutical", type)
+                        }
+                      >
+                        {type}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ) : null}
           </aside>
 
           <section className="col-span-3">
@@ -246,8 +275,8 @@ export default function ProductPage() {
             ) : null}
 
             {/* Sorting Section */}
-            <div className="flex items-center justify-between w-full mb-4 h-fit col-span-full">
-              <p className="text-sm font-medium text-primary-green-200">
+            <div className="flex flex-wrap items-center justify-between w-full gap-2 mb-4 h-fit col-span-full">
+              <p className="text-[15px] font-medium text-primary-green-200">
                 Showing {start}-{end} of{" "}
                 <span className="font-semibold text-primary-green-300">
                   {filteredProducts.length} products
