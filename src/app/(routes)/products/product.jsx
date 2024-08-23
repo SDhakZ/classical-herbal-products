@@ -46,21 +46,24 @@ export default function ProductPage() {
   // Handle resetting pagination when filters are applied
   useEffect(() => setCounter(1), [filters]);
 
-  // On initial load, read the category and target from the query parameters
+  // On initial load, read the category, target, and sort from the query parameters
   useEffect(() => {
     const categoryFromQuery = searchParams.get("category");
     const targetsFromQuery = [...new Set(searchParams.getAll("target"))]; // Deduplicate targets
+    const sortFromQuery = searchParams.get("sort") || "Relevance"; // Default to "Relevance"
 
-    if (categoryFromQuery || targetsFromQuery.length > 0) {
-      // Only update filters if there is a difference between the query and the state
-      if (categoryFromQuery !== filters.category) {
-        handleFilterChange("category", categoryFromQuery);
-      }
+    if (
+      categoryFromQuery !== filters.category ||
+      !targetsFromQuery.every((target) => filters.targets.includes(target)) ||
+      sortFromQuery !== filters.sort
+    ) {
+      handleFilterChange("category", categoryFromQuery);
       targetsFromQuery.forEach((target) => {
         if (!filters.targets.includes(target)) {
           handleFilterChange("targets", target);
         }
       });
+      handleFilterChange("sort", sortFromQuery);
     }
   }, [searchParams]);
 
@@ -71,6 +74,7 @@ export default function ProductPage() {
     const newQuery = new URLSearchParams();
     if (filters.category) newQuery.set("category", filters.category);
     if (filters.pharmaceutical) newQuery.set("type", filters.pharmaceutical);
+    if (filters.sort) newQuery.set("sort", filters.sort); // Add sorting to the query
 
     filters.targets.forEach((target) => newQuery.append("target", target));
 
