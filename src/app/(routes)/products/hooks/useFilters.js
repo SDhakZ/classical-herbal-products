@@ -56,14 +56,24 @@ export const useFilters = () => {
     }
   };
 
-  const handleFilterChange = (filterType, value) => {
+  const handleFilterChange = (filterType, value, explicitlyAdding = null) => {
     setFilters((prev) => {
       if (filterType === "targets") {
         const updatedTargets = new Set(prev.targets);
-        if (updatedTargets.has(value)) {
-          updatedTargets.delete(value); // Remove the target if it's already selected
+        if (explicitlyAdding === null) {
+          // Toggle existing state if not explicitly specified
+          if (updatedTargets.has(value)) {
+            updatedTargets.delete(value); // Remove the target if it's already selected
+          } else {
+            updatedTargets.add(value); // Add the target if it's not selected
+          }
         } else {
-          updatedTargets.add(value); // Add the target if it's not selected
+          // Add or remove based on the explicitlyAdding flag
+          if (explicitlyAdding) {
+            updatedTargets.add(value);
+          } else {
+            updatedTargets.delete(value);
+          }
         }
         return {
           ...prev,
@@ -71,13 +81,15 @@ export const useFilters = () => {
         };
       }
 
+      // For other filters like category or sort
       const updatedFilters = {
         ...prev,
         [filterType]: value,
       };
 
+      // Update dependent filters like targets and pharmaceuticals if category changes
       if (filterType === "category") {
-        updateAvailableTargetsAndPharmaceuticals(value); // Update targets and pharmaceutical types when category changes
+        updateAvailableTargetsAndPharmaceuticals(value);
       }
 
       return updatedFilters;

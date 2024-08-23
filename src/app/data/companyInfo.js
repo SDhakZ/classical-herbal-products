@@ -12,6 +12,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { productData } from "./productData";
 
+const uniqueTargets = [
+  ...new Set(
+    productData.flatMap((category) =>
+      category.products.flatMap((product) =>
+        Array.isArray(product.target) ? product.target : [product.target]
+      )
+    )
+  ),
+];
+
 export const menuData = [
   {
     title: "PRODUCTS",
@@ -48,36 +58,10 @@ export const menuData = [
       },
       {
         title: "Targeted Health Products",
-        links: [
-          {
-            title: "Immunity support",
-            url: "#",
-          },
-          {
-            title: "Energy and Vitality",
-            url: "#",
-          },
-          {
-            title: "Stress and Relaxation",
-            url: "#",
-          },
-          {
-            title: "Digestive Health",
-            url: "#",
-          },
-          {
-            title: "Joints and Bone health",
-            url: "#",
-          },
-          {
-            title: "Weight management",
-            url: "#",
-          },
-          {
-            title: "Skin and Beauty",
-            url: "#",
-          },
-        ],
+        links: uniqueTargets.map((target) => ({
+          title: target,
+          url: `/products?target=${target.replace(/ /g, "+")}`,
+        })),
       },
     ],
   },

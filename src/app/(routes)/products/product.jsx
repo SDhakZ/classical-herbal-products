@@ -25,6 +25,7 @@ export default function ProductPage() {
     availableTargets,
     filteredProducts,
     handleFilterChange,
+    availablePharmaceuticalTypes,
     clearFilters,
   } = useFilters();
 
@@ -49,23 +50,32 @@ export default function ProductPage() {
   // On initial load, read the category, target, and sort from the query parameters
   useEffect(() => {
     const categoryFromQuery = searchParams.get("category");
-    const targetsFromQuery = [...new Set(searchParams.getAll("target"))]; // Deduplicate targets
-    const sortFromQuery = searchParams.get("sort") || "Relevance"; // Default to "Relevance"
+    const targetsFromQuery = searchParams.getAll("target");
+    const sortFromQuery = searchParams.get("sort") || "Relevance";
 
-    if (
-      categoryFromQuery !== filters.category ||
-      !targetsFromQuery.every((target) => filters.targets.includes(target)) ||
-      sortFromQuery !== filters.sort
-    ) {
+    if (categoryFromQuery) {
       handleFilterChange("category", categoryFromQuery);
-      targetsFromQuery.forEach((target) => {
-        if (!filters.targets.includes(target)) {
-          handleFilterChange("targets", target);
-        }
-      });
-      handleFilterChange("sort", sortFromQuery);
     }
-  }, [searchParams]);
+    handleFilterChange("sort", sortFromQuery);
+
+    // Initialize targets from URL
+    const currentTargets = new Set(filters.targets);
+    const queryTargets = new Set(targetsFromQuery);
+
+    // Add new targets from the query
+    queryTargets.forEach((target) => {
+      if (!currentTargets.has(target)) {
+        handleFilterChange("targets", target, true); // Add target
+      }
+    });
+
+    // Remove targets not in the query anymore
+    currentTargets.forEach((target) => {
+      if (!queryTargets.has(target)) {
+        handleFilterChange("targets", target, false); // Remove target
+      }
+    });
+  }, [searchParams]); // Ensure searchParams is included in dependency array
 
   // Handle updating the query params when filters change
   useEffect(() => {
@@ -148,30 +158,19 @@ export default function ProductPage() {
                 Type
               </p>
               <ul className="mt-4 space-y-1">
-                <li
-                  className={`font-medium text-[15px] ${
-                    filters.pharmaceutical === "Pharmaceutical"
-                      ? "text-primary-green-100"
-                      : "text-primary-green-300"
-                  } cursor-pointer`}
-                  onClick={() =>
-                    handleFilterChange("pharmaceutical", "Pharmaceutical")
-                  }
-                >
-                  Pharmaceutical
-                </li>
-                <li
-                  className={`font-medium text-[15px] ${
-                    filters.pharmaceutical === "Non-Pharmaceutical"
-                      ? "text-primary-green-100"
-                      : "text-primary-green-300"
-                  } cursor-pointer`}
-                  onClick={() =>
-                    handleFilterChange("pharmaceutical", "Non-Pharmaceutical")
-                  }
-                >
-                  Non-Pharmaceutical
-                </li>
+                {availablePharmaceuticalTypes.map((type, index) => (
+                  <li
+                    key={index}
+                    className={`font-medium text-[15px] ${
+                      filters.pharmaceutical === type
+                        ? "text-primary-green-100"
+                        : "text-primary-green-300"
+                    } cursor-pointer`}
+                    onClick={() => handleFilterChange("pharmaceutical", type)}
+                  >
+                    {type}
+                  </li>
+                ))}
               </ul>
             </div>
           </aside>
