@@ -1,0 +1,27 @@
+.sticky-image-container {
+  position: sticky;
+  top: calc(32% - 120px);
+  height: 100%;
+}
+
+.carousel .thumb.selected,
+.carousel .thumb:hover {
+  border: 3px solid #1a5319 !important;
+}
+
+.carousel .thumb {
+  border: 3px solid #d9d9d9 !important;
+}
+
+.carousel .thumbs-wrapper {
+  margin: 10px 0px 0px 0px;
+}
+
+@media (max-width: 640px) {
+  .sticky-image-container {
+    display: inline-block;
+    position: relative;
+    top: 0;
+    height: auto;
+  }
+}

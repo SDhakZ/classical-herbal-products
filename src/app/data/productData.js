@@ -54,22 +54,13 @@ export const productData = [
           sizes: ["500gm", "300gm"],
           images: [
             {
-              original:
-                "/assets/Products/tea/ayurvedic-booster-tea/ayurvedic-booster-tea.png",
-              thumbnail:
-                "/assets/Products/tea/ayurvedic-booster-tea/ayurvedic-booster-tea.png",
+              src: "ayurvedic-booster-tea.png",
             },
             {
-              original:
-                "/assets/Products/tea/ayurvedic-booster-tea/ayurvedic-booster-tea-2.png",
-              thumbnail:
-                "/assets/Products/tea/ayurvedic-booster-tea/ayurvedic-booster-tea-2.png",
+              src: "ayurvedic-booster-tea-2.png",
             },
             {
-              original:
-                "/assets/Products/tea/ayurvedic-booster-tea/nutritional-fact.png",
-              thumbnail:
-                "/assets/Products/tea/ayurvedic-booster-tea/nutritional-fact.png",
+              src: "nutritional-fact.png",
             },
           ],
           nutrutionalFacts: "nutritional-fact.png",
