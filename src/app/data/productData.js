@@ -63,6 +63,16 @@ export const productData = [
               src: "nutritional-fact.png",
             },
           ],
+          testing: {
+            image: "ayurvedic-booster-tea.png",
+            types: [
+              "Microbial Testing",
+              "Heavy Metal Testing",
+              "Purity Testing",
+              "Pesticide Testing",
+              "Strength Testing",
+            ],
+          },
           nutrutionalFacts: "nutritional-fact.png",
           deliveryDetails: "",
           additionalDetails:

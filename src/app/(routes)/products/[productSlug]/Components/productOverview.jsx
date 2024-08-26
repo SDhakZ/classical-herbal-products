@@ -1,39 +1,16 @@
 "use client";
 import React, { useState } from "react";
-import { useParams } from "next/navigation";
-import { productData } from "@/app/data/productData";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./productDetail.css";
-export default function ProductOverview() {
-  const params = useParams();
-  const productSlug = params.productSlug;
-
-  const allProducts = productData.flatMap((category) =>
-    category.products.map((product) => ({
-      ...product,
-      categorySlug: category.slug,
-    }))
-  );
-
-  // Find the product based on the slug
-  const selectedProductData = allProducts.find(
-    (product) => product.slug === productSlug
-  );
-
+export default function ProductOverview({ selectedProductData }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  if (!selectedProductData) {
-    return <div>Product not found</div>;
-  }
-
   const handleModalToggle = () => {
     setIsModalOpen(!isModalOpen);
   };
-
   return (
     <div className="container-margin-compact padding-y-lg">
       <div className="flex flex-col justify-between gap-8 sm:flex-row sm:gap-8 md:gap-10 lg:gap-16 xl:gap-24">

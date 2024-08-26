@@ -7,8 +7,41 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./SwiperOverride.css";
 
-export default function ingredientsSlider(props) {
-  const { title, description, ingredients } = props;
+const ingredientsDefault = [
+  {
+    title: "Haskap Berry",
+    description:
+      "Handpicked by our professional in house farmers the haskap berry are good for heart health and has dietary fiber contents. ",
+    image: "/assets/About/transparency/haskap.png",
+  },
+  {
+    title: "Wellmune",
+    description:
+      "Wellmune is a proprietary ingredient derived from baker's yeast and is marketed as a natural immune health ingredient",
+    image: "/assets/About/transparency/wellmune.png",
+  },
+  {
+    title: "Vitamin C",
+    description:
+      "Vitamin C is a powerful antioxidant that boosts immunity and reduces the risk of chronic diseases. I",
+    image: "/assets/About/transparency/vitamin-c.png",
+  },
+  {
+    title: "Haskap Berry",
+    description:
+      "Handpicked by our professional in house farmers the haskap berry are good for heart health and has dietary fiber contents. ",
+    image: "/assets/About/transparency/haskap.png",
+  },
+  {
+    title: "Wellmune",
+    description:
+      "Wellmune is a proprietary ingredient derived from baker's yeast and is marketed as a natural immune health ingredient",
+    image: "/assets/About/transparency/wellmune.png",
+  },
+];
+
+export default function IngredientsSlider(props) {
+  const { title, description, ingredients = ingredientsDefault } = props;
   return (
     <div className="container-margin padding-y-lg">
       <div className="flex flex-col justify-center gap-10">
