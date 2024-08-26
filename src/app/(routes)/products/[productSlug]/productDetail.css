@@ -1,0 +1,23 @@
+.sticky-image-container {
+  position: sticky;
+  top: calc(50% - 120px);
+  height: 100%;
+}
+
+.pj-sticky-image-container {
+  position: sticky;
+  top: 32%; /* Adjust based on your needs */
+  height: 100%; /* Adjust based on your needs */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 540px) {
+  .pj-section-layout {
+    grid-template-columns: 1fr;
+  }
+  .pj-sticky-image-container {
+    display: block;
+  }
+}

@@ -41,6 +41,81 @@ export const productData = [
           "Helps to increase immunity in your body with its natural lavender extracts",
         image: "ayurvedic-booster-tea.png",
         pharmaceutical: false,
+        bestSeller: true,
+        details: {
+          benefits: [
+            "Natural Immunity Booster",
+            "Effective for Cough",
+            "Effective for Cold and Flu",
+            "Rich in Antioxidants",
+            "Energy Enhancer",
+            "Improves Digestion",
+          ],
+          sizes: ["500gm", "300gm"],
+          images: [
+            {
+              original:
+                "/assets/Products/tea/ayurvedic-booster-tea/ayurvedic-booster-tea.png",
+              thumbnail:
+                "/assets/Products/tea/ayurvedic-booster-tea/ayurvedic-booster-tea.png",
+            },
+            {
+              original:
+                "/assets/Products/tea/ayurvedic-booster-tea/ayurvedic-booster-tea-2.png",
+              thumbnail:
+                "/assets/Products/tea/ayurvedic-booster-tea/ayurvedic-booster-tea-2.png",
+            },
+            {
+              original:
+                "/assets/Products/tea/ayurvedic-booster-tea/nutritional-fact.png",
+              thumbnail:
+                "/assets/Products/tea/ayurvedic-booster-tea/nutritional-fact.png",
+            },
+          ],
+          nutrutionalFacts: "nutritional-fact.png",
+          deliveryDetails: "",
+          additionalDetails:
+            "Herbs in tea are scientifically proven for immune supportive and health benefit effects.",
+          directionToUse: [
+            {
+              tile: "Measure Tea",
+              description:
+                "Take 1-2 teaspoons (5-10 grams) of tea leaves to 500ml water.",
+              img: "assets/Direction/measure-tea.png",
+            },
+            {
+              tile: "Boil the tea",
+              description:
+                "Boil the water for 8-10 minutes to extract the full flavour.",
+
+              img: "assets/Direction/Directionboil-water.png",
+            },
+            {
+              tile: "Strain the tea",
+              description: "Filter the tea to remove the leaves.",
+              img: "assets/Direction/strain-tea.png",
+            },
+            {
+              tile: "Serve  and sweeten",
+              description:
+                "Enjoy the tea 1-2 times a day. You can add honey, jaggery or sugar to taste. ",
+              img: "assets/Direction/serve-sweeten.png",
+            },
+            {
+              tile: "Special Considerations",
+              description:
+                "Consult a physician if pregnant or for severely ill individuals.",
+              img: "assets/Direction/special-consideration.png",
+            },
+          ],
+          testings: [
+            "Microbial Testing",
+            "Heavy Metal Testing",
+            "Purity Testing",
+            "Pesticide Testing",
+            "Strength Testing",
+          ],
+        },
       },
     ].map((product) => ({
       ...product,
