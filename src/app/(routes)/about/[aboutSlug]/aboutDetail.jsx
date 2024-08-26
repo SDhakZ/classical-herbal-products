@@ -26,9 +26,7 @@ export default function AboutDetail({ params }) {
         color={selectedAboutData.highlight.color}
         description={selectedAboutData.highlight.description}
       />
-      {selectedAboutData.testing ? (
-        <TestingsSection testingData={selectedAboutData.testing} />
-      ) : null}
+      {selectedAboutData.testing ? <TestingsSection /> : null}
       {selectedAboutData.scienceBehind ? (
         <IngredientsSlider
           title={selectedAboutData.scienceBehind.title}

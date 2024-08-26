@@ -3,8 +3,13 @@ import ProductOverview from "./Components/productOverview";
 import { productData } from "@/app/data/productData";
 import IngredientsSlider from "@/app/components/ingredientsSlider/ingredientsSlider";
 import TestingsSection from "@/app/components/testingsSection/testingsSection";
+import AboutCard from "@/app/components/aboutCards/aboutCard";
+import CompanyValue from "@/app/components/companyValue/companyValue";
+import Contact from "../../contact/contact";
+import RecommendProduct from "./Components/recommendProduct";
 
 export default function page({ params }) {
+  const hcaptcha_site_key = process.env.HCAPTCHA_SITE_KEY;
   const productSlug = params.productSlug;
 
   const allProducts = productData.flatMap((category) =>
@@ -32,13 +37,24 @@ export default function page({ params }) {
         ingredients={selectedProductData.details.ingredients}
       />
       <TestingsSection
-        types={selectedProductData.details.testing.types}
+        types={
+          selectedProductData.details.testing.types
+            ? selectedProductData.details.testing.types
+            : null
+        }
         image={
           selectedProductData.details.testing.image
             ? `/assets/Products/${selectedProductData.categorySlug}/${selectedProductData.slug}/${selectedProductData.details.testing.image}`
             : null
         }
       />
+      <AboutCard />
+      <CompanyValue />
+      <RecommendProduct
+        currentCategorySlug={selectedProductData.categorySlug}
+        currentProductSlug={selectedProductData.slug}
+      />
+      <Contact hcaptcha_site_key={hcaptcha_site_key} dark={true} />
     </>
   );
 }
