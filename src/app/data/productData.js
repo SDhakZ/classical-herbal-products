@@ -76,7 +76,7 @@ export const productData = [
           nutrutionalFacts: "nutritional-fact.png",
           deliveryDetails: "",
           additionalDetails:
-            "Herbs in tea are scientifically proven for immune supportive and health benefit effects.",
+            "Herbs in tea are scientifically proven for immune supportive and health benefit effects. You can take the tea whenever you want to relax and take back.",
           directionToUse: [
             {
               title: "Measure Tea",

@@ -27,7 +27,7 @@ const values = [
 
 export default function CompanyValue() {
   return (
-    <div className="pt-0 sm:pt-10">
+    <div className="pt-0 sm:pt-10 margin-t">
       <div className="py-14 bg-primary-beige-100">
         <div className="container-margin ">
           <div className="flex flex-col gap-10 sm:flex-row justify-evenly">
@@ -43,7 +43,7 @@ export default function CompanyValue() {
                   src={value.image}
                   alt={value.title}
                 />
-                <h3 className="mt-5 text-2xl text-primary-green-400 font-markaziText text-primary-dark-100">
+                <h3 className="mt-5 text-3xl text-primary-green-400 font-markaziText text-primary-dark-100">
                   {value.title}
                 </h3>
                 <p className="text-sm font-medium max-w-[246px] text-black-shade-200 text-center text-primary-dark-200">

@@ -12,7 +12,7 @@ export default function ProductOverview({ selectedProductData }) {
     setIsModalOpen(!isModalOpen);
   };
   return (
-    <div className="container-margin-compact padding-y-lg">
+    <div className="container-margin-compact top-section-p">
       <div className="flex flex-col justify-between gap-8 sm:flex-row sm:gap-8 md:gap-10 lg:gap-16 xl:gap-24">
         <div className="sticky-image-container">
           <Carousel
@@ -99,7 +99,7 @@ export default function ProductOverview({ selectedProductData }) {
             <h2 className="font-medium underline uppercase text-[#684711] decoration-2 underline-offset-8 decoration-[#684711]">
               Additional Info
             </h2>
-            <p className="mt-5 text-black-shade-300">
+            <p className="mt-5 max-w-[500px] text-black-shade-300">
               {selectedProductData.details.additionalDetails}
             </p>
           </div>
@@ -107,14 +107,14 @@ export default function ProductOverview({ selectedProductData }) {
             <h2 className="font-medium underline uppercase text-[#684711] decoration-2 underline-offset-8 decoration-[#684711]">
               Delivery Details
             </h2>
-            <p className="mt-5 font-medium text-black-shade-300">
+            <p className="mt-5 font-normal max-w-[500px] text-black-shade-300">
               Delivery available inside Kathmandu valley. For elsewhere extra
               charge may apply.
             </p>
           </div>
           <a
             href="/contact"
-            className="px-5 w-full flex item-center justify-center pt-5 pb-4 transition-colors duration-200 hover:bg-[#BA9962] font-medium leading-none tracking-wide uppercase rounded-md text-white-shade-100 sm:w-fit bg-primary-beige-300"
+            className="px-5 w-full text-base flex item-center justify-center pt-5 pb-4 transition-colors duration-200 hover:bg-[#BA9962] font-medium leading-none tracking-wide uppercase rounded-md text-white-shade-100 sm:w-fit bg-primary-beige-300"
           >
             Contact Us to Buy
           </a>
