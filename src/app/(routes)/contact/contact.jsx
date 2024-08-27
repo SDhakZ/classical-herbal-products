@@ -96,7 +96,7 @@ export default function Contact(props) {
   };
 
   return (
-    <div className={`min-h-screen ${dark ? "bg-primary-green-400" : ""}`}>
+    <div className={`${dark ? "bg-primary-green-400" : ""}`}>
       <div className="container-margin-compact padding-y-lg">
         <div className="flex flex-col justify-between gap-20 sm:flex-row sm:justify-between">
           <div className="flex flex-col gap-12 w-full max-w-[500px]">

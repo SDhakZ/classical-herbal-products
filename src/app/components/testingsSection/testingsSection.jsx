@@ -18,7 +18,7 @@ export default function TestingsSection({
   types = testingDefaultData.defaultTypes,
 }) {
   return (
-    <div className="container-margin-compact padding-y-lg margin-t">
+    <div className="container-margin-compact padding-y-lg">
       <div className="flex flex-col-reverse items-center gap-6 md:flex-row sm:justify-between sm:gap-12">
         <div className="w-full space-y-5 md:space-y-6">
           <div className="text-4xl text-center md:text-left font-markaziText text-primary-green-400">
@@ -46,19 +46,19 @@ export default function TestingsSection({
             ))}
           </ul>
         </div>
-        <div className="relative w-full max-w-[250px] pb-10 sm:max-w-[300px] md:max-w-[500px]">
+        <div className="relative flex justify-center w-full max-w-[250px] pb-10 sm:max-w-[300px] md:max-w-[500px]">
           <img
             loading="lazy"
             decoding="async"
             alt="Active section"
-            className="relative z-0 w-full h-auto rounded-sm"
+            className="relative z-0 w-full max-w-[370px] h-auto rounded-sm"
             src="/testingBackground.png"
           />
           <img
             loading="lazy"
             decoding="async"
             alt="Active section"
-            className="absolute z-10 w-full max-w-[500px] -bottom-5  left-1/2 -translate-x-1/2 rounded-sm"
+            className="absolute z-10 w-full max-w-[370px] -bottom-5  left-1/2 -translate-x-1/2 rounded-sm"
             src={image}
           />
         </div>

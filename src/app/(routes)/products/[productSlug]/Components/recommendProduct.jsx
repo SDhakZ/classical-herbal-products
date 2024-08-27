@@ -38,7 +38,7 @@ export default function RecommendProduct({
   ];
 
   return (
-    <div className="container-margin-compact padding-y-lg">
+    <div className="container-margin-compact margin-y">
       <h2 className="text-3xl text-center md:text-4xl lg:text-5xl font-markaziText text-primary-green-400">
         View Other Products
       </h2>

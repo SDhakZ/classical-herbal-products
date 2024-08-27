@@ -53,12 +53,16 @@
     @apply py-2 md:py-4 lg:py-6;
   }
 
+  .margin-y {
+    @apply my-10 md:my-12 lg:my-14;
+  }
+
   .top-section-p {
     @apply pt-12 pb-4 md:pt-14 md:pb-8 lg:pt-20 lg:pb-10;
   }
 
   .margin-t {
-    @apply mt-6 md:mt-12 lg:mt-16;
+    @apply mt-12 md:mt-14 lg:mt-20;
   }
 
   .padding-y-lg {

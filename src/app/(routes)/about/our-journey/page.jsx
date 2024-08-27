@@ -13,7 +13,7 @@ export default function page() {
         image="assets/About/our-journey"
       />
       <div className="w-full container-margin-compact">
-        <div className="w-full padding-y-lg">
+        <div className="w-full margin-y">
           <img
             alt="Holistic healing"
             src="/assets/About/our-journey-holistic.png"
@@ -34,7 +34,7 @@ export default function page() {
           </div>
         </div>
       </div>
-      <div className="py-14 sm:py-16 bg-[#00521F]">
+      <div className="py-14 sm:py-16 bg-[#00521F] margin-y">
         <div className="w-full container-margin-compact">
           <div className="flex items-center justify-center w-full ">
             <div className="max-w-[1300px] flex-col sm:flex-row flex items-center justify-center gap-6 sm:gap-10">

@@ -29,12 +29,12 @@ const aboutOptions = [
 
 export default function AboutCard() {
   return (
-    <div className="container-margin-compact margin-t">
-      <div className="flex flex-col gap-8 sm:gap-20">
-        <h2 className="text-4xl text-center sm:text-5xl md:text-5xl font-markaziText text-primary-green-400">
+    <div className="container-margin-compact margin-y">
+      <div className="flex flex-col gap-8 sm:gap-14">
+        <h2 className="text-3xl leading-7 text-center sm:text-4xl md:text-5xl font-markaziText text-primary-green-400">
           Why Classical Herb Products?
         </h2>
-        <div className="flex flex-col flex-wrap items-center justify-center w-full lg:justify-evenly lg:flex-nowrap sm:flex-row gap-14">
+        <div className="flex flex-col flex-wrap items-center justify-center w-full gap-10 lg:justify-evenly lg:flex-nowrap sm:flex-row sm:gap-14">
           {aboutOptions.map((option, index) => (
             <div
               key={index}
@@ -44,7 +44,7 @@ export default function AboutCard() {
                 <div className="flex items-center w-[80px] justify-center">
                   <img src={option.icon} alt={`${option.title} icon`} />
                 </div>
-                <h3 className="mt-4 text-xl font-medium text-center text-primary-green-500">
+                <h3 className="mt-4 text-lg font-medium text-center sm:text-xl text-primary-green-500">
                   {option.title}
                 </h3>
                 <p className="mt-3 text-base text-center text-black-shade-200">

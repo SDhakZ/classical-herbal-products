@@ -43,7 +43,7 @@ const ingredientsDefault = [
 export default function IngredientsSlider(props) {
   const { title, description, ingredients = ingredientsDefault } = props;
   return (
-    <div className="container-margin margin-t">
+    <div className="container-margin margin-y">
       <div className="flex flex-col justify-center gap-10">
         <div className="flex flex-col items-center justify-center w-full gap-4">
           <img

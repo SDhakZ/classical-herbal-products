@@ -28,7 +28,7 @@ export default function Blog() {
         title="Resources we create"
         description="We delve deep into responsible sourcing, traveling far and wide to partner with farmers who understand the land, soil, and plants like no one else."
       />
-      <div className="padding-y-lg container-margin-compact">
+      <div className="padding-y margin-t container-margin-compact">
         <h1 className="text-5xl text-center font-markaziText text-primary-green-400">
           Our Blogs
         </h1>

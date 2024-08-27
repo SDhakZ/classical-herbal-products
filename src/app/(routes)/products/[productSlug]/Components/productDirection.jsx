@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function ProductDirection({ direction }) {
   return (
-    <div className=" margin-t container-margin-compact">
+    <div className=" margin-y container-margin-compact">
       <h2 className="text-4xl leading-8 text-center md:text-5xl font-markaziText text-primary-green-400">
         Direction to enjoy your product
       </h2>
