@@ -11,6 +11,8 @@ import {
 import { menuData } from "@/app/data/companyInfo";
 import { motion, AnimatePresence } from "framer-motion";
 import "./menubar.css";
+import { blogData } from "@/app/data/blogData";
+import Image from "next/image";
 
 export default function Menubar() {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -84,37 +86,34 @@ export default function Menubar() {
                         ))}
                         {menu.blogs ? (
                           <div className="flex gap-6">
-                            <a
-                              href={menu.url}
-                              className="max-w-[256px] overflow-hidden"
-                            >
-                              <img
-                                alt="Blog Image"
-                                className="max-w-[256px] w-full"
-                                src="/assets/Blogs/test.png"
-                              />
-                              <p className="mt-2 text-xl truncate text-black-shade-200 text-ellipsis font-markaziText">
-                                Why Shilajit is good for you?
-                              </p>
-                            </a>
-                            <a
-                              href={menu.url}
-                              className="max-w-[256px] overflow-hidden"
-                            >
-                              <img
-                                alt="Blog Image"
-                                className="w-[256px]"
-                                src="/assets/Blogs/test.png"
-                              />
-                              <p className="mt-2 text-xl truncate text-black-shade-200 text-ellipsis font-markaziText">
-                                Why Shilajit is good for you?
-                              </p>
-                            </a>
+                            {blogData.slice(0, 2).map((blog, index) => (
+                              <Link
+                                key={index}
+                                href={`/blogs/${blog.slug}`}
+                                className="max-w-[256px] group overflow-hidden"
+                              >
+                                <figure className="max-w-[256px] overflow-hidden">
+                                  <Image
+                                    width={256}
+                                    height={256}
+                                    alt="Blog Image"
+                                    className="w-full transition-transform duration-500 ease-in-out group-hover:scale-105"
+                                    src={`/assets/Blogs/shilajit-benefits/${blog.image}`}
+                                  />
+                                </figure>
+                                <p className="mt-2 text-xl truncate text-black-shade-200 text-ellipsis font-markaziText">
+                                  Why Shilajit is good for you?
+                                </p>
+                                <p className="font-normal line-clamp-1 text-black-shade-200">
+                                  {blog.brief}
+                                </p>
+                              </Link>
+                            ))}
                           </div>
                         ) : null}
                         <Link
                           className="flex px-4 py-3 whitespace-nowrap text-[14px] font-medium uppercase rounded-md h-fit bg-primary-green-300 text-white-shade-100"
-                          href="#"
+                          href="/products"
                         >
                           See Products
                         </Link>
@@ -175,32 +174,35 @@ export default function Menubar() {
                       ))}
                       {menuData[2].blogs ? (
                         <div className="flex gap-6">
-                          <a href="#" className="max-w-[256px] overflow-hidden">
-                            <img
-                              alt="Blog Image"
-                              className="max-w-[256px] w-full"
-                              src="/assets/Blogs/test.png"
-                            />
-                            <p className="mt-2 text-xl truncate text-black-shade-200 text-ellipsis font-markaziText">
-                              Why Shilajit is good for you?
-                            </p>
-                          </a>
-                          <a href="#" className="max-w-[256px] overflow-hidden">
-                            <img
-                              alt="Blog Image"
-                              className="w-[256px]"
-                              src="/assets/Blogs/test.png"
-                            />
-                            <p className="mt-2 text-xl truncate text-black-shade-200 text-ellipsis font-markaziText">
-                              Why Shilajit is good for you?
-                            </p>
-                          </a>
+                          {blogData.slice(0, 2).map((blog, index) => (
+                            <Link
+                              key={index}
+                              href={`/blogs/${blog.slug}`}
+                              className="max-w-[256px] group overflow-hidden"
+                            >
+                              <figure className="max-w-[256px] overflow-hidden">
+                                <Image
+                                  width={256}
+                                  height={256}
+                                  alt="Blog Image"
+                                  className="w-full transition-transform duration-500 ease-in-out group-hover:scale-105"
+                                  src={`/assets/Blogs/shilajit-benefits/${blog.image}`}
+                                />
+                              </figure>
+                              <p className="mt-2 text-xl truncate text-black-shade-200 text-ellipsis font-markaziText">
+                                Why Shilajit is good for you?
+                              </p>
+                              <p className="font-normal line-clamp-1 text-black-shade-200">
+                                {blog.brief}
+                              </p>
+                            </Link>
+                          ))}
                         </div>
                       ) : null}
 
                       <Link
                         className="flex px-4 py-3 whitespace-nowrap text-[14px] font-medium uppercase rounded-md h-fit bg-primary-green-300 text-white-shade-100"
-                        href="#"
+                        href="/products"
                       >
                         See Products
                       </Link>
@@ -305,37 +307,34 @@ export default function Menubar() {
                           ))}
                           {menuData[2].blogs ? (
                             <div className="flex flex-col gap-6 sm:flex-wrap sm:flex-row">
-                              <a
-                                href="#"
-                                className="max-w-[256px] overflow-hidden"
-                              >
-                                <img
-                                  className="max-w-[256px] w-full"
-                                  src="/assets/Blogs/test.png"
-                                  alt="Blog Image"
-                                />
-                                <p className="mt-2 text-2xl truncate text-black-shade-200 text-ellipsis font-markaziText">
-                                  Why Shilajit is good for you?
-                                </p>
-                              </a>
-                              <a
-                                href="#"
-                                className="max-w-[256px] overflow-hidden"
-                              >
-                                <img
-                                  className="w-[256px]"
-                                  src="/assets/Blogs/test.png"
-                                  alt="Blog Image"
-                                />
-                                <p className="mt-2 text-xl truncate text-black-shade-200 text-ellipsis font-markaziText">
-                                  Why Shilajit is good for you?
-                                </p>
-                              </a>
+                              {blogData.slice(0, 2).map((blog, index) => (
+                                <Link
+                                  key={index}
+                                  href={`/blogs/${blog.slug}`}
+                                  className="max-w-[256px] group overflow-hidden"
+                                >
+                                  <figure className="max-w-[256px] overflow-hidden">
+                                    <Image
+                                      width={256}
+                                      height={256}
+                                      alt="Blog Image"
+                                      className="w-full transition-transform duration-500 ease-in-out group-hover:scale-105"
+                                      src={`/assets/Blogs/shilajit-benefits/${blog.image}`}
+                                    />
+                                  </figure>
+                                  <p className="mt-2 text-xl truncate text-black-shade-200 text-ellipsis font-markaziText">
+                                    Why Shilajit is good for you?
+                                  </p>
+                                  <p className="font-normal line-clamp-1 text-black-shade-200">
+                                    {blog.brief}
+                                  </p>
+                                </Link>
+                              ))}
                             </div>
                           ) : null}
                           <Link
                             className="flex w-fit whitespace-nowrap px-4 py-3 text-[16px] font-medium uppercase rounded-md bg-primary-green-300 text-white-shade-100"
-                            href="#"
+                            href="/products"
                           >
                             See Products
                           </Link>

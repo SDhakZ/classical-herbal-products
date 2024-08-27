@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 
 export default function roductCard(props) {
   const { index, link, image, title, brief, bestSeller } = props;
@@ -15,7 +16,9 @@ export default function roductCard(props) {
             Best Seller
           </span>
         )}
-        <img
+        <Image
+          width={200}
+          height={200}
           className="w-full overflow-hidden rounded-sm max-w-[200px]"
           src={image}
           alt={title}

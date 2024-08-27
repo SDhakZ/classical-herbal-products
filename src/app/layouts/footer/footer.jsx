@@ -1,6 +1,8 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { socialInfo, menuData } from "@/app/data/companyInfo";
+import CHPLogo from "@/app/assets/CHPLogo.png";
+import Image from "next/image";
 
 export default function footer() {
   return (
@@ -8,8 +10,10 @@ export default function footer() {
       <div className="pt-16 pb-10 container-margin">
         <div className="flex flex-col ">
           <div className="flex flex-col flex-wrap justify-center gap-12 sm:flex-row sm:justify-between sm:gap-20 ">
-            <img
-              src="/assets/CHPLogo.png"
+            <Image
+              width={250}
+              height={115}
+              src={CHPLogo}
               className="self-center sm:self-start w-full max-w-[200px] sm:w-full sm:max-w-[250px]"
               alt="CHP Logo"
             />

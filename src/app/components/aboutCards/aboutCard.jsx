@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const aboutOptions = [
   {
@@ -42,7 +43,12 @@ export default function AboutCard() {
             >
               <div className="flex flex-col items-center justify-center">
                 <div className="flex items-center w-[80px] justify-center">
-                  <img src={option.icon} alt={`${option.title} icon`} />
+                  <Image
+                    width={80}
+                    height={80}
+                    src={option.icon}
+                    alt={`${option.title} icon`}
+                  />
                 </div>
                 <h3 className="mt-4 text-lg font-medium text-center sm:text-xl text-primary-green-500">
                   {option.title}

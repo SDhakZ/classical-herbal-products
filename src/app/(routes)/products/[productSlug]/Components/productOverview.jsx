@@ -6,6 +6,7 @@ import { faCheckSquare, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./productDetail.css";
+
 export default function ProductOverview({ selectedProductData }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleModalToggle = () => {
@@ -37,7 +38,7 @@ export default function ProductOverview({ selectedProductData }) {
             ))}
           </Carousel>
         </div>
-        <div className="flex flex-col gap-8 sm:w-2/3 md:w-1/2 sm:gap-6 md:gap-8">
+        <div className="flex flex-col gap-8 sm:w-2/3 md:w-1/2 sm:gap-6 md:gap-10">
           <div className="flex flex-col gap-3">
             {selectedProductData.bestSeller ? (
               <div className="float-left px-3 py-2 mb-2 text-sm leading-none text-white uppercase rounded-md bg-primary-green-200 w-fit">
@@ -87,7 +88,12 @@ export default function ProductOverview({ selectedProductData }) {
             </ul>
           </div>
           <div className="flex items-center gap-2 my-1">
-            <img className="w-5" src="/nutritionLogo.png" />
+            <Image
+              width={20}
+              height={20}
+              className="w-5"
+              src="/nutritionLogo.png"
+            />
             <button
               onClick={handleModalToggle}
               className="font-medium underline transition-colors duration-150 hover:text-primary-green-200 hover:decoration-primary-green-200 decoration-2 text-primary-green-300 underline-offset-8 decoration-primary-green-300 "

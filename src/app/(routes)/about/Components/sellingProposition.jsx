@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import "./sellingProposition.css";
+import Image from "next/image";
 
 export default function SellingProposition(props) {
   const { selectedAboutData } = props;
@@ -89,7 +90,9 @@ export default function SellingProposition(props) {
                   </p>
                 </div>
                 <div className="relative w-full h-full sm:hidden sm:invisible">
-                  <img
+                  <Image
+                    width={500}
+                    height={410}
                     title={process.title}
                     loading="lazy"
                     decoding="async"
@@ -103,7 +106,9 @@ export default function SellingProposition(props) {
           </div>
         </div>
         <div className={`sm:block hidden sticky-image-container `}>
-          <img
+          <Image
+            width={500}
+            height={410}
             loading="lazy"
             decoding="async"
             alt="Active section"

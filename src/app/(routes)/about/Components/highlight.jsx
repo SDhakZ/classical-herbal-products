@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function HighLight(props) {
   const { image, title, description, color } = props;
@@ -39,7 +40,13 @@ export default function HighLight(props) {
       <div className="flex justify-center w-full">
         <div className="flex flex-col max-w-[500px] min-[769px]:max-w-none w-full md:flex-row">
           <div className="w-full md:w-1/2 min-[769px]:h-auto">
-            <img className="w-full" alt={title} src={image}></img>
+            <Image
+              width={769}
+              height={769}
+              className="w-full"
+              alt={title}
+              src={image}
+            ></Image>
           </div>
 
           <div

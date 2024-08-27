@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./SwiperOverride.css";
+import Image from "next/image";
 
 const ingredientsDefault = [
   {
@@ -46,11 +47,13 @@ export default function IngredientsSlider(props) {
     <div className="container-margin margin-y">
       <div className="flex flex-col justify-center gap-10">
         <div className="flex flex-col items-center justify-center w-full gap-4">
-          <img
+          <Image
+            width={160}
+            height={160}
             className="w-40"
             alt="Science behind"
             src="/science-behind-icon.png"
-          ></img>
+          ></Image>
           <h2 className="text-3xl font-medium sm:text-4xl md:text-5xl text-primary-green-400 font-markaziText">
             {title ? title : "The Science Behind"}
           </h2>
@@ -96,7 +99,9 @@ export default function IngredientsSlider(props) {
               return (
                 <SwiperSlide key={index}>
                   <div className="flex relative px-4 sm:px-6 rounded-xl w-full max-w-[350px] h-full max-h-[300px] flex-col items-center gap-2 bg-[#11a70023]">
-                    <img
+                    <Image
+                      width={350}
+                      height={350}
                       src={ingredient.image}
                       alt={ingredient.title}
                       className="w-full relative max-w-[130px] sm:max-w-[155px] -top-20"

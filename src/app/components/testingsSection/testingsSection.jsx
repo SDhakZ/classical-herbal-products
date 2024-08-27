@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
 
 const testingDefaultData = {
   defaultImage: "/assets/About/purity/purity-testing.png",
@@ -47,14 +48,18 @@ export default function TestingsSection({
           </ul>
         </div>
         <div className="relative flex justify-center w-full max-w-[250px] pb-10 sm:max-w-[300px] md:max-w-[500px]">
-          <img
+          <Image
+            width={370}
+            height={370}
             loading="lazy"
             decoding="async"
             alt="Active section"
             className="relative z-0 w-full max-w-[370px] h-auto rounded-sm"
             src="/testingBackground.png"
           />
-          <img
+          <Image
+            width={370}
+            height={370}
             loading="lazy"
             decoding="async"
             alt="Active section"

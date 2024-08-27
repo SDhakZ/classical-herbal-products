@@ -2,6 +2,8 @@ import React from "react";
 import Banner from "@/app/components/banner/banner";
 import AboutCard from "@/app/components/aboutCards/aboutCard";
 import Contact from "../../contact/contact";
+import Image from "next/image";
+
 export default function page() {
   const hcaptcha_site_key = process.env.HCAPTCHA_SITE_KEY;
   return (
@@ -14,7 +16,9 @@ export default function page() {
       />
       <div className="w-full container-margin-compact">
         <div className="w-full margin-y">
-          <img
+          <Image
+            width={1200}
+            height={550}
             alt="Holistic healing"
             src="/assets/About/our-journey-holistic.png"
           />
@@ -39,7 +43,9 @@ export default function page() {
           <div className="flex items-center justify-center w-full ">
             <div className="max-w-[1300px] flex-col sm:flex-row flex items-center justify-center gap-6 sm:gap-10">
               <div className="w-full max-w-[150px] sm:w-[230px]">
-                <img
+                <Image
+                  width={230}
+                  height={230}
                   alt="USDA logo"
                   src="/assets/About/USDA.png"
                   className="w-full "
