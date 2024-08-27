@@ -18,7 +18,7 @@ export default function TestingsSection({
   types = testingDefaultData.defaultTypes,
 }) {
   return (
-    <div className="container-margin-compact padding-y-lg">
+    <div className="container-margin-compact padding-y-lg margin-t">
       <div className="flex flex-col-reverse items-center gap-6 md:flex-row sm:justify-between sm:gap-12">
         <div className="w-full space-y-5 md:space-y-6">
           <div className="text-4xl text-center md:text-left font-markaziText text-primary-green-400">

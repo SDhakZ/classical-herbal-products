@@ -79,34 +79,35 @@ export const productData = [
             "Herbs in tea are scientifically proven for immune supportive and health benefit effects.",
           directionToUse: [
             {
-              tile: "Measure Tea",
+              title: "Measure Tea",
               description:
                 "Take 1-2 teaspoons (5-10 grams) of tea leaves to 500ml water.",
-              img: "assets/Direction/measure-tea.png",
+              icon: "measure-the-tea.png",
             },
             {
-              tile: "Boil the tea",
+              title: "Boil the tea",
               description:
                 "Boil the water for 8-10 minutes to extract the full flavour.",
 
-              img: "assets/Direction/Directionboil-water.png",
+              icon: "boil-the-tea.png",
             },
             {
-              tile: "Strain the tea",
+              title: "Strain the tea",
               description: "Filter the tea to remove the leaves.",
-              img: "assets/Direction/strain-tea.png",
+              icon: "strain-the-tea.png",
             },
             {
-              tile: "Serve  and sweeten",
+              title: "Serve  and sweeten",
               description:
                 "Enjoy the tea 1-2 times a day. You can add honey, jaggery or sugar to taste. ",
-              img: "assets/Direction/serve-sweeten.png",
+              icon: "serve-and-sweeten.png",
             },
             {
-              tile: "Special Considerations",
+              title: "Special Considerations",
+              specialCondition: true,
               description:
                 "Consult a physician if pregnant or for severely ill individuals.",
-              img: "assets/Direction/special-consideration.png",
+              icon: "special-consideration.png",
             },
           ],
           testings: [

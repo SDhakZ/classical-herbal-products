@@ -7,6 +7,7 @@ import AboutCard from "@/app/components/aboutCards/aboutCard";
 import CompanyValue from "@/app/components/companyValue/companyValue";
 import Contact from "../../contact/contact";
 import RecommendProduct from "./Components/recommendProduct";
+import ProductDirection from "./Components/productDirection";
 
 export default function page({ params }) {
   const hcaptcha_site_key = process.env.HCAPTCHA_SITE_KEY;
@@ -35,6 +36,9 @@ export default function page({ params }) {
         title="The Science Behind"
         description="Our product is crafted from 100% natural ingredients, backed by rigorous scientific research for your well-being."
         ingredients={selectedProductData.details.ingredients}
+      />
+      <ProductDirection
+        direction={selectedProductData.details.directionToUse}
       />
       <TestingsSection
         types={
