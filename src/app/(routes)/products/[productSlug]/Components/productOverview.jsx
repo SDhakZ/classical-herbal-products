@@ -105,7 +105,7 @@ export default function ProductOverview({ selectedProductData }) {
             <h2 className="font-medium underline uppercase text-[#684711] decoration-2 underline-offset-8 decoration-[#684711]">
               Additional Info
             </h2>
-            <p className="mt-5 max-w-[500px] text-black-shade-300">
+            <p className="mt-5 max-w-[500px] font-medium text-black-shade-300">
               {selectedProductData.details.additionalDetails}
             </p>
           </div>
@@ -113,7 +113,7 @@ export default function ProductOverview({ selectedProductData }) {
             <h2 className="font-medium underline uppercase text-[#684711] decoration-2 underline-offset-8 decoration-[#684711]">
               Delivery Details
             </h2>
-            <p className="mt-5 font-normal max-w-[500px] text-black-shade-300">
+            <p className="mt-5 font-medium max-w-[500px] text-black-shade-300">
               Delivery available inside Kathmandu valley. For elsewhere extra
               charge may apply.
             </p>
