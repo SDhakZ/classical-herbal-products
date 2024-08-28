@@ -21,6 +21,14 @@ const uniqueTargets = [
     )
   ),
 ];
+const bestSellers = productData.flatMap((category) =>
+  category.products
+    .filter((product) => product.bestSeller)
+    .map((product) => ({
+      title: product.title,
+      url: `/products/${product.slug}`,
+    }))
+);
 
 export const menuData = [
   {
@@ -30,24 +38,7 @@ export const menuData = [
     dropdown: [
       {
         title: "Featured",
-        links: [
-          {
-            title: "Herbal immunity support",
-            url: "#",
-          },
-          {
-            title: "Natural Ashwagandha",
-            url: "#",
-          },
-          {
-            title: "Ayodhya Shilajit",
-            url: "#",
-          },
-          {
-            title: "Aromatic Herbal Tea",
-            url: "#",
-          },
-        ],
+        links: bestSellers,
       },
       {
         title: "Categories",
