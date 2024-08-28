@@ -124,7 +124,9 @@ export default function Menubar() {
               </li>
             ))}
             <li>
-              <img className="h-16" src="/assets/CHPLogo.png" alt="Logo" />
+              <Link href="/">
+                <img className="h-16" src="/assets/CHPLogo.png" alt="Logo" />
+              </Link>
             </li>
 
             <li

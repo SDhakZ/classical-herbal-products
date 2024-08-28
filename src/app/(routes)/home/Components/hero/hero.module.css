@@ -1,0 +1,32 @@
+.HeroT-btn:hover {
+  background-color: #16a9df;
+  animation: wiggle 0.3s ease;
+}
+
+@keyframes wiggle {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  25% {
+    transform: rotateZ(-5deg);
+  }
+
+  50% {
+    transform: rotateZ(0deg);
+  }
+
+  75% {
+    transform: rotateZ(5deg);
+  }
+
+  100% {
+    transform: rotateZ(0deg);
+  }
+}
+
+@media (max-width: 400px) {
+  .HeroT-btn {
+    margin-top: 5px;
+  }
+}
