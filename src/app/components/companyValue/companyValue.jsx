@@ -39,14 +39,14 @@ export default function CompanyValue(props) {
                 <Image
                   width={92}
                   height={92}
-                  className="w-full max-w-[70px]"
+                  className="w-full max-w-[60px]"
                   src={value.image}
                   alt={value.title}
                 />
-                <h3 className="mt-5 text-3xl text-primary-green-400 font-markaziText text-primary-dark-100">
+                <h3 className="mt-3 text-[28px] text-primary-green-400 font-markaziText text-primary-dark-100">
                   {value.title}
                 </h3>
-                <p className="text-sm font-medium max-w-[246px] text-black-shade-200 text-center text-primary-dark-200">
+                <p className="text-base font-medium max-w-[246px] text-black-shade-200 text-center text-primary-dark-200">
                   {value.description}
                 </p>
               </div>

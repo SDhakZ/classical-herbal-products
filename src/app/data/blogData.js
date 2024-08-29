@@ -64,7 +64,7 @@ export const blogData = [
   {
     id: 2,
     title: "Why Shilajit is good for you?",
-    slug: "shilajit-benefits",
+    slug: "shilajit-benefits2",
     author: "Classsical Herbal Team",
     publishedDate: "July 24th, 2024",
     brief:
@@ -126,7 +126,7 @@ export const blogData = [
   {
     id: 3,
     title: "Why Shilajit is good for you?",
-    slug: "shilajit-benefits",
+    slug: "shilajit-benefits3",
     author: "Classsical Herbal Team",
     publishedDate: "July 24th, 2024",
     brief:
@@ -188,7 +188,7 @@ export const blogData = [
   {
     id: 4,
     title: "Why Shilajit is good for you?",
-    slug: "shilajit-benefits",
+    slug: "shilajit-benefits4",
     author: "Classsical Herbal Team",
     publishedDate: "July 24th, 2024",
     brief:

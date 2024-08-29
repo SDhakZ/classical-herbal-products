@@ -8,7 +8,7 @@ import AboutSection from "./Components/aboutSection/aboutSection";
 import AboutCard from "@/app/components/aboutCards/aboutCard";
 import FeatureSection from "./Components/featureSection/featureSection";
 
-export default function home() {
+export default function Home() {
   const deviceType = useDeviceType();
   return (
     <div>

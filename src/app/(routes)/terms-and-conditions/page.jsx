@@ -22,7 +22,7 @@ export default function page() {
       </div>
       <div className="flex flex-col gap-8 mt-8 container-margin-compact md:mt-11">
         <div className="flex flex-col gap-3">
-          <h2 className="text-2xl font-semibold text-black-shade-300">
+          <h2 className="text-3xl font-semibold font font-markaziText text-black-shade-300">
             Purpose
           </h2>
           <p className="max-w-5xl text-lg font-medium font-manrope text-black-shade-100">
@@ -32,7 +32,7 @@ export default function page() {
           </p>
         </div>
         <div className="flex flex-col gap-3">
-          <h2 className="text-2xl font-semibold text-black-shade-300 ">
+          <h2 className="text-3xl font-semibold font-markaziText text-black-shade-300 ">
             Disclaimer of Liability
           </h2>
           <p className="max-w-5xl text-lg font-medium font-manrope text-black-shade-100">
@@ -42,7 +42,7 @@ export default function page() {
           </p>
         </div>
         <div className="flex flex-col gap-3">
-          <h2 className="text-2xl font-semibold text-black-shade-300 ">
+          <h2 className="text-3xl font-semibold font-markaziText text-black-shade-300 ">
             Limitations of Liability
           </h2>
           <p className="max-w-5xl text-lg font-medium font-manrope text-black-shade-100">
@@ -52,7 +52,7 @@ export default function page() {
           </p>
         </div>
         <div className="flex flex-col gap-3">
-          <h2 className="text-2xl font-semibold text-black-shade-300 ">
+          <h2 className="text-3xl font-semibold font-markaziText text-black-shade-300 ">
             Expectations for User Behavior
           </h2>
           <p className="max-w-5xl text-lg font-medium font-manrope text-black-shade-100">
@@ -62,7 +62,7 @@ export default function page() {
           </p>
         </div>
         <div className="flex flex-col gap-3">
-          <h2 className="text-2xl font-semibold text-black-shade-300 ">
+          <h2 className="text-3xl font-semibold font-markaziText text-black-shade-300 ">
             Intellectual Property
           </h2>
           <p className="max-w-5xl text-lg font-medium font-manrope text-black-shade-100">
@@ -70,7 +70,7 @@ export default function page() {
           </p>
         </div>
         <div className="flex flex-col gap-3">
-          <h2 className="text-2xl font-semibold text-black-shade-300 ">
+          <h2 className="text-3xl font-semibold font-markaziText text-black-shade-300 ">
             User-Generated Content or Submissions
           </h2>
           <p className="max-w-5xl text-lg font-medium font-manrope text-black-shade-100">
@@ -80,7 +80,7 @@ export default function page() {
           </p>
         </div>
         <div className="flex flex-col gap-3">
-          <h2 className="text-2xl font-semibold text-black-shade-300 ">
+          <h2 className="text-3xl font-semibold font-markaziText text-black-shade-300 ">
             Changes to the Terms of Use and Disclaimer
           </h2>
           <p className="max-w-5xl text-lg font-medium font-manrope text-black-shade-100">
@@ -90,7 +90,7 @@ export default function page() {
           </p>
         </div>
         <div className="flex flex-col gap-3">
-          <h2 className="text-2xl font-semibold text-black-shade-300 ">
+          <h2 className="text-3xl font-semibold font-markaziText text-black-shade-300 ">
             Agreement to the Terms of Use and Disclaimer
           </h2>
           <p className="max-w-5xl text-lg font-medium font-manrope text-black-shade-100">

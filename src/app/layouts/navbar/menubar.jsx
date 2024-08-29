@@ -75,10 +75,13 @@ export default function Menubar() {
                             <p className="text-2xl font-medium underline underline-offset-8 decoration-primary-beige-300 font-markaziText">
                               {section.title}
                             </p>
-                            <ul className="flex flex-col gap-3 min-w-[200px] mt-5 text-base font-medium text-primary-green-300">
+                            <ul className="flex flex-col gap-3 min-w-[200px] mt-5 text-base font-medium ">
                               {section.links.map((item, index) => (
-                                <li key={index}>
-                                  <a href={item.url}>{item.title}</a>
+                                <li
+                                  className="transition-colors duration-150 text-primary-green-300 hover:text-primary-green-200"
+                                  key={index}
+                                >
+                                  <Link href={item.url}>{item.title}</Link>
                                 </li>
                               ))}
                             </ul>
@@ -125,7 +128,13 @@ export default function Menubar() {
             ))}
             <li>
               <Link href="/">
-                <img className="h-16" src="/assets/CHPLogo.png" alt="Logo" />
+                <Image
+                  height={64}
+                  width={140}
+                  className="h-16"
+                  src="/assets/CHPLogo.png"
+                  alt="Logo"
+                />
               </Link>
             </li>
 
@@ -134,7 +143,7 @@ export default function Menubar() {
               onMouseEnter={() => handleMouseEnter(2)}
               onMouseLeave={handleMouseLeave}
             >
-              <a
+              <Link
                 className={`flex items-center ${
                   activeDropdown === 2
                     ? "underline underline-offset-8 decoration-2 decoration-primary-green-300"
@@ -143,7 +152,7 @@ export default function Menubar() {
                 href="#"
               >
                 ABOUT
-              </a>
+              </Link>
               <AnimatePresence>
                 {activeDropdown === 2 && (
                   <motion.div
@@ -162,13 +171,16 @@ export default function Menubar() {
                           </p>
                           <ul className="flex max-w-[300px] flex-col gap-3 mt-5 text-base font-medium text-primary-green-300">
                             {item.links.map((subItem, subIndex) => (
-                              <li key={subIndex}>
-                                <a
+                              <li
+                                className="transition-colors duration-150 text-primary-green-300 hover:text-primary-green-200"
+                                key={subIndex}
+                              >
+                                <Link
                                   className="transition-color hover:text-primary-green-300"
                                   href={`/about/${subItem.url}`}
                                 >
                                   {subItem.title}
-                                </a>
+                                </Link>
                               </li>
                             ))}
                           </ul>
@@ -214,15 +226,17 @@ export default function Menubar() {
               </AnimatePresence>
             </li>
             <li className="h-full ">
-              <a
+              <Link
                 href="/contact"
                 className="w-[170px] cursor-pointer flex justify-center h-full items-center"
               >
                 CONTACT
-              </a>
+              </Link>
             </li>
           </ul>
-          <img
+          <Image
+            height={64}
+            width={140}
             className="h-16 md:hidden"
             src="/assets/CHPLogo.png"
             alt="Logo"
@@ -250,7 +264,9 @@ export default function Menubar() {
             transition={{ duration: 0.2 }}
           >
             <div className="flex items-center justify-between px-4 py-4">
-              <img
+              <Image
+                height={64}
+                width={140}
                 className="h-12 md:hidden"
                 src="/assets/CHPLogo.png"
                 alt="Logo"
@@ -266,8 +282,8 @@ export default function Menubar() {
             <ul className="flex flex-col items-center gap-8 mx-5 mt-6 text-lg font-medium sm:mt-10 sm:mx-10">
               {menuData.map((menu, index) => (
                 <li key={index} className="w-full">
-                  <a
-                    className="flex items-center justify-between text-xl font-medium"
+                  <button
+                    className="flex items-center justify-between w-full text-xl font-medium cursor-pointer"
                     onClick={() => toggleDropdown(index)}
                   >
                     {menu.title}
@@ -282,7 +298,7 @@ export default function Menubar() {
                         className="ml-4 text-sm"
                       />
                     )}
-                  </a>
+                  </button>
                   <AnimatePresence>
                     {activeDropdown === index && (
                       <motion.div

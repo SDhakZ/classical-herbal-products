@@ -72,10 +72,6 @@ export const menuData = [
             title: "Terms & Conditions",
             url: "/terms-and-conditions",
           },
-          {
-            title: "Delivery & Return Policies",
-            url: "#",
-          },
         ],
       },
     ],
