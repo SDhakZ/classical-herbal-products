@@ -53,7 +53,7 @@ export default function page({ params }) {
         }
       />
       <AboutCard />
-      <CompanyValue />
+      <CompanyValue margin={true} />
       <RecommendProduct
         currentCategorySlug={selectedProductData.categorySlug}
         currentProductSlug={selectedProductData.slug}

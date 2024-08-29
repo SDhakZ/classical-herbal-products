@@ -14,7 +14,7 @@ export default function AboutSection() {
           className="w-full rounded-md sm:w-1/2"
         />
         <div className="flex flex-col gap-2 w-full max-w-[520px]">
-          <p className="text-sm tracking-wider text-primary-green-400">
+          <p className="text-[15px] tracking-wider text-primary-green-400">
             OUR UNIQUE APPROACH
           </p>
           <h2 className="mt-2 text-4xl font-medium font-markaziText text-primary-green-400">
@@ -29,7 +29,7 @@ export default function AboutSection() {
             using time-honored methods passed down through generations.
           </p>
           <Link
-            className="flex items-center justify-center px-8 py-3 mt-5 font-medium transition-colors duration-150 rounded-md hover:text-primary-green-200 sm:w-fit bg-white-shade-100 text-black-shade-300"
+            className="flex items-center justify-center px-8 py-4 mt-5 font-medium leading-none transition-colors duration-150 rounded-md hover:text-primary-green-200 sm:w-fit bg-white-shade-100 text-black-shade-300"
             href="/about"
           >
             LEARN MORE

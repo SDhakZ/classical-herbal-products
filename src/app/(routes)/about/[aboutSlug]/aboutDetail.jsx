@@ -34,7 +34,7 @@ export default function AboutDetail({ params }) {
           ingredients={selectedAboutData.scienceBehind.ingredients}
         />
       ) : null}
-      <CompanyValue />
+      <CompanyValue margin={true} />
       <SellingProposition selectedAboutData={selectedAboutData} />
       <Contact hcaptcha_site_key={hcaptcha_site_key} dark={false} />
     </div>

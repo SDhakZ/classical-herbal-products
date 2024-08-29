@@ -25,10 +25,10 @@ const values = [
   },
 ];
 
-export default function CompanyValue() {
+export default function CompanyValue(props) {
   return (
-    <div className="pt-0 sm:pt-10 margin-t">
-      <div className="py-14 bg-primary-beige-100">
+    <div className={`${props.margin ? "my-10 md:my-14 lg:my-20" : null}`}>
+      <div className="py-10 bg-primary-beige-100">
         <div className="container-margin ">
           <div className="flex flex-col gap-10 sm:flex-row justify-evenly">
             {values.map((value) => (

@@ -59,7 +59,7 @@ export default function SellingProposition(props) {
 
   return (
     <section className={`relative transition-colors duration-[1300ms] `}>
-      <div className="container-margin-compact padding-y-lg section-layout">
+      <div className="container-margin-compact margin-y section-layout">
         <div className="mt-4 md:mt-20">
           <h2 className="text-4xl leading-8 sm:leading-10 sm:text-[45px] font-markaziText text-primary-green-200">
             {infoHub?.title}

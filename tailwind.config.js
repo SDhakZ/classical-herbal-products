@@ -11,7 +11,12 @@ module.exports = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "green-textured-background":
+          "url('/assets/Home/green-textured-bg.webp')",
+        "brown-textured-background":
+          "url('/assets/Home/brown-textured-bg.webp')",
       },
+
       fontFamily: {
         markaziText: ["var(--font-markaziText)", "serif"],
         markPro: ["var(--font-markPro)", "sans-serif"],
