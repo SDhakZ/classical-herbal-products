@@ -30,7 +30,7 @@ const aboutOptions = [
 
 export default function AboutCard() {
   return (
-    <div className="container-margin-compact margin-y">
+    <div className="pb-6 container-margin-compact margin-y">
       <div className="flex flex-col gap-8 sm:gap-14">
         <h2 className="text-3xl leading-7 text-center sm:text-4xl md:text-5xl font-markaziText text-primary-green-400">
           Why Classical Herb Products?
