@@ -54,7 +54,7 @@
   }
 
   .margin-y {
-    @apply my-10 md:my-12 lg:my-14;
+    @apply my-10 md:my-14 lg:my-20;
   }
 
   .top-section-p {

@@ -24,10 +24,10 @@ export default function roductCard(props) {
           alt={title}
         />
       </div>
-      <p className="mt-3 text-2xl font-normal transition-colors duration-150 group-hover:text-primary-green-100 font-markaziText text-primary-green-400">
+      <p className="mt-3 text-[25px] font-medium transition-colors duration-150 group-hover:text-primary-green-100 font-markaziText text-primary-green-400">
         {title}
       </p>
-      <p className="mt-1 text-sm font-medium leading-5 text-black-shade-200">
+      <p className="text-sm font-medium leading-5  text-black-shade-200">
         {brief}
       </p>
     </a>
