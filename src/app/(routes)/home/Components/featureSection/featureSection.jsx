@@ -7,7 +7,7 @@ export default function featureSection() {
   return (
     <div className="margin-y">
       <div className="object-cover bg-green-textured-background padding-y-lg">
-        <div className="flex flex-col items-center justify-between object-cover gap-10 bg-green-textured-background sm:flex-row container-margin-compact ">
+        <div className="flex flex-col items-center justify-between object-cover gap-10 sm:flex-row container-margin-compact ">
           <Image
             src={"/assets/Home/featureimg1.png"}
             className="w-full rounded-md sm:w-1/2 "

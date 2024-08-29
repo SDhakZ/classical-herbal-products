@@ -308,7 +308,7 @@ export default function Menubar() {
                             </div>
                           ))}
                           {menuData[2].blogs ? (
-                            <div className="flex flex-col gap-6 sm:flex-wrap sm:flex-row">
+                            <div className="flex flex-col gap-4 sm:flex-wrap sm:flex-row">
                               {blogData.slice(0, 2).map((blog, index) => (
                                 <Link
                                   key={index}
@@ -335,7 +335,7 @@ export default function Menubar() {
                             </div>
                           ) : null}
                           <Link
-                            className="flex w-fit whitespace-nowrap px-4 py-3 text-[16px] font-medium uppercase rounded-md bg-primary-green-300 text-white-shade-100"
+                            className="flex w-full justify-center sm:w-fit whitespace-nowrap px-4 py-3 text-[16px] font-medium uppercase rounded-md bg-primary-green-300 text-white-shade-100"
                             href="/products"
                           >
                             See Products

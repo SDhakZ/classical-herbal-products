@@ -23,38 +23,16 @@ export default function footer() {
                 Featured Products
               </p>
               <ul className="mt-3 space-y-3 text-sm text-white-shade-100">
-                <li>
-                  <a
-                    className="transition-colors duration-150 hover:text-primary-beige-100"
-                    href="#"
-                  >
-                    Immune supportive tea
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="transition-colors duration-150 hover:text-primary-beige-100"
-                    href="#"
-                  >
-                    Lavender Immunity booster
-                  </a>{" "}
-                </li>
-                <li>
-                  <a
-                    className="transition-colors duration-150 hover:text-primary-beige-100"
-                    href="#"
-                  >
-                    Energy booster tea
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="transition-colors duration-150 hover:text-primary-beige-100"
-                    href="#"
-                  >
-                    Ayurvedic booster
-                  </a>
-                </li>
+                {menuData[0].dropdown[0].links.map((item, index) => (
+                  <li key={index}>
+                    <a
+                      className="transition-colors duration-150 hover:text-primary-beige-100"
+                      href={item.links}
+                    >
+                      {item.title}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
             <div>
