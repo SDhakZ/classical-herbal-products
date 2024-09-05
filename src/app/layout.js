@@ -7,6 +7,7 @@ import { Markazi_Text } from "next/font/google";
 import localFont from "next/font/local";
 import Menubar from "./layouts/navbar/menubar";
 import Footer from "./layouts/footer/footer";
+import Providers from "./components/ProgressBarProvider/ProgressBarProvider";
 
 export const metadata = {
   title: "Create Next App",
@@ -33,11 +34,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${markPro.className} ${markaziText.variable}`}>
         <Topbar />
-        <Menubar />
-        <SmoothScrolling>
-          <div>{children}</div>
-        </SmoothScrolling>
-        <Footer />
+        <Providers>
+          <Menubar />
+          <SmoothScrolling>
+            <div>{children}</div>
+          </SmoothScrolling>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
