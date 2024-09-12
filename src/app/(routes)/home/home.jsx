@@ -7,6 +7,7 @@ import RecommendProduct from "../products/[productSlug]/Components/recommendProd
 import AboutSection from "./Components/aboutSection/aboutSection";
 import AboutCard from "@/app/components/aboutCards/aboutCard";
 import FeatureSection from "./Components/featureSection/featureSection";
+import Testimonial from "./Components/testimonial/testimonial";
 
 export default function Home() {
   const deviceType = useDeviceType();
@@ -17,6 +18,7 @@ export default function Home() {
       <AboutSection />
       <AboutCard />
       <FeatureSection />
+      <Testimonial />
     </div>
   );
 }

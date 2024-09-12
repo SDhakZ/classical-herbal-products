@@ -26,8 +26,8 @@ export default function footer() {
                 {menuData[0].dropdown[0].links.map((item, index) => (
                   <li key={index}>
                     <a
-                      className="transition-colors duration-150 hover:text-primary-beige-100"
-                      href={item.links}
+                      className="transition-colors duration-150 cursor-pointer hover:text-primary-beige-100"
+                      href={item.url}
                     >
                       {item.title}
                     </a>
@@ -45,7 +45,7 @@ export default function footer() {
                     className="transition-colors duration-150 hover:text-primary-beige-100"
                     href="#"
                   >
-                    Services
+                    Products
                   </a>
                 </li>
                 <li>
@@ -56,14 +56,7 @@ export default function footer() {
                     About
                   </a>
                 </li>
-                <li>
-                  <a
-                    className="transition-colors duration-150 hover:text-primary-beige-100"
-                    href="#"
-                  >
-                    Products
-                  </a>
-                </li>
+
                 <li>
                   <a
                     className="transition-colors duration-150 hover:text-primary-beige-100"
@@ -140,16 +133,14 @@ export default function footer() {
             <div className="flex flex-col-reverse items-center gap-8 sm:gap-6 sm:flex-row sm:flex-wrap sm:justify-between">
               <div className="flex flex-wrap self-start text-sm sm:self-auto gap-y-3 gap-x-4 text-white-shade-100">
                 <a href="#">Terms</a>
-                <a href="#">Disclaimer</a>
                 <a href="#">Accessibility</a>
-                <a href="#">Return Policy</a>
               </div>{" "}
               <ul className="flex flex-wrap self-start gap-4 text-sm sm:self-auto text-white-shade-200">
                 {socialInfo.map((social, index) => (
                   <li key={index}>
                     <a
                       key={index}
-                      className={`flex items-center  border-2 justify-center rounded-full w-10 h-10 md:w-9 md:h-9 text-white-shade-100 hover:text-primary-orange-200`}
+                      className={`flex items-center  border-2 justify-center rounded-full w-10 h-10 md:w-9 md:h-9 text-white-shade-100 transition-colors hover:border-primary-beige-200 hover:text-primary-beige-200`}
                       href={social.link}
                       target="_blank"
                       rel="noreferrer"

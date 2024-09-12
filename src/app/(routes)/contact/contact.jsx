@@ -139,19 +139,29 @@ export default function Contact(props) {
                       <FontAwesomeIcon
                         icon={item.nested[0].icon}
                         className={` ${
-                          dark ? "text-white-shade-100 " : "text-[#73574D] "
-                        }text-lg  flex items-center w-4 `}
+                          dark
+                            ? "text-white-shade-100 "
+                            : "text-black-shade-200"
+                        } text-lg  flex items-center w-4 `}
                       />
                       <div>
                         <a
-                          className="transition-colors duration-200 hover:text-primary-beige-300"
+                          className={`${
+                            dark
+                              ? "text-white-shade-100 hover:text-primary-beige-200"
+                              : "text-black-shade-200 hover:text-primary-beige-300"
+                          } transition-colors duration-200 `}
                           href={item.nested[0].link}
                         >
                           {item.nested[0].title}
                         </a>
                         {", "}
                         <a
-                          className="transition-colors duration-200 hover:text-primary-beige-300"
+                          className={`${
+                            dark
+                              ? "text-white-shade-100 hover:text-primary-beige-200"
+                              : "text-black-shade-200 hover:text-primary-beige-300"
+                          } transition-colors duration-200 `}
                           href={item.nested[1].link}
                         >
                           {item.nested[1].title}
@@ -161,14 +171,18 @@ export default function Contact(props) {
                   ) : (
                     <li
                       className={`${
-                        dark ? "text-white-shade-100" : "text-black-shade-200"
-                      } flex hover:text-primary-beige-300 transition-colors duration-200 space-x-4 items-center font-normal`}
+                        dark
+                          ? "text-white-shade-100 hover:text-primary-beige-200"
+                          : "text-black-shade-200 hover:text-primary-beige-300"
+                      } flex  transition-colors duration-200 space-x-4 items-center font-normal`}
                       key={index}
                     >
                       <FontAwesomeIcon
                         icon={item.icon}
                         className={` ${
-                          dark ? "text-white-shade-100 " : "text-[#73574D] "
+                          dark
+                            ? "text-white-shade-100 "
+                            : "text-black-shade-200 "
                         } text-lg  flex items-center w-4 `}
                       />
                       <a href={item.link}>{item.title}</a>
@@ -185,10 +199,10 @@ export default function Contact(props) {
                   <li key={index}>
                     <a
                       key={index}
-                      className={`flex items-center border-2 justify-center transition duration-200 hover:border-primary-beige-300 hover:text-primary-beige-300 rounded-full w-10 h-10 md:w-10 md:h-10 ${
+                      className={`flex items-center border-2 justify-center transition duration-200  rounded-full w-10 h-10 md:w-10 md:h-10 ${
                         dark
-                          ? "text-white-shade-100 border-white-shade-100"
-                          : "text-black-shade-200 border-black-shade-200"
+                          ? "text-white-shade-100 border-white-shade-100 hover:border-primary-beige-200"
+                          : "text-black-shade-200 border-black-shade-200 hover:border-primary-beige-300"
                       } hover:text-primary-orange-200`}
                       href={social.link}
                       target="_blank"
