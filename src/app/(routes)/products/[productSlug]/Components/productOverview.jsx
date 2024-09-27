@@ -91,6 +91,7 @@ export default function ProductOverview({ selectedProductData }) {
             <Image
               width={20}
               height={20}
+              alt="Nutritional Facts"
               className="w-5"
               src="/nutritionLogo.png"
             />

@@ -34,6 +34,7 @@ export default function testimonial() {
                     className="w-24 h-24 rounded-full md:w-24 md:h-24 md:-mt-14 "
                     width={112}
                     height={112}
+                    alt="testimonial"
                   />
                   <FontAwesomeIcon
                     key={idx}

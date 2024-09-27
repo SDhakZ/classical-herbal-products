@@ -16,7 +16,7 @@ export default function Blog() {
       pagination.end
     );
     setPaginatedItems(updatePaginatedItems);
-  }, [blogData, pagination]);
+  }, [pagination]);
 
   const onPaginationChange = useCallback((start, end) => {
     setPagination({ start, end });

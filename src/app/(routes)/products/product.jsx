@@ -76,7 +76,7 @@ export default function ProductPage() {
         handleFilterChange("targets", target, false); // Remove target
       }
     });
-  }, [searchParams]); // Ensure searchParams is included in dependency array
+  }, [searchParams]);
 
   // Handle updating the query params when filters change
   useEffect(() => {

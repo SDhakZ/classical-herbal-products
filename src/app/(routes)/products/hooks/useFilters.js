@@ -107,19 +107,6 @@ export const useFilters = () => {
     setAvailablePharmaceuticalTypes(["Pharmaceutical", "Non-Pharmaceutical"]);
   };
 
-  const sortProducts = (products) => {
-    switch (filters.sort) {
-      case "Alpha A-Z":
-        return products.sort((a, b) => a.title.localeCompare(b.title));
-      case "Alpha Z-A":
-        return products.sort((a, b) => b.title.localeCompare(a.title));
-      case "Best Sellers":
-        return products.filter((product) => product.bestSeller);
-      default:
-        return products;
-    }
-  };
-
   const filteredProducts = useMemo(() => {
     const products = productData.flatMap((category) =>
       category.products
@@ -143,7 +130,17 @@ export const useFilters = () => {
         }))
     );
 
-    return sortProducts(products);
+    // Move sorting logic inside useMemo
+    switch (filters.sort) {
+      case "Alpha A-Z":
+        return products.sort((a, b) => a.title.localeCompare(b.title));
+      case "Alpha Z-A":
+        return products.sort((a, b) => b.title.localeCompare(a.title));
+      case "Best Sellers":
+        return products.filter((product) => product.bestSeller);
+      default:
+        return products;
+    }
   }, [filters]);
 
   return {
