@@ -12,18 +12,18 @@ export const HeroCard = (props) => {
             {/* Small Image */}
             <source
               media="(max-width: 650px)"
-              srcSet={`/assets/Home/${image}-mobile.png`}
+              srcSet={`/assets/Home/${image}-mobile.webp`}
             />
             {/* Medium Image */}
             <source
               media="(max-width: 1000px)"
-              srcSet={`/assets/Home/${image}-tablet.png`}
+              srcSet={`/assets/Home/${image}-tablet.webp`}
             />
             {/* Large Image */}
-            <source srcSet={`/assets/Home/${image}-desktop.png`} />
+            <source srcSet={`/assets/Home/${image}-desktop.webp`} />
             {/* Default fallback image (for browsers that don't support <picture>) */}
             <Image
-              src={`/assets/Home/${image}-desktop.png`}
+              src={`/assets/Home/${image}-desktop.webp`}
               alt={title}
               width={4000}
               height={688}

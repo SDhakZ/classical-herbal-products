@@ -6,10 +6,10 @@ import Link from "next/link";
 export default function featureSection() {
   return (
     <div className="margin-y">
-      <div className="object-cover bg-green-textured-background padding-y-lg">
-        <div className="flex flex-col items-center justify-between object-cover gap-10 sm:flex-row container-margin-compact ">
+      <div className="bg-contain bg-green-textured-background padding-y-lg">
+        <div className="flex flex-col items-center justify-between gap-10 sm:flex-row container-margin-compact ">
           <Image
-            src={"/assets/Home/featureimg1.png"}
+            src={"/assets/Home/featureimg1.webp"}
             className="w-full rounded-md sm:w-1/2 "
             width={500}
             height={500}
@@ -34,10 +34,10 @@ export default function featureSection() {
         </div>
       </div>
       <CompanyValue margin={false} />
-      <div className="object-cover bg-brown-textured-background padding-y-lg">
+      <div className="bg-contain bg-brown-textured-background padding-y-lg">
         <div className="flex flex-col items-center justify-between object-cover gap-10 sm:flex-row-reverse container-margin-compact ">
           <Image
-            src={"/assets/Home/featureimg2.png"}
+            src={"/assets/Home/featureimg2.webp"}
             className="w-full rounded-md sm:w-1/2 "
             width={500}
             height={500}

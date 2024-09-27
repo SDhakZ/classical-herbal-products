@@ -13,31 +13,31 @@ const ingredientsDefault = [
     title: "Haskap Berry",
     description:
       "Handpicked by our professional in house farmers the haskap berry are good for heart health and has dietary fiber contents. ",
-    image: "/assets/About/transparency/haskap.png",
+    image: "/assets/About/transparency/haskap.webp",
   },
   {
     title: "Wellmune",
     description:
       "Wellmune is a proprietary ingredient derived from baker's yeast and is marketed as a natural immune health ingredient",
-    image: "/assets/About/transparency/wellmune.png",
+    image: "/assets/About/transparency/wellmune.webp",
   },
   {
     title: "Vitamin C",
     description:
       "Vitamin C is a powerful antioxidant that boosts immunity and reduces the risk of chronic diseases. I",
-    image: "/assets/About/transparency/vitamin-c.png",
+    image: "/assets/About/transparency/vitamin-c.webp",
   },
   {
     title: "Haskap Berry",
     description:
       "Handpicked by our professional in house farmers the haskap berry are good for heart health and has dietary fiber contents. ",
-    image: "/assets/About/transparency/haskap.png",
+    image: "/assets/About/transparency/haskap.webp",
   },
   {
     title: "Wellmune",
     description:
       "Wellmune is a proprietary ingredient derived from baker's yeast and is marketed as a natural immune health ingredient",
-    image: "/assets/About/transparency/wellmune.png",
+    image: "/assets/About/transparency/wellmune.webp",
   },
 ];
 

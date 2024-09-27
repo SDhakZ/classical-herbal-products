@@ -6,14 +6,14 @@ export default function Banner(props) {
   return (
     <div className="relative flex items-center justify-center">
       <picture className="block w-full h-full">
-        <source media="(max-width:540px)" srcSet={`/${image}-mobile.png`} />
-        <source media="(max-width:1020px)" srcSet={`/${image}-tablet.png`} />
-        <source srcSet={`/${image}-desktop.png`} />
+        <source media="(max-width:540px)" srcSet={`/${image}-mobile.webp`} />
+        <source media="(max-width:1020px)" srcSet={`/${image}-tablet.webp`} />
+        <source srcSet={`/${image}-desktop.webp`} />
         <Image
           width={1920}
           height={560}
           className="block w-full"
-          src={`/${image}-desktop.png`}
+          src={`/${image}-desktop.webp`}
           alt={title}
         />
       </picture>

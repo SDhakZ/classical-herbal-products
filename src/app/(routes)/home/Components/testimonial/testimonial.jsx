@@ -4,6 +4,7 @@ import { testimonialData } from "@/app/data/testimonialData";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome//react-fontawesome";
 import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 export default function testimonial() {
   return (
@@ -34,12 +35,10 @@ export default function testimonial() {
                     width={112}
                     height={112}
                   />
-                  <Image
-                    src="/assets/Testimonial/verified.png"
-                    width={24}
-                    height={24}
-                    alt="Verified Badge"
-                    className="relative w-6 h-6 -top-2"
+                  <FontAwesomeIcon
+                    key={idx}
+                    icon={faCheckCircle}
+                    className="relative text-xl text-green-500 bg-white rounded-full -top-2"
                   />
                 </div>
                 <div className="flex items-center justify-center mt-5">
@@ -79,12 +78,10 @@ export default function testimonial() {
                     </div>
                     {/* Verified Review Section */}
                     <p className="flex items-center justify-center ml-1 text-sm text-green-600 ">
-                      <Image
-                        src="/assets/Testimonial/verified.png"
-                        width={28}
-                        height={28}
-                        className="w-4 h-4 mr-1"
-                        alt="Verified Badge"
+                      <FontAwesomeIcon
+                        key={idx}
+                        icon={faCheckCircle}
+                        className="mt-[0.4px] text-base mr-1 text-green-500 "
                       />
                       Verified Review
                     </p>
