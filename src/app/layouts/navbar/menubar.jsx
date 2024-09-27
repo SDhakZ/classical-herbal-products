@@ -101,7 +101,7 @@ export default function Menubar() {
                                     height={256}
                                     alt="Blog Image"
                                     className="w-full transition-transform duration-500 ease-in-out group-hover:scale-105"
-                                    src={`/assets/Blogs/shilajit-benefits/${blog.image}`}
+                                    src={`/assets/Blogs/${blog.slug}/${blog.image}`}
                                   />
                                 </figure>
                                 <p className="mt-2 text-xl truncate text-black-shade-200 text-ellipsis font-markaziText">
@@ -200,7 +200,7 @@ export default function Menubar() {
                                   height={256}
                                   alt="Blog Image"
                                   className="w-full transition-transform duration-500 ease-in-out group-hover:scale-105"
-                                  src={`/assets/Blogs/shilajit-benefits/${blog.image}`}
+                                  src={`/assets/Blogs/${blog.slug}/${blog.image}`}
                                 />
                               </figure>
                               <p className="mt-2 text-xl truncate text-black-shade-200 text-ellipsis font-markaziText">

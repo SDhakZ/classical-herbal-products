@@ -16,7 +16,7 @@ export default function BlogCard(props) {
           height={464}
           alt={title}
           className="transition-transform duration-500 ease-in-out group-hover:scale-105"
-          src={`/assets/Blogs/shilajit-benefits/${image}`}
+          src={`/assets/Blogs/${link}/${image}`}
         ></Image>
       </figure>
       <div className="px-2 py-2 md:px-3 md:py-3">

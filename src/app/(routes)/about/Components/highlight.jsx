@@ -5,30 +5,25 @@ import Image from "next/image";
 export default function HighLight(props) {
   const { image, title, description, color } = props;
 
-  // Determine initial compact state based on window width
-  const [isCompact, setIsCompact] = useState(window.innerWidth >= 660);
+  // State to track if window is available and window width
+  const [isCompact, setIsCompact] = useState(false);
 
   useEffect(() => {
-    // Debounce function to limit the rate of setIsCompact calls
-    let timeoutId = null;
+    // Function to handle window resize and set isCompact
     const handleResize = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        setIsCompact(window.innerWidth >= 660);
-      }, 150); // Debounce delay of 150ms
+      setIsCompact(window.innerWidth >= 660);
     };
 
-    // Initial check (may be redundant if state is set correctly initially)
-    handleResize();
+    // Check if window is defined (runs only on client side)
+    if (typeof window !== "undefined") {
+      handleResize(); // Set initial state based on current window width
+      window.addEventListener("resize", handleResize);
 
-    // Attach resize event listener
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup event listener on component unmount
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      clearTimeout(timeoutId);
-    };
+      // Cleanup event listener on component unmount
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
   }, []);
 
   return (

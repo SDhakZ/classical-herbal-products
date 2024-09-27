@@ -27,7 +27,7 @@ export default function ContinueBlog(props) {
       <div className="flex justify-center w-full mt-10">
         <a
           className="block px-8 py-3 font-medium border-2 rounded-lg hover:text-primary-green-100 hover:border-primary-green-100 border-primary-green-200 text-primary-green-200"
-          href="/blog"
+          href="/blogs"
         >
           SEE ALL POSTS
         </a>

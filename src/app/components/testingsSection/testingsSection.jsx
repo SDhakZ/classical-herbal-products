@@ -4,7 +4,7 @@ import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 
 const testingDefaultData = {
-  defaultImage: "/assets/About/purity/purity-testing.png",
+  defaultImage: "/assets/About/purity/purity-testing.webp",
   defaultTypes: [
     "Microbial Testing",
     "Heavy Metal Testing",

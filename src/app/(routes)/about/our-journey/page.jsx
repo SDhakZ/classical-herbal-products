@@ -20,7 +20,7 @@ export default function page() {
             width={1200}
             height={550}
             alt="Holistic healing"
-            src="/assets/About/our-journey-holistic.png"
+            src="/assets/About/our-journey-holistic.webp"
           />
           <div className="flex flex-col items-center justify-center w-full mt-6 sm:mt-10">
             <h2 className="text-center text-black-shade-300 font-markaziText text-3xl sm:text-4xl sm:max-w-[450px] md:max-w-[700px] md:leading-10 sm:leading-10 md:text-[45px] lg:max-w-[1000px] leading-7  max-w-[1000px]">
