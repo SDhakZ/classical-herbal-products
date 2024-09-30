@@ -7,7 +7,7 @@ export default function AboutSection() {
     <div className="padding-y-lg bg-primary-beige-100 ">
       <div className="flex flex-col items-center justify-between gap-10 sm:flex-row container-margin-compact">
         <Image
-          src="/assets/Home/HomeAboutSection.png"
+          src="/assets/Home/HomeAboutSection.webp"
           width={771}
           height={637}
           alt="About Us"

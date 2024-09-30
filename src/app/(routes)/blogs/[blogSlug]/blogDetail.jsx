@@ -34,7 +34,6 @@ export default function BlogDetail() {
           src={`/assets/Blogs/${selectedBlogData.slug}/${selectedBlogData.image}`}
           width={800}
           height={594}
-          layout="responsive"
           alt={selectedBlogData.title}
           className="mt-6 sm:mt-8 max-w-[800px]"
         />

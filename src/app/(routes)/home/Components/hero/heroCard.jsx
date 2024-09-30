@@ -33,7 +33,6 @@ export const HeroCard = (props) => {
               objectPosition="center"
               draggable="false"
               className="block h-auto max-w-full select-none"
-              layout="responsive"
             />
           </picture>
         </Link>
